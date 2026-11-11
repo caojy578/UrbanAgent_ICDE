@@ -1,0 +1,650 @@
+==== 轨迹层 VPAR(native_tool/react/urban_agent)====
+>>> traj native_tool
+[CC-01] any_enh=True prcr invalid=[3, 7, 8, 9, 10, 11, 15, 17, 20, 22]
+[CC-02] any_enh=True prcr invalid=[]
+[CC-03] any_enh=True prex invalid=[7, 8]
+[CC-04] any_enh=True prcrex invalid=[4, 8]
+[CC-05] any_enh=True prex invalid=[7, 8, 10]
+[CC-06] any_enh=True prcr invalid=[12, 13]
+[CC-07] any_enh=True prex invalid=[3, 4, 6, 8]
+[CC-08] any_enh=True prcrex invalid=[4, 7, 8, 10, 21]
+[CC-09] any_enh=False  invalid=[]
+[CC-10] any_enh=True prcr invalid=[]
+[CC-11] any_enh=True prex invalid=[]
+[CC-13] any_enh=False  invalid=[]
+[CC-14] any_enh=False  invalid=[]
+[CC-15] any_enh=True pr invalid=[4, 5, 6, 7, 10, 11, 14, 16, 18, 19, 20, 21, 22]
+[CC-17] any_enh=True prex invalid=[]
+[CC-19] any_enh=True pr invalid=[]
+[CC-20] any_enh=False  invalid=[]
+[CC-22] any_enh=True prex invalid=[]
+[CC-23] any_enh=True pr invalid=[]
+[CC-24] any_enh=True pr invalid=[]
+[CC-25] any_enh=False  invalid=[]
+[CC-26] any_enh=True prex invalid=[3]
+[CC-27] any_enh=True prcr invalid=[]
+[CC-28] any_enh=False  invalid=[]
+[CC-30] any_enh=True erpr invalid=[]
+[CC-31] any_enh=False  invalid=[]
+[CC-32] any_enh=True er invalid=[]
+[CC-33] any_enh=True prcr invalid=[21]
+[CC-34] any_enh=True pr invalid=[]
+[CC-35] any_enh=False  invalid=[]
+[CC-36] any_enh=True erpr invalid=[]
+[CC-37] any_enh=False  invalid=[1, 2, 3, 4]
+[CC-38] any_enh=True pr invalid=[]
+[CC-39] any_enh=True erpr invalid=[]
+[CC-40] any_enh=True erpr invalid=[1, 2]
+[CC-42] any_enh=True pr invalid=[]
+[CC-43] any_enh=True pr invalid=[]
+[CC-44] any_enh=True pr invalid=[]
+[CC-45] any_enh=True prex invalid=[]
+[CC-46] any_enh=True erpr invalid=[]
+[CC-47] any_enh=True prcrex invalid=[]
+[CC-48] any_enh=True erpr invalid=[5]
+[CC-49] any_enh=False  invalid=[]
+[CC-50] any_enh=True erprcrex invalid=[3, 8]
+[CR-36] any_enh=False  invalid=[]
+[CR-37] any_enh=True cr invalid=[]
+[CR-38] any_enh=True er invalid=[3]
+[CR-39] any_enh=False  invalid=[]
+[CR-40] any_enh=True ercr invalid=[3]
+[CR-41] any_enh=True er invalid=[]
+[CR-42] any_enh=True cr invalid=[]
+[CR-43] any_enh=False  invalid=[]
+[CR-44] any_enh=True er invalid=[]
+[CR-45] any_enh=True erpr invalid=[]
+[CR-46] any_enh=True er invalid=[]
+[CR-47] any_enh=False  invalid=[]
+[CR-48] any_enh=True er invalid=[4]
+[CR-49] any_enh=False  invalid=[]
+[CR-50] any_enh=True er invalid=[]
+[FR-01] any_enh=False  invalid=[]
+[FR-02] any_enh=False  invalid=[]
+[FR-03] any_enh=False  invalid=[]
+[FR-04] any_enh=False  invalid=[]
+[FR-05] any_enh=False  invalid=[]
+[FR-06] any_enh=True pr invalid=[]
+[FR-07] any_enh=False  invalid=[]
+[FR-08] any_enh=False  invalid=[]
+[FR-09] any_enh=False  invalid=[]
+[FR-10] any_enh=False  invalid=[]
+[FR-11] any_enh=False  invalid=[]
+[FR-12] any_enh=True pr invalid=[]
+[FR-13] any_enh=True pr invalid=[]
+[FR-14] any_enh=True prcr invalid=[]
+[FR-15] any_enh=True prcr invalid=[2]
+[FR-17] any_enh=True pr invalid=[1, 2, 3]
+[FR-18] any_enh=False  invalid=[]
+[FR-20] any_enh=False  invalid=[]
+[FR-21] any_enh=True erpr invalid=[4]
+[FR-22] any_enh=False  invalid=[]
+[FR-23] any_enh=False  invalid=[]
+[FR-24] any_enh=False  invalid=[]
+[FR-25] any_enh=False  invalid=[]
+[FR-27] any_enh=False  invalid=[]
+[FR-28] any_enh=True pr invalid=[]
+[FR-29] any_enh=True pr invalid=[]
+[FR-30] any_enh=False  invalid=[]
+[FR-32] any_enh=True erpr invalid=[]
+[FR-33] any_enh=True pr invalid=[]
+[FR-34] any_enh=True erpr invalid=[3, 4, 5, 6]
+[FR-35] any_enh=False  invalid=[]
+[FR-36] any_enh=False  invalid=[]
+[FR-41] any_enh=False  invalid=[]
+[FR-42] any_enh=True pr invalid=[1]
+[FR-43] any_enh=False  invalid=[]
+[FR-44] any_enh=True pr invalid=[]
+[FR-45] any_enh=False  invalid=[]
+[FR-46] any_enh=False  invalid=[]
+[FR-47] any_enh=False  invalid=[]
+[FR-48] any_enh=False  invalid=[]
+[FR-49] any_enh=False  invalid=[]
+[FR-50] any_enh=True prcr invalid=[1]
+[SD-01] any_enh=False  invalid=[]
+[SD-02] any_enh=True pr invalid=[]
+[SD-03] any_enh=True prcrex invalid=[]
+[SD-04] any_enh=True pr invalid=[]
+[SD-05] any_enh=True pr invalid=[]
+[SD-06] any_enh=True pr invalid=[]
+[SD-10] any_enh=True prcr invalid=[13, 16, 21]
+[SD-11] any_enh=True prcrex invalid=[]
+[SD-12] any_enh=True pr invalid=[]
+[SD-13] any_enh=True pr invalid=[]
+[SD-14] any_enh=True pr invalid=[]
+[SD-15] any_enh=True pr invalid=[]
+[SD-16] any_enh=True pr invalid=[]
+[SD-17] any_enh=True prex invalid=[]
+[SD-18] any_enh=True prcrex invalid=[]
+[SD-22] any_enh=True prex invalid=[]
+[SD-23] any_enh=True er invalid=[]
+[SD-24] any_enh=False  invalid=[]
+[SD-25] any_enh=True erpr invalid=[1]
+[SD-26] any_enh=True pr invalid=[]
+[SD-27] any_enh=True prex invalid=[]
+[SD-28] any_enh=True pr invalid=[]
+[SD-29] any_enh=True pr invalid=[]
+[SD-30] any_enh=True pr invalid=[]
+[SD-31] any_enh=True pr invalid=[]
+[SD-32] any_enh=True pr invalid=[]
+[SD-33] any_enh=True pr invalid=[]
+[SD-34] any_enh=True pr invalid=[]
+[SD-36] any_enh=True prcr invalid=[]
+[SD-37] any_enh=True prex invalid=[8, 9, 10]
+[SD-38] any_enh=True prcr invalid=[2]
+[SD-39] any_enh=True pr invalid=[]
+[SD-40] any_enh=True erpr invalid=[5, 6]
+[SD-41] any_enh=True prex invalid=[]
+[SD-42] any_enh=True erprex invalid=[9, 10, 11, 12]
+[SD-43] any_enh=True prcr invalid=[]
+[SD-44] any_enh=True pr invalid=[]
+[SD-45] any_enh=True prcr invalid=[]
+[SD-47] any_enh=True pr invalid=[]
+[SD-48] any_enh=True erpr invalid=[]
+[SD-49] any_enh=True pr invalid=[]
+[SD-50] any_enh=True pr invalid=[]
+wrote eval/judge/traj_native_tool.jsonl (143 judged, 61 skipped clar/no-tool)
+>>> traj react
+[CC-01] any_enh=True prcrex invalid=[4, 7]
+[CC-02] any_enh=True prcr invalid=[]
+[CC-03] any_enh=True erpr invalid=[11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+[CC-04] any_enh=True pr invalid=[]
+[CC-05] any_enh=True erprex invalid=[]
+[CC-06] any_enh=True prex invalid=[]
+[CC-07] any_enh=True erprex invalid=[14]
+[CC-08] any_enh=True erpr invalid=[8, 9, 10, 11, 12]
+[CC-09] any_enh=False  invalid=[]
+[CC-10] any_enh=True prex invalid=[1, 11]
+[CC-11] any_enh=True pr invalid=[]
+[CC-13] any_enh=False  invalid=[]
+[CC-14] any_enh=False  invalid=[]
+[CC-15] any_enh=True erpr invalid=[8, 10, 18, 28]
+[CC-17] any_enh=True pr invalid=[]
+[CC-20] any_enh=True pr invalid=[1]
+[CC-21] any_enh=True pr invalid=[6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+[CC-22] any_enh=False  invalid=[]
+[CC-23] any_enh=True pr invalid=[]
+[CC-24] any_enh=True prcr invalid=[]
+[CC-25] any_enh=True pr invalid=[]
+[CC-26] any_enh=True prex invalid=[3, 10]
+[CC-28] any_enh=False  invalid=[]
+[CC-30] any_enh=True erpr invalid=[]
+[CC-31] any_enh=True erpr invalid=[1]
+[CC-32] any_enh=True er invalid=[]
+[CC-33] any_enh=True prcr invalid=[]
+[CC-34] any_enh=True pr invalid=[]
+[CC-35] any_enh=False  invalid=[]
+[CC-36] any_enh=True pr invalid=[]
+[CC-37] any_enh=True pr invalid=[]
+[CC-38] any_enh=True pr invalid=[]
+[CC-39] any_enh=True erprex invalid=[]
+[CC-40] any_enh=True prex invalid=[]
+[CC-41] any_enh=True pr invalid=[]
+[CC-42] any_enh=True pr invalid=[]
+[CC-43] any_enh=True pr invalid=[]
+[CC-44] any_enh=True prex invalid=[]
+[CC-45] any_enh=True pr invalid=[]
+[CC-46] any_enh=True erpr invalid=[]
+[CC-48] any_enh=False  invalid=[]
+[CC-49] any_enh=False  invalid=[]
+[CC-50] any_enh=True pr invalid=[]
+[CR-36] any_enh=False  invalid=[]
+[CR-37] any_enh=False  invalid=[]
+[CR-38] any_enh=True ercr invalid=[]
+[CR-39] any_enh=True er invalid=[]
+[CR-40] any_enh=True er invalid=[]
+[CR-41] any_enh=False  invalid=[]
+[CR-42] any_enh=True er invalid=[3]
+[CR-43] any_enh=False  invalid=[]
+[CR-44] any_enh=True er invalid=[]
+[CR-45] any_enh=False  invalid=[]
+[CR-46] any_enh=False  invalid=[]
+[CR-47] any_enh=True er invalid=[]
+[CR-48] any_enh=False  invalid=[2]
+[CR-49] any_enh=True er invalid=[]
+[CR-50] any_enh=True er invalid=[]
+[FR-01] any_enh=False  invalid=[]
+[FR-02] any_enh=False  invalid=[]
+[FR-03] any_enh=False  invalid=[]
+[FR-04] any_enh=True pr invalid=[]
+[FR-05] any_enh=False  invalid=[]
+[FR-06] any_enh=True pr invalid=[]
+[FR-07] any_enh=False  invalid=[]
+[FR-08] any_enh=False  invalid=[]
+[FR-09] any_enh=False  invalid=[]
+[FR-10] any_enh=False  invalid=[]
+[FR-11] any_enh=True prcr invalid=[]
+[FR-12] any_enh=False  invalid=[]
+[FR-13] any_enh=True pr invalid=[]
+[FR-14] any_enh=False  invalid=[]
+[FR-15] any_enh=True pr invalid=[]
+[FR-17] any_enh=True pr invalid=[]
+[FR-18] any_enh=False  invalid=[]
+[FR-20] any_enh=False  invalid=[]
+[FR-21] any_enh=True pr invalid=[]
+[FR-22] any_enh=True ex invalid=[]
+[FR-23] any_enh=False  invalid=[]
+[FR-24] any_enh=False  invalid=[]
+[FR-27] any_enh=False  invalid=[]
+[FR-29] any_enh=False  invalid=[]
+[FR-30] any_enh=False  invalid=[]
+[FR-31] any_enh=True er invalid=[]
+[FR-32] any_enh=False  invalid=[]
+[FR-33] any_enh=True pr invalid=[]
+[FR-34] any_enh=True erpr invalid=[5, 6, 9, 10]
+[FR-35] any_enh=True ex invalid=[]
+[FR-36] any_enh=True er invalid=[]
+[FR-38] any_enh=False  invalid=[]
+[FR-41] any_enh=False  invalid=[]
+[FR-42] any_enh=False  invalid=[]
+[FR-43] any_enh=False  invalid=[]
+[FR-44] any_enh=True pr invalid=[]
+[FR-45] any_enh=False  invalid=[]
+[FR-46] any_enh=False  invalid=[]
+[FR-47] any_enh=False  invalid=[]
+[FR-48] any_enh=False  invalid=[]
+[FR-49] any_enh=False  invalid=[]
+[FR-50] any_enh=True pr invalid=[]
+[SD-01] any_enh=False  invalid=[]
+[SD-02] any_enh=False  invalid=[]
+[SD-03] any_enh=True prex invalid=[]
+[SD-04] any_enh=True pr invalid=[]
+[SD-05] any_enh=True pr invalid=[6]
+[SD-06] any_enh=True pr invalid=[]
+[SD-10] any_enh=True prcrex invalid=[5, 7, 8, 9]
+[SD-11] any_enh=True erprcr invalid=[]
+[SD-12] any_enh=True pr invalid=[]
+[SD-13] any_enh=True ex invalid=[]
+[SD-14] any_enh=False  invalid=[]
+[SD-15] any_enh=False  invalid=[]
+[SD-16] any_enh=True pr invalid=[]
+[SD-17] any_enh=True pr invalid=[]
+[SD-18] any_enh=False  invalid=[]
+[SD-19] any_enh=False  invalid=[1, 2]
+[SD-22] any_enh=True prex invalid=[10]
+[SD-23] any_enh=True erprpr invalid=[]
+[SD-24] any_enh=False  invalid=[]
+[SD-25] any_enh=True erpr invalid=[2]
+[SD-26] any_enh=True pr invalid=[]
+[SD-27] any_enh=True prex invalid=[]
+[SD-28] any_enh=True er invalid=[]
+[SD-29] any_enh=True pr invalid=[]
+[SD-30] any_enh=True er invalid=[]
+[SD-32] any_enh=True prex invalid=[3, 4]
+[SD-33] any_enh=True erpr invalid=[]
+[SD-34] any_enh=True ex invalid=[]
+[SD-36] any_enh=True pr invalid=[]
+[SD-37] any_enh=True pr invalid=[6, 7, 8, 9, 10, 11, 12, 13, 14]
+[SD-38] any_enh=True prcr invalid=[]
+[SD-39] any_enh=True pr invalid=[]
+[SD-40] any_enh=True erprcr invalid=[]
+[SD-41] any_enh=True erprex invalid=[]
+[SD-42] any_enh=True prex invalid=[]
+[SD-43] any_enh=True pr invalid=[]
+[SD-44] any_enh=True pr invalid=[]
+[SD-45] any_enh=True pr invalid=[]
+[SD-47] any_enh=True pr invalid=[]
+[SD-48] any_enh=True erpr invalid=[]
+[SD-49] any_enh=True prcr invalid=[]
+[SD-50] any_enh=True prex invalid=[5]
+wrote eval/judge/traj_react.jsonl (142 judged, 62 skipped clar/no-tool)
+>>> traj urban_agent
+[CC-01] any_enh=True prex invalid=[3, 8, 9, 10, 11, 12, 13, 14]
+[CC-02] any_enh=True pr invalid=[]
+[CC-03] any_enh=True prex invalid=[10, 11, 12, 13, 14, 15, 16]
+[CC-04] any_enh=True pr invalid=[8]
+[CC-05] any_enh=True pr invalid=[]
+[CC-06] any_enh=True pr invalid=[]
+[CC-07] any_enh=True prex invalid=[2, 3, 5, 7, 9, 11, 12, 15, 17, 19, 21, 22]
+[CC-08] any_enh=True prex invalid=[3, 6, 10, 15]
+[CC-09] any_enh=True pr invalid=[]
+[CC-11] any_enh=True pr invalid=[]
+[CC-13] any_enh=False  invalid=[]
+[CC-14] any_enh=True er invalid=[1, 2, 3]
+[CC-15] any_enh=True prcr invalid=[]
+[CC-16] any_enh=True pr invalid=[5]
+[CC-17] any_enh=True prcr invalid=[4, 5, 6]
+[CC-19] any_enh=False  invalid=[]
+[CC-20] any_enh=True pr invalid=[2, 3]
+[CC-21] any_enh=True pr invalid=[3]
+[CC-22] any_enh=True prex invalid=[5, 6, 7, 8]
+[CC-23] any_enh=True prcr invalid=[]
+[CC-24] any_enh=False  invalid=[]
+[CC-25] any_enh=False  invalid=[]
+[CC-26] any_enh=True pr invalid=[3, 4, 6, 7, 8, 9, 12, 13, 15, 16, 17, 18]
+[CC-27] any_enh=True erpr invalid=[9, 10, 11, 12, 13]
+[CC-28] any_enh=False  invalid=[]
+[CC-30] any_enh=True prex invalid=[]
+[CC-31] any_enh=True cr invalid=[6, 7]
+[CC-32] any_enh=True pr invalid=[13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+[CC-34] any_enh=True prcr invalid=[]
+[CC-35] any_enh=True er invalid=[]
+[CC-36] any_enh=True prcr invalid=[]
+[CC-37] any_enh=True ercr invalid=[4, 5, 7, 8, 11]
+[CC-38] any_enh=True pr invalid=[4, 5, 6, 7, 8]
+[CC-39] any_enh=True er invalid=[]
+[CC-40] any_enh=False  invalid=[4, 5, 6, 7]
+[CC-41] any_enh=True erprcrex invalid=[9]
+[CC-42] any_enh=True pr invalid=[]
+[CC-43] any_enh=True prcr invalid=[7]
+[CC-44] any_enh=True er invalid=[4, 5, 6, 7, 8]
+[CC-45] any_enh=True prcr invalid=[]
+[CC-47] any_enh=True prcr invalid=[5]
+[CC-48] any_enh=True pr invalid=[]
+[CC-50] any_enh=True pr invalid=[6]
+[CR-36] any_enh=False  invalid=[]
+[CR-37] any_enh=False  invalid=[]
+[CR-38] any_enh=True er invalid=[2, 3, 4, 5, 6, 7, 8, 9]
+[CR-39] any_enh=False  invalid=[]
+[CR-40] any_enh=True er invalid=[3, 4, 6, 7]
+[CR-41] any_enh=False  invalid=[3, 4]
+[CR-42] any_enh=False  invalid=[]
+[CR-43] any_enh=False  invalid=[]
+[CR-44] any_enh=True er invalid=[]
+[CR-45] any_enh=False  invalid=[]
+[CR-46] any_enh=True er invalid=[2]
+[CR-47] any_enh=False  invalid=[]
+[CR-48] any_enh=True erprex invalid=[]
+[CR-49] any_enh=True erex invalid=[8, 9, 10]
+[CR-50] any_enh=True er invalid=[]
+[FR-01] any_enh=True prcr invalid=[4]
+[FR-02] any_enh=True prcr invalid=[]
+[FR-03] any_enh=False  invalid=[]
+[FR-04] any_enh=True prcr invalid=[]
+[FR-05] any_enh=True prcr invalid=[]
+[FR-06] any_enh=True er invalid=[]
+[FR-07] any_enh=False  invalid=[]
+[FR-08] any_enh=True prex invalid=[]
+[FR-09] any_enh=False  invalid=[]
+[FR-10] any_enh=False  invalid=[]
+[FR-11] any_enh=True pr invalid=[]
+[FR-12] any_enh=True pr invalid=[]
+[FR-13] any_enh=True prcr invalid=[]
+[FR-14] any_enh=True erprcr invalid=[]
+[FR-15] any_enh=True pr invalid=[]
+[FR-16] any_enh=True pr invalid=[13]
+[FR-17] any_enh=True erpr invalid=[]
+[FR-18] any_enh=False  invalid=[]
+[FR-20] any_enh=False  invalid=[]
+[FR-21] any_enh=True er invalid=[1, 2, 3]
+[FR-22] any_enh=False  invalid=[]
+[FR-23] any_enh=True er invalid=[]
+[FR-24] any_enh=False  invalid=[]
+[FR-25] any_enh=False  invalid=[3]
+[FR-27] any_enh=False  invalid=[2, 3]
+[FR-28] any_enh=True erprcr invalid=[2, 8, 10, 12]
+[FR-29] any_enh=True pr invalid=[]
+[FR-30] any_enh=True erpr invalid=[]
+[FR-31] any_enh=True pr invalid=[]
+[FR-32] any_enh=True er invalid=[]
+[FR-33] any_enh=True er invalid=[]
+[FR-34] any_enh=False  invalid=[]
+[FR-35] any_enh=True er invalid=[]
+[FR-36] any_enh=False  invalid=[]
+[FR-39] any_enh=False  invalid=[]
+[FR-41] any_enh=False  invalid=[]
+[FR-42] any_enh=True er invalid=[2, 3]
+[FR-43] any_enh=False  invalid=[]
+[FR-44] any_enh=True pr invalid=[]
+[FR-45] any_enh=False  invalid=[]
+[FR-46] any_enh=False  invalid=[2, 3]
+[FR-47] any_enh=False  invalid=[]
+[FR-48] any_enh=False  invalid=[]
+[FR-49] any_enh=False  invalid=[]
+[FR-50] any_enh=True ercr invalid=[]
+[SD-01] any_enh=True prcr invalid=[]
+[SD-02] any_enh=True pr invalid=[]
+[SD-03] any_enh=False  invalid=[]
+[SD-04] any_enh=True pr invalid=[]
+[SD-05] any_enh=True pr invalid=[]
+[SD-06] any_enh=False  invalid=[3]
+[SD-10] any_enh=True prcr invalid=[6]
+[SD-12] any_enh=True cr invalid=[4]
+[SD-13] any_enh=True pr invalid=[3, 4, 6, 7, 8, 10, 12]
+[SD-14] any_enh=True pr invalid=[]
+[SD-15] any_enh=False  invalid=[]
+[SD-16] any_enh=True prcr invalid=[3, 4]
+[SD-17] any_enh=True pr invalid=[]
+[SD-18] any_enh=True prcr invalid=[]
+[SD-19] any_enh=False  invalid=[]
+[SD-22] any_enh=False  invalid=[]
+[SD-23] any_enh=True erpr invalid=[6]
+[SD-24] any_enh=True pr invalid=[2, 3, 5]
+[SD-25] any_enh=False  invalid=[]
+[SD-26] any_enh=False  invalid=[]
+[SD-27] any_enh=True prex invalid=[4]
+[SD-28] any_enh=True pr invalid=[5]
+[SD-29] any_enh=True prex invalid=[]
+[SD-30] any_enh=True cr invalid=[2, 3]
+[SD-31] any_enh=True pr invalid=[]
+[SD-32] any_enh=True pr invalid=[]
+[SD-33] any_enh=True prex invalid=[]
+[SD-36] any_enh=True pr invalid=[]
+[SD-37] any_enh=True prex invalid=[]
+[SD-38] any_enh=False  invalid=[]
+[SD-39] any_enh=True prcr invalid=[5]
+[SD-40] any_enh=False  invalid=[2, 3, 4, 5, 6]
+[SD-41] any_enh=False  invalid=[]
+[SD-42] any_enh=False  invalid=[]
+[SD-43] any_enh=True pr invalid=[4]
+[SD-44] any_enh=True pr invalid=[5, 6]
+[SD-45] any_enh=True prcr invalid=[5]
+[SD-47] any_enh=True er invalid=[4, 5, 8, 9, 10, 11, 12]
+[SD-48] any_enh=False  invalid=[]
+[SD-49] any_enh=False  invalid=[4]
+[SD-50] any_enh=True pr invalid=[]
+wrote eval/judge/traj_urban_agent.jsonl (144 judged, 60 skipped clar/no-tool)
+==== 答案层 Ask@AI/Hit@AI(4系统 · 仅AI类)====
+>>> answer(AI) direct_llm
+[AI-01] success=True clar=True fail=None pending=1
+[AI-02] success=True clar=True fail=None pending=3
+[AI-03] success=True clar=True fail=None pending=0
+[AI-04] success=True clar=True fail=None pending=1
+[AI-05] success=True clar=True fail=None pending=0
+[AI-06] success=True clar=True fail=None pending=1
+[AI-07] success=True clar=True fail=None pending=3
+[AI-08] success=True clar=True fail=None pending=0
+[AI-09] success=True clar=True fail=None pending=3
+[AI-10] success=True clar=True fail=None pending=0
+[AI-11] success=True clar=True fail=None pending=1
+[AI-12] success=True clar=True fail=None pending=2
+[AI-13] success=True clar=True fail=None pending=2
+[AI-14] success=True clar=True fail=None pending=3
+[AI-15] success=True clar=True fail=None pending=3
+[AI-16] success=True clar=True fail=None pending=3
+[AI-17] success=True clar=True fail=None pending=2
+[AI-18] success=True clar=True fail=None pending=0
+[AI-19] success=True clar=True fail=None pending=0
+[AI-20] success=True clar=True fail=None pending=0
+[AI-21] success=True clar=True fail=None pending=3
+[AI-22] success=True clar=True fail=None pending=2
+[AI-23] success=True clar=True fail=None pending=4
+[AI-24] success=True clar=True fail=None pending=2
+[AI-25] success=True clar=True fail=None pending=0
+[AI-26] success=True clar=True fail=None pending=1
+[AI-27] success=True clar=True fail=None pending=2
+[AI-28] success=True clar=True fail=None pending=0
+[AI-29] success=True clar=True fail=None pending=0
+[AI-30] success=True clar=True fail=None pending=1
+[AI-31] success=True clar=True fail=None pending=4
+[AI-32] success=True clar=True fail=None pending=0
+[AI-33] success=True clar=True fail=None pending=3
+[AI-34] success=True clar=True fail=None pending=2
+[AI-35] success=True clar=True fail=None pending=2
+[AI-36] success=True clar=True fail=None pending=2
+[AI-37] success=True clar=True fail=None pending=2
+[AI-38] success=True clar=True fail=None pending=2
+[AI-39] success=True clar=True fail=None pending=2
+[AI-40] success=True clar=True fail=None pending=4
+[AI-41] success=True clar=True fail=None pending=0
+[AI-42] success=True clar=True fail=None pending=2
+[AI-43] success=True clar=True fail=None pending=3
+[AI-44] success=True clar=True fail=None pending=0
+[AI-45] success=True clar=True fail=None pending=4
+[AI-46] success=True clar=True fail=None pending=3
+[AI-47] success=True clar=True fail=None pending=2
+[AI-48] success=True clar=True fail=None pending=2
+[AI-49] success=True clar=True fail=None pending=2
+[AI-50] success=True clar=True fail=None pending=1
+wrote eval/judge/answer_direct_llm.jsonl (50 judged, 37 with pending static_ref)
+注意:37 条含 pending(static_ref 真值未采/未冻结),冻结后须重跑才有终值。
+>>> answer(AI) native_tool
+[AI-01] success=True clar=True fail=None pending=1
+[AI-02] success=True clar=True fail=None pending=3
+[AI-03] success=True clar=True fail=None pending=0
+[AI-04] success=True clar=True fail=None pending=1
+[AI-05] success=True clar=True fail=None pending=0
+[AI-06] success=True clar=True fail=None pending=1
+[AI-07] success=True clar=True fail=None pending=3
+[AI-08] success=True clar=True fail=None pending=2
+[AI-09] success=True clar=True fail=None pending=3
+[AI-10] success=True clar=True fail=None pending=0
+[AI-11] success=True clar=True fail=None pending=5
+[AI-12] success=True clar=True fail=None pending=2
+[AI-13] success=True clar=True fail=None pending=2
+[AI-14] success=True clar=True fail=None pending=3
+[AI-15] success=True clar=True fail=None pending=3
+[AI-16] success=True clar=True fail=None pending=3
+[AI-17] success=True clar=True fail=None pending=0
+[AI-18] success=True clar=True fail=None pending=0
+[AI-19] success=True clar=True fail=None pending=0
+[AI-20] success=True clar=True fail=None pending=0
+[AI-21] success=True clar=True fail=None pending=0
+[AI-22] success=True clar=True fail=None pending=4
+[AI-23] success=True clar=True fail=None pending=4
+[AI-24] success=True clar=True fail=None pending=0
+[AI-25] success=True clar=True fail=None pending=0
+[AI-26] success=True clar=True fail=None pending=2
+[AI-27] success=True clar=True fail=None pending=2
+[AI-28] success=True clar=True fail=None pending=2
+[AI-29] success=True clar=True fail=None pending=4
+[AI-30] success=True clar=True fail=None pending=1
+[AI-31] success=True clar=True fail=None pending=4
+[AI-32] success=True clar=True fail=None pending=0
+[AI-33] success=True clar=True fail=None pending=3
+[AI-34] success=True clar=True fail=None pending=2
+[AI-35] success=True clar=True fail=None pending=2
+[AI-36] success=True clar=True fail=None pending=2
+[AI-37] success=True clar=True fail=None pending=2
+[AI-38] success=True clar=True fail=None pending=2
+[AI-39] success=True clar=True fail=None pending=2
+[AI-40] success=True clar=True fail=None pending=4
+[AI-41] success=True clar=True fail=None pending=0
+[AI-42] success=True clar=True fail=None pending=2
+[AI-43] success=True clar=True fail=None pending=3
+[AI-44] success=True clar=True fail=None pending=0
+[AI-45] success=True clar=True fail=None pending=4
+[AI-46] success=True clar=True fail=None pending=3
+[AI-47] success=True clar=True fail=None pending=2
+[AI-48] success=True clar=True fail=None pending=2
+[AI-49] success=True clar=True fail=None pending=0
+[AI-50] success=True clar=True fail=None pending=0
+wrote eval/judge/answer_native_tool.jsonl (50 judged, 35 with pending static_ref)
+注意:35 条含 pending(static_ref 真值未采/未冻结),冻结后须重跑才有终值。
+>>> answer(AI) react
+[AI-01] success=True clar=True fail=None pending=1
+[AI-02] success=True clar=True fail=None pending=3
+[AI-03] success=True clar=True fail=None pending=0
+[AI-04] success=True clar=True fail=None pending=2
+[AI-05] success=True clar=True fail=None pending=0
+[AI-06] success=True clar=True fail=None pending=0
+[AI-07] success=True clar=True fail=None pending=3
+[AI-08] success=True clar=True fail=None pending=0
+[AI-09] success=True clar=True fail=None pending=3
+[AI-10] success=True clar=True fail=None pending=0
+[AI-11] success=True clar=True fail=None pending=5
+[AI-12] success=True clar=True fail=None pending=2
+[AI-13] success=True clar=True fail=None pending=2
+[AI-14] success=True clar=True fail=None pending=0
+[AI-15] success=True clar=True fail=None pending=3
+[AI-16] success=True clar=True fail=None pending=3
+[AI-17] success=True clar=True fail=None pending=2
+[AI-18] success=True clar=True fail=None pending=0
+[AI-19] success=True clar=True fail=None pending=0
+[AI-20] success=True clar=True fail=None pending=5
+[AI-21] success=True clar=True fail=None pending=0
+[AI-22] success=True clar=True fail=None pending=4
+[AI-23] success=True clar=True fail=None pending=4
+[AI-24] success=True clar=True fail=None pending=2
+[AI-25] success=True clar=True fail=None pending=3
+[AI-26] success=True clar=True fail=None pending=0
+[AI-27] success=True clar=True fail=None pending=2
+[AI-28] success=True clar=True fail=None pending=0
+[AI-29] success=True clar=True fail=None pending=1
+[AI-30] success=True clar=True fail=None pending=1
+[AI-31] success=True clar=True fail=None pending=4
+[AI-32] success=True clar=True fail=None pending=0
+[AI-33] success=True clar=True fail=None pending=3
+[AI-34] success=True clar=True fail=None pending=2
+[AI-35] success=True clar=True fail=None pending=2
+[AI-36] success=True clar=True fail=None pending=1
+[AI-37] success=True clar=True fail=None pending=2
+[AI-38] success=True clar=True fail=None pending=2
+[AI-39] success=True clar=True fail=None pending=2
+[AI-40] success=True clar=True fail=None pending=4
+[AI-41] success=True clar=True fail=None pending=0
+[AI-42] success=True clar=True fail=None pending=0
+[AI-43] success=True clar=True fail=None pending=0
+[AI-44] success=True clar=True fail=None pending=2
+[AI-45] success=True clar=True fail=None pending=4
+[AI-46] success=True clar=True fail=None pending=3
+[AI-47] success=True clar=True fail=None pending=2
+[AI-48] success=True clar=True fail=None pending=2
+[AI-49] success=True clar=True fail=None pending=2
+[AI-50] success=True clar=True fail=None pending=0
+wrote eval/judge/answer_react.jsonl (50 judged, 34 with pending static_ref)
+注意:34 条含 pending(static_ref 真值未采/未冻结),冻结后须重跑才有终值。
+>>> answer(AI) urban_agent
+[AI-01] success=True clar=True fail=None pending=1
+[AI-02] success=True clar=True fail=None pending=3
+[AI-03] success=True clar=True fail=None pending=0
+[AI-04] success=False clar=False fail=任务未完成 pending=1
+[AI-05] success=True clar=True fail=None pending=0
+[AI-06] success=True clar=True fail=None pending=1
+[AI-07] success=True clar=True fail=None pending=3
+[AI-08] success=True clar=True fail=None pending=0
+[AI-09] success=True clar=True fail=None pending=3
+[AI-10] success=True clar=True fail=None pending=0
+[AI-11] success=True clar=True fail=None pending=5
+[AI-12] success=True clar=True fail=None pending=6
+[AI-13] success=True clar=True fail=None pending=2
+[AI-14] success=True clar=True fail=None pending=3
+[AI-15] success=True clar=True fail=None pending=3
+[AI-16] success=True clar=True fail=None pending=3
+[AI-17] success=True clar=True fail=None pending=0
+[AI-18] success=True clar=True fail=None pending=0
+[AI-19] success=True clar=True fail=None pending=0
+[AI-20] success=True clar=True fail=None pending=0
+[AI-21] success=True clar=True fail=None pending=3
+[AI-22] success=True clar=True fail=None pending=2
+[AI-23] success=True clar=True fail=None pending=4
+[AI-24] success=True clar=True fail=None pending=0
+[AI-25] success=True clar=True fail=None pending=0
+[AI-26] success=True clar=True fail=None pending=2
+[AI-27] success=True clar=True fail=None pending=4
+[AI-28] success=True clar=True fail=None pending=0
+[AI-29] success=True clar=True fail=None pending=4
+[AI-30] success=True clar=True fail=None pending=1
+[AI-31] success=True clar=True fail=None pending=4
+[AI-32] success=True clar=True fail=None pending=0
+[AI-33] success=True clar=True fail=None pending=3
+[AI-34] success=True clar=True fail=None pending=2
+[AI-35] success=True clar=True fail=None pending=2
+[AI-36] success=True clar=True fail=None pending=1
+[AI-37] success=True clar=True fail=None pending=2
+[AI-38] success=True clar=True fail=None pending=2
+[AI-39] success=True clar=True fail=None pending=2
+[AI-40] success=True clar=True fail=None pending=4
+[AI-41] success=True clar=True fail=None pending=0
+[AI-42] success=True clar=True fail=None pending=0
+[AI-43] success=True clar=True fail=None pending=3
+[AI-44] success=True clar=True fail=None pending=1
+[AI-45] success=True clar=True fail=None pending=4
+[AI-46] success=True clar=True fail=None pending=3
+[AI-47] success=True clar=True fail=None pending=2
+[AI-48] success=True clar=True fail=None pending=2
+[AI-49] success=True clar=True fail=None pending=2
+[AI-50] success=True clar=True fail=None pending=2
+wrote eval/judge/answer_urban_agent.jsonl (50 judged, 36 with pending static_ref)
+注意:36 条含 pending(static_ref 真值未采/未冻结),冻结后须重跑才有终值。
+==== ALL DONE ====

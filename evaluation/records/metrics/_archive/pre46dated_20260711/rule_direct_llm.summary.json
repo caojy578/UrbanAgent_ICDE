@@ -1,0 +1,18 @@
+{
+  "baseline": "direct_llm",
+  "n_runs": 204,
+  "n_process_evaluated": 0,
+  "n_clarified": 0,
+  "termination": {
+    "normal": 204,
+    "step_limit": 0,
+    "timeout": 0,
+    "context_overflow": 0,
+    "framework_error": 0
+  },
+  "avg_total_tokens": 1390.284,
+  "avg_latency_seconds": 20.055,
+  "avg_llm_calls": 1.0,
+  "avg_comp_rate": null,
+  "avg_order_rate": null
+}

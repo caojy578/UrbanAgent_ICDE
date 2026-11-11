@@ -1,0 +1,402 @@
+# CarlaBridge
+
+实时中间件，桥接 CARLA 仿真器、React 数字孪生指挥前端、Urban Agent 调度系统。
+
+- **上游**：CARLA 0.9.16 (Town10HD_Opt)
+- **下游**：`urban_frontend (https://github.com/zxyangyu/urban_frontend)` (React + Socket.IO + WebRTC，本期只读)
+- **平行**：`Urban Agent https://github.com/zxyangyu/UrbanAgent` — 完全外部进程，通过 `/agent` namespace 接入；本仓 root 的 `test_agent.py` 是协议等价的测试客户端
+
+## 演示视频
+
+[![CarlaBridge 端到端演示](docs/城市仿真数字孪生架构概览.png)](https://www.bilibili.com/video/BV1nsah6uEkB/)
+
+[在哔哩哔哩观看完整演示](https://www.bilibili.com/video/BV1nsah6uEkB/)
+
+## 1. 文档结构
+
+仓库根 4 份"活"文档，加 `docs/archive/` 5 份历史 changelog：
+
+| 文档 | 内容 |
+|---|---|
+| `README.md` | **从这里开始** — 安装、启动、HTTP/WS 端点、故障排查、冒烟流程 |
+| `design.md` | HOW — 当前架构、模块分解、跨域并发、命令生命周期、性能预算 |
+| `bridge-agent-protocol-v1.md` | **协议 v1.0 线契约** — Bridge ⇄ Agent envelope、事件清单、命令枚举、状态机；**最高权威**，与 design 不一致以此为准 |
+| `CLAUDE.md` | 给 Claude Code（AI 编辑器）的简短上下文 + 硬约束 |
+| `docs/archive/` | v0.1 spec/design + M0~M8 tasks + refactor v0.3 + R1~R11 changelog；**已 superseded，仅供决议追溯**，不要据此改代码 |
+
+> **协议合规**：本 Bridge 实现遵循 `bridge-agent-protocol-v1.md` v1.0。所有 `/agent` namespace 出站事件（`state_snapshot` / `command_status` / `scenario_event` / `event_log`）统一包裹 envelope `{version, msg_id, type, timestamp, frame, sim_time, sender, payload}`；入站命令与 hello 兼容 envelope/裸双形态。`/`(前端) 仍按既有 frontend 协议发裸 payload（前端协议不在 v1.0 范围）。版本字段位于 `carlabridge/bus/envelope.py:PROTOCOL_VERSION`。
+
+## 2. 环境要求
+
+| 项 | 值 | 备注 |
+|---|---|---|
+| OS | Windows 10 | (Linux 未验证；Win 多媒体定时器 + CARLA Python API 兼容) |
+| Python | 3.12 | 与 PyPI `carla==0.9.16` 提供的轮子匹配（本项目 `requires-python` 锁定 3.12） |
+| Conda env | 仓库根目录 `.venv` | 前缀环境：`conda create -p ".\.venv"`，激活后 **`pip install -e .`** 会一并装上 PyPI 的 `carla`，见 **§2.1** |
+| CARLA（仿真服务端） | 0.9.16 | 从 `https://github.com/carla-simulator/carla` 下载对应 release 运行 `CarlaUE4.exe`；Python 客户端由 **`pyproject.toml` → `carla==0.9.16`**（PyPI）安装，须与服务端版本一致；`agents` 子包仍 vendored 在 `carlabridge/vendor/agents/` |
+| 默认地图 | `Town10HD_Opt` | 启动时自动 load |
+| 前端 | `https://github.com/ChaoqianO/urban_frontend` | vite dev，需先 `npm install` |
+
+依赖列在 `pyproject.toml` 里，含 **`carla==0.9.16`（PyPI）** 以及 `aiohttp / python-socketio / aiortc / av / numpy / pydantic-settings / psutil / shapely / networkx` 等。执行 **§2.1** 的 `pip install -e .` 或 `pip install -e ".[dev]"` 时会自动解析平台对应的官方预编译轮子（Windows 一般为 `cp312` + `win_amd64`）。
+
+### 2.1 Conda 环境与依赖安装
+
+在 **仓库根目录**（与 `pyproject.toml` 同级）执行：
+
+```powershell
+conda create -p ".\.venv" python=3.12 -y
+conda activate ".\.venv"
+python -m pip install -U pip
+# 可编辑安装本仓 + dev 依赖；会由 PyPI 拉取 carla==0.9.16（与本机 CARLA 0.9.16 服务端配套）
+pip install -e ".[dev]"
+```
+
+**离线 / 无法用 PyPI 时**：可改用 CARLA 发行包自带的 wheel（路径示例  
+`"<CARLA_ROOT>\PythonAPI\carla\dist\carla-0.9.16-cp312-cp312-win_amd64.whl"`），在安装本仓前先 `pip install "…\*.whl"`，版本仍须 **`0.9.16`** 且与 Python **`3.12`**、平台 **`win_amd64`** 匹配。
+
+**镜像尚未同步 `carla==0.9.16` 时**：可临时改用官方索引，例如  
+`pip install -e ".[dev]" -i https://pypi.org/simple`（任选其一与时间窗口镜像策略即可）。
+
+## 3. 启动流程（演示路径）
+
+按顺序起三件事：
+
+### 3.1 启动CARLA 服务器
+
+将 `<CARLA_ROOT>` 换成你的安装目录（示例：`E:\Program Files\CARLA_0.9.16`）：
+
+```cmd
+"<CARLA_ROOT>\CarlaUE4.exe" -quality-level=Low -ResX=1280 -ResY=720 -RenderOffScreen
+```
+（建议 Low quality 以避免 CARLA 渲染线程拖慢 tick；详见故障 §6.1）
+
+或链接远程服务(校园网内) http://172.16.126.32:2000
+
+### 3.2 Bridge
+
+#### 配置脚本环境
+
+1. 启动器 `run.py` 默认通过 **`.\.venv\python.exe`** 拉起 bridge。如果你的 venv 位置不同，改 `run.py` 顶部的 `VENV_PYTHON` 常量。
+
+   > CARLA 的 `agents` 子包（`GlobalRoutePlanner` 等）已 vendored 进 `carlabridge/vendor/agents/`，由 `carlabridge/__init__.py` 自动加入 `sys.path`，**不再需要** `CARLA_AGENTS_ROOT` 环境变量或外部路径配置。升级 CARLA 时按 `carlabridge/vendor/README.md` 替换该目录即可。
+
+2. 启动
+```powershell
+cd CarlaBridge   # 换成你的仓库路径
+conda activate ".\.venv"            # 若想用系统/py 启动器调用 run.py 也可省略
+python run.py --scenario s1_fire
+```
+就绪标志：
+- 控制台出现 `==> launching: ...`
+- 紧接着 `connected to CARLA server 0.9.16 at 127.0.0.1:2000`
+- 最后 `tick loop started (delta=0.0333s)` + `bridge ready, waiting for /agent connection`
+
+启动后 Bridge **空载等待**：UAVs 停在 origin、UGV 停在 origin、无 incident、无 in-flight 命令。等 Agent 连入下发命令、operator 通过 HTTP 触发火情。
+
+**端口预清理**：启动前 `run.py` 会探测 5000 端口；如果有旧 bridge 在监听，会先 POST `/admin/shutdown` **优雅停机**（不是 kill），等待端口释放后再拉起新进程。这能避免 CARLA 留在 sync mode（README §6.3）。如想跳过此步骤直接拉起，加 `--no-port-release`。
+
+### 3.3 前端
+
+```powershell
+npm run dev
+```
+
+打开浏览器到 vite 报的本地地址（通常 `http://localhost:5173`）。
+
+`.env` 应该配置成（直接用 MJPEG 兜底，WebRTC 通过面板的 CONNECT chip 手动切）：
+
+```
+VITE_SOCKET_URL=http://localhost:5000
+VITE_UAV_FEED_URL=video_feed?camera=aerial
+VITE_UGV_FEED_URL=video_feed?camera=ground
+VITE_CITY_FEED_URL=video_feed?camera=city
+```
+
+### 3.4 你应该看到什么（仅 Bridge 启动后）
+
+打开浏览器后立即可见：
+
+- 三路视频面板就绪、LIVE 徽标亮起
+- `state_update` 持续推送（UAV/UGV pose 不变、`incidents=[]`、`in_flight_commands=[]`）
+- EventLog 仅有启动相关事件（spawn 完成、相机绑定等）
+- **不会**自动出现火情、UGV 不会自己跑、UAV 不会自己飞
+
+要看到完整的"巡逻 → 火情 → 灭火 → 返航"流程，需要按 §3.5 启动 `test_agent.py` 并用 HTTP（PowerShell 或 curl）触发火情。
+
+### 3.5 端到端冒烟流程（test_agent.py + HTTP 控制面）
+
+3 个终端：
+
+```powershell
+# 终端 1：Bridge
+python run.py
+
+# 终端 2：测试 Agent（仓 root 的 test_agent.py）
+conda activate ".\.venv"
+python test_agent.py
+# 默认连接 http://127.0.0.1:5000；可加 --url / -v(--verbose) / --no-extinguish 等
+# 输出：connected → hello → 收到第一帧 snapshot → 给 UAV-01/02/03 各发 1 条
+#       UAV_PATROL(loop=true) → 收到 3 个 ongoing 事件，进入待命
+
+# 终端 3：operator 触发火情（相对 UGV-01 origin 东偏 +90 m，勿在已开的 PowerShell 里直接粘贴带嵌套 powershell 的一行）
+# —— PowerShell 内直接执行（推荐）：
+$ugv = (Invoke-RestMethod 'http://127.0.0.1:5000/scenario/status').entities.'UGV-01'.origin
+$body = @{ id = 'fire-001'; position = @{ x = ($ugv.x + 90.0); y = $ugv.y; z = $ugv.z } } | ConvertTo-Json -Compress
+Invoke-RestMethod -Method Post -Uri 'http://127.0.0.1:5000/scenario/fire' -ContentType 'application/json' -Body $body
+# —— 或从 cmd.exe 一行调用子 PowerShell（全文见 §5.1 「从 cmd.exe 一行」）。
+# 测试 Agent 终端应输出（按 sim_time 推进）：
+#   incident fire-001 detected → UGV_GOTO(dest=fire-001+offset) accepted
+#   UGV-01 距 fire-001 ≤ 5m → UGV_EXTINGUISH(incident_id=fire-001) accepted
+#   command_status:completed UGV_EXTINGUISH → 发 UGV_RTL accepted
+#   command_status:completed UGV_RTL → 静默回到待命
+
+# 终端 3：operator 触发 reset
+curl.exe -X POST http://127.0.0.1:5000/scenario/reset `
+  -H "Content-Type: application/json" -d '{}'
+# 测试 Agent 终端应输出：
+#   scenario_event{event:"reset", run_id:N+1} → 清本地状态
+#   下一帧 snapshot run_id 跳变 → 重发 PATROL × 3
+```
+
+完整冒烟流程预期 wall time ≈ 30-60 s（取决于 tick_fps；GRP 路径长则 UGV 段更慢）。
+
+`test_agent.py` 是**外部独立进程**，不在 Bridge 里跑；零内部 import，纯走 Socket.IO 协议路径，与真实 UrbanAgent 协议等价。可选参数：
+- `--url <URL>`：Bridge 基址（默认 `http://127.0.0.1:5000`）
+- `-v` / `--verbose`：详细日志
+- `--no-extinguish`：只发 UGV_GOTO 不灭火，用于测 supersede / reset cancel 链
+- `--namespace /agent`：指定 namespace（默认 `/agent`）
+
+> 旧版 (M0-M8) Bridge 内嵌的 mock_agent 剧本（`SCRIPT = [...]` + `mock_agent_loop`）已**完全移除**（spec D10 / refactor §1）。Bridge 自身不再驱动剧情。
+
+## 4. 配置
+
+### 4.1 default.toml
+
+```toml
+[carla]
+host = "127.0.0.1"
+port = 2000
+timeout_s = 30.0           # 提高到 30s 防偶发慢响应（M6 经验）
+fixed_delta_seconds = 0.0333
+map = "Town10HD_Opt"
+
+[server]
+host = "0.0.0.0"
+port = 5000
+cors_origins = ["http://localhost:5173"]
+
+[broadcast]
+state_hz = 10
+metrics_hz = 1
+
+[scenario]
+default = "s1_fire"
+
+[scenario.s1_fire]
+extinguish_radius_m = 5.0
+default_uav_rtl_speed = 8.0
+default_ugv_target_speed_kmh = 25.0
+uav_arrival_eps_m = 0.5
+```
+
+> `[agent] mode` 配置项已删除（spec D10）。Bridge 永远以"等远程 Agent 接入"模式运行。
+
+覆盖优先级：env vars > `--config <path>` > `config/local.toml` > `config/default.toml`。
+env 用前缀 `CARLABRIDGE_` + 双下划线层级，例：`CARLABRIDGE_CARLA__PORT=2010`。
+
+### 4.2 命令行
+
+```powershell
+python run.py                                       # 用 default.toml
+python run.py --scenario s1_fire --log-level DEBUG  # 详细日志
+python run.py --no-carla                            # 跳过 CARLA，只起 HTTP（前端 smoke）
+python run.py --config path\to\extra.toml           # TOML overlay
+python run.py --no-port-release                     # 跳过 5000 端口的优雅预清理
+python run.py --port 5001                           # 与非默认 server.port 对齐预清理目标
+```
+
+## 5. HTTP/WS 端点
+
+| 路径 | 协议 | 用途 |
+|---|---|---|
+| `GET /healthz` | HTTP | 完整健康状态（design §15.4）：carla/tick_fps/scenario/clients/cameras |
+| `GET /debug/events?n=N` | HTTP | dump event_log 环形缓冲，诊断首选 |
+| `POST /admin/shutdown` | HTTP | 优雅关停（restore CARLA + destroy actors） |
+| `POST /webrtc/{camera_id}` | HTTP+SDP | WebRTC 信令，对齐前端 `webrtc.ts` |
+| `GET /video_feed?camera={id}` | MJPEG | 兜底视频流 |
+| `POST /scenario/fire` | HTTP JSON | **operator 点火**（refactor §5.1） |
+| `POST /scenario/reset` | HTTP JSON | **operator reset**（refactor §5.2） |
+| `GET /scenario/status` | HTTP JSON | scenario 状态快照（refactor §5.3） |
+| `/socket.io/` | Socket.IO | `/` (前端) + `/agent` (远程 Agent) namespace |
+
+camera id：`aerial` / `ground` / `city`。
+
+### 5.1 HTTP 控制面（refactor v0.3 §5）
+
+operator（人 / curl / cron / GUI）通过 3 个 HTTP 端点驱动场景。Agent **不能**触发这些；reset 是 operator 特权。
+
+#### `POST /scenario/fire` — 点火
+
+相对 **UGV-01** 的 `origin` 向东偏移 90 m 放置火点（与 `GET /scenario/status` 对齐，避免写死世界坐标）：
+
+```powershell
+$ugv = (Invoke-RestMethod 'http://127.0.0.1:5000/scenario/status').entities.'UGV-01'.origin
+$body = @{ id = 'fire-001'; position = @{ x = ($ugv.x + 90.0); y = $ugv.y; z = $ugv.z } } | ConvertTo-Json -Compress
+Invoke-RestMethod -Method Post -Uri 'http://127.0.0.1:5000/scenario/fire' -ContentType 'application/json' -Body $body
+# 200 OK -> {"status":"ok","incident_id":"fire-001","spawned_actor_id":42,
+#            "spawned_at_sim_time":412.34,"run_id":5}
+```
+
+从 **cmd.exe** 一行（勿在已打开的 PowerShell 里粘贴，否则外层会提前展开 `$`）：
+
+```cmd
+powershell -NoProfile -Command "$ugv = (Invoke-RestMethod 'http://127.0.0.1:5000/scenario/status').entities.'UGV-01'.origin; $body = @{ id = 'fire-001'; position = @{ x = ($ugv.x + 90.0); y = $ugv.y; z = $ugv.z } } | ConvertTo-Json -Compress; Invoke-RestMethod -Method Post -Uri 'http://127.0.0.1:5000/scenario/fire' -ContentType 'application/json' -Body $body"
+```
+
+请求体：`position{x,y,z}` 必填；`id`（默认 `fire-<uuid8>`）/ `kind`（默认 `"fire"`）/ `severity`（默认 `"high"`）/ `blueprint`（默认按候选回退）可选。
+
+错误码：`400` position 缺失/类型错；`409` id 重复或 blueprint 全部 spawn 失败；`503` reset 进行中。
+
+#### `POST /scenario/reset` — 完全重新初始化
+
+```powershell
+curl.exe -X POST http://127.0.0.1:5000/scenario/reset `
+  -H "Content-Type: application/json" -d '{}'
+# 200 OK -> {"status":"ok","run_id":6,"reset_at_sim_time":423.50,
+#            "cancelled_commands":["cmd-9f1","cmd-a02"],
+#            "destroyed_incidents":["fire-001"]}
+```
+
+行为（参考 refactor §5.2）：① `_resetting=True` → 拒绝新命令/新 fire；② 所有 in-flight 一次性 emit `command_status:cancelled(reason="reset")`；③ sim 域 `teardown()` + `setup()`（CARLA actor_id 变、entity_id 稳定、FrameQueue 实例保留 → 视频流不断）；④ `run_id +=1`；⑤ 退出 resetting；⑥ 广播 `scenario_event{event:"reset",run_id,trigger:"http"}`。
+
+错误码：`503` 上一次 reset 仍在进行中。
+
+#### `GET /scenario/status` — 状态快照
+
+```powershell
+curl.exe http://127.0.0.1:5000/scenario/status
+# 返回当前 run_id / bridge_session_id / sim_time / resetting / incidents /
+# in_flight_commands / entities{id: {origin, current_pose}}
+```
+
+不进 sim 域，直接读 fleet / in_flight 内存快照；可作为 Agent 重连后的对账兜底。
+
+## 6. 故障排查
+
+### 6.1 tick_fps 很低（4-9 Hz vs 目标 30 Hz）
+
+**预期行为**。spec D5 已接受：CARLA 渲染线程是 GPU/CPU bound，演示机上 `world.tick()` 单次 ~100-300 ms。  
+缓解：CARLA 启动加 `-quality-level=Low`、缩小窗口、关闭后处理。要打到 30 Hz 需要更强的 GPU 硬件。  
+**不影响功能**：bridge pacing 逻辑正确（FakeWorld 单测能稳 30 Hz），剧本逻辑按 sim_time 触发，仅 wall time 拉长。
+
+### 6.2 启动 `OSError: [Errno 10048] ... port 5000`
+
+刚刚 shutdown 过的话是 Windows TIME_WAIT (~60 s)。等清空即可。`run.py` 启动时会先 warn 这种情况（需要 venv 内已装 psutil；该项已在 deps）。
+```powershell
+Get-NetTCPConnection -LocalPort 5000 -State TimeWait
+```
+有结果就再等会儿；为空就是真有其他进程在占。
+
+### 6.3 CARLA 卡在 sync mode
+
+bridge 异常退出后（被 SIGKILL / OOM / Stop-Process -Force），`finally:` 没机会跑 `restore_original_settings`，CARLA 会留在 `synchronous_mode=True`。其他 CARLA Python 脚本会因为没人 drive tick 而 hang。
+
+手动 reset：
+```python
+import carla
+c = carla.Client('127.0.0.1', 2000); c.set_timeout(10.0); w = c.get_world()
+s = w.get_settings(); s.synchronous_mode = False; s.fixed_delta_seconds = None
+w.apply_settings(s)
+for a in (list(w.get_actors().filter('vehicle.*'))
+          + list(w.get_actors().filter('static.prop.*'))
+          + list(w.get_actors().filter('sensor.camera.rgb'))):
+    a.destroy()
+```
+
+### 6.4 `S1: no UGV blueprint could be spawned`
+
+Town10HD spawn point 占用率高，bridge 现在已遍历**所有** spawn point × 所有 `vehicle.*` 蓝图。如果还撞这个，说明上一次 bridge 没清干净。先按 §6.3 reset。
+
+### 6.5 UGV 不动
+
+看 `/debug/events?n=200` 找 `SCENARIO/danger` 的 `follower crashed` 行。M6 verification 时 BasicAgent 撞 30 s RPC timeout，已经永久替换为 `SimpleWaypointFollower`（spec D9）。Follower 的失败模式更少（只读 transform + velocity），如果出现：
+- 查看 GRP 是否成功建路（`route built with N waypoints` 在 log 里）。N=0 时 follower 静止刹车。
+- 偶发 `WaypointFollower.run_step failed` → follower 被清空 + event_log 报告。可重发 DISPATCH。
+
+### 6.6 前端 LIVE 亮起但数字不动
+
+**预期行为**。Bridge 启动后空载等待，自身不驱动剧情。要看到 UAV/UGV 运动，需要 §3.5 起 `test_agent.py` 下发 PATROL，并通过 `POST /scenario/fire` 触发火情。
+
+### 6.7 frontend 视频面板 placeholder
+
+默认是 placeholder。点右上角 CONNECT chip，选 MJPEG，输入 `http://localhost:5000/video_feed?camera=aerial`（或 ground/city）。  
+WebRTC 需先用一次 MJPEG 验证连通性，然后切到 WEBRTC 模式输 `http://localhost:5000/webrtc/aerial`。
+
+## 7. 开发
+
+### 7.1 测试
+
+```powershell
+# 已 conda activate ".\.venv"：
+python -m pytest tests/ -q
+
+# 或未激活时直接指定解释器：
+.\.venv\python.exe -m pytest tests/ -q
+```
+146 个单元测试，全部不需要 CARLA，~16 秒跑完。
+
+### 7.2 添加新 scenario
+
+1. 在 `carlabridge/scenarios/` 下新建模块（参考 `s1_fire.py`）
+2. 继承 `Scenario`，实现 `setup() / teardown()` + on_tick_pre/post + on_command
+3. 用 `@register_scenario("name")` 注册
+4. 在 `scenarios/__init__.py` 添加 side-effect import
+5. `python run.py --scenario name` 即可加载
+
+### 7.3 添加新 CommandKind
+
+1. `commands/enum.py` 加 `CommandKind` 枚举值
+2. `commands/dispatcher.py` 加独立 `_validate_<kind>(params)` 校验函数（reject 抛 `RejectCommand(reason, detail)`）
+3. scenario 的 `on_command` 加 dispatch 分支 + `_handle_<kind>(cmd)` 私有方法 + `_check_completion` 新分支
+4. 测试加 `tests/test_dispatcher_v2.py` 解析 case + `tests/test_s1_dispatch.py` 行为 case + `tests/test_command_lifecycle.py` 生命周期 case
+
+详见 `docs/archive/tasks-refactor-r1-r11.md` R1/R3/R4 的 DoD。
+
+## 8. 验收脚本
+
+```powershell
+.\scripts\restart_smoke.ps1                    # NF7 + AC-8: 5 次启停无残留
+.\scripts\restart_smoke.ps1 -Iterations 3      # 缩短版
+.\scripts\nf5_memory_probe.ps1                 # NF5: 5 分钟内存增长 < 200 MB
+.\scripts\nf5_memory_probe.ps1 -DurationMinutes 30  # 完整 30 min
+```
+结果落 `logs/*.csv`。
+
+## 9. 真机验收状态（截至 M8）
+
+| ID | 项 | 状态 | 备注 |
+|---|---|---|---|
+| AC-1 | 前端 LIVE | ✅ | M2 装配完成 |
+| AC-2 | 三路 WebRTC ≤ 5 s | ✅ | 手工验证 |
+| AC-3 | MJPEG 兜底 | ✅ | 手工验证 |
+| AC-4 | command ack 闭环 | ✅ | sio.call return-value (refactor §3.3)；实测 latency 0-250 ms |
+| AC-5 | S1 启动 ≤ 10 s | ✅ | 实测 ~3 s（空载就绪） |
+| AC-6 | S1 端到端流程 | ✅ | `test_agent.py` + `POST /scenario/fire` 跑通；详见 §3.5 |
+| AC-7 | event_log 完整 | ✅ | 命令相关事件带 `cmd_id`，与 `command_status` 配对 |
+| AC-8 | 无残留 actor | ✅ | 单元 5×幂等 + `restart_smoke.ps1` 待真机跑 |
+| AC-9-12 | 性能 / 网络抖动 / 一键启动 / 前端 fallback | ✅ | 见 §6 |
+| NF1 | tick 30 Hz ±2 Hz | ⚠️ 不可达 | spec D5 已接受降级；实测 ~4 Hz |
+| NF2 | 视频 < 300 ms | ✅ | 手工验证 |
+| NF3 | 状态 < 100 ms | ✅ | broadcaster 10 Hz |
+| NF4 | 命令 < 500 ms | ✅ | 实测 max 250 ms |
+| NF5 | 内存 < 200 MB | 🔍 待真机长跑 | 用 `nf5_memory_probe.ps1` 跑 30 min |
+| NF6 | 背压不阻塞 tick | ✅ | `test_nf6_backpressure.py` 单元覆盖 |
+| NF7 | 5 次启停无残留 | 🔍 待真机 | 用 `restart_smoke.ps1` |
+| NF8 | 单机部署 | ✅ | 全程单机 |
+
+## 10. 已知限制
+
+- `SimpleWaypointFollower` 不识别红绿灯 / 不避障 / 不考虑车道偏移（spec D9 决议）。UGV 会闯红灯、撞到挡路的 NPC 车。本期 Town10HD 默认无 NPC，所以演示无影响。
+- 单一 CARLA Client 在 sync mode 下 `BasicAgent` 与多相机有 RPC 冲突，已避开（详见 `docs/archive/spec-v0.1.md` §12 D9 决议、`docs/archive/tasks-m0-m8.md` §M6 真机 debug 第 6 条）。
+- Bridge 自身不驱动剧情 / 不做 sim_time 触发的剧本（spec D10 / refactor §1）。所有 UAV/UGV 行为由外部 Agent 通过 `/agent` 下发；火情 / reset 由 operator 通过 HTTP 触发。
+- 每个 entity 同时只允许 1 条 in-flight 命令；新命令立即 `cancelled(reason="superseded")` 旧命令（refactor §6.4）。

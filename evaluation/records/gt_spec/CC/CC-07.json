@@ -1,0 +1,92 @@
+{
+  "query_id": "CC-07",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我目前在南京新街口，想在 2 公里范围内 找一家 评分不低于 4.4 分 的健身房，请查看详情并规划 步行路线",
+  "checklist": [
+    {
+      "item_id": "CC-07.1",
+      "assertion": "起点位置为南京新街口的坐标(GCJ-02)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 118.795577,
+          "lat": 32.033362
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度/腾讯地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "南京新街口为商圈中心点,建议取新街口地铁站或新街口广场中心坐标;若来源为 WGS-84 或 BD-09 需转换为 GCJ-02 | MCP2026-07-09:天地图主源+高德校验 天地图(南京新街口):(118.790385,32.035423) | [坐标系修正 2026-07-10] 原天地图WGS84 lng=118.790385 lat=32.035423 → GCJ-02 lng=118.795577 lat=32.033362; 最终来源=wgs84转gcj02 GCJ-02 lng=118.795577 lat=32.033362",
+        "_needs_review": true,
+        "_review_reason": "高德geocode匹配歧义(d=1258m,疑地名多义/大范围)"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-07.2",
+      "assertion": "找到的健身房距离南京新街口的直线距离≤2km",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-07.3",
+      "assertion": "找到的健身房评分≥4.4分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项'并说明已检索亦算通过;仅当系统未检索/瞎编才判错,不因'区域内确无≥阈值对象'本身判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足阈值POI时,如实报无即通过"
+    },
+    {
+      "item_id": "CC-07.4",
+      "assertion": "返回了健身房的详细信息(名称、地址、评分等关键属性)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-07.5",
+      "assertion": "规划的路线起点坐标与南京新街口坐标一致(GCJ-02,distance<=50m)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-07.6",
+      "assertion": "规划的路线终点坐标与所选健身房坐标一致(GCJ-02,distance<=50m)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-07.7",
+      "assertion": "路线规划方式为步行",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "需先对南京新街口进行地理编码获取坐标,再以此为中心搜索2km内评分≥4.4的健身房,最后规划步行路线;POI搜索需支持距离和评分筛选"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

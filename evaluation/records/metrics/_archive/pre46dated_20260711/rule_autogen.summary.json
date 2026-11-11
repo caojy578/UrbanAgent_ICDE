@@ -1,0 +1,18 @@
+{
+  "baseline": "autogen",
+  "n_runs": 204,
+  "n_process_evaluated": 154,
+  "n_clarified": 0,
+  "termination": {
+    "normal": 204,
+    "step_limit": 0,
+    "timeout": 0,
+    "context_overflow": 0,
+    "framework_error": 0
+  },
+  "avg_total_tokens": 22137.5,
+  "avg_latency_seconds": 32.206,
+  "avg_llm_calls": 3.103,
+  "avg_comp_rate": 0.869,
+  "avg_order_rate": 0.977
+}

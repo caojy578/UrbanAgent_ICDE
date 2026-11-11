@@ -1,0 +1,115 @@
+{
+  "query_id": "AI-08",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我查一下这几天会不会下雨。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:07:36+08:00",
+  "run_timestamp_end": "2026-07-11T21:07:48+08:00",
+  "latency_seconds": 12.154,
+  "llm_calls": 3,
+  "usage": {
+    "prompt_tokens": 21211,
+    "completion_tokens": 217,
+    "total_tokens": 21428
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_ip_location",
+      "arguments": {
+        "ip": "127.0.0.1"
+      },
+      "success": true,
+      "raw_result": {
+        "province": [],
+        "city": [],
+        "adcode": [],
+        "rectangle": []
+      },
+      "error": null,
+      "latency_seconds": 0.071
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_weather",
+      "arguments": {
+        "city": "北京"
+      },
+      "success": true,
+      "raw_result": {
+        "city": "北京市",
+        "forecasts": [
+          {
+            "date": "2026-07-11",
+            "week": "6",
+            "dayweather": "中雨",
+            "nightweather": "暴雨",
+            "daytemp": "28",
+            "nighttemp": "25",
+            "daywind": "东南",
+            "nightwind": "东南",
+            "daypower": "1-3",
+            "nightpower": "1-3",
+            "daytemp_float": "28.0",
+            "nighttemp_float": "25.0"
+          },
+          {
+            "date": "2026-07-12",
+            "week": "7",
+            "dayweather": "雷阵雨",
+            "nightweather": "雷阵雨",
+            "daytemp": "32",
+            "nighttemp": "25",
+            "daywind": "东",
+            "nightwind": "东",
+            "daypower": "1-3",
+            "nightpower": "1-3",
+            "daytemp_float": "32.0",
+            "nighttemp_float": "25.0"
+          },
+          {
+            "date": "2026-07-13",
+            "week": "1",
+            "dayweather": "中雨",
+            "nightweather": "雷阵雨",
+            "daytemp": "30",
+            "nighttemp": "23",
+            "daywind": "东",
+            "nightwind": "东",
+            "daypower": "1-3",
+            "nightpower": "1-3",
+            "daytemp_float": "30.0",
+            "nighttemp_float": "23.0"
+          },
+          {
+            "date": "2026-07-14",
+            "week": "2",
+            "dayweather": "雷阵雨",
+            "nightweather": "晴",
+            "daytemp": "34",
+            "nighttemp": "21",
+            "daywind": "北",
+            "nightwind": "北",
+            "daypower": "1-3",
+            "nightpower": "1-3",
+            "daytemp_float": "34.0",
+            "nighttemp_float": "21.0"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.148
+    }
+  ],
+  "final_answer": "北京市这几天的天气情况如下，总体来看降水较多，请注意防雨：\n\n*   **7月11日（周六）**：白天中雨，夜间有暴雨，气温25-28℃。\n*   **7月12日（周日）**：雷阵雨转雷阵雨，气温25-32℃。\n*   **7月13日（周一）**：白天中雨，夜间有雷阵雨，气温23-30℃。\n*   **7月14日（周二）**：白天有雷阵雨，夜间转晴，气温21-34℃。\n\n请您在出行时携带雨具，并关注最新的气象预警信息。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

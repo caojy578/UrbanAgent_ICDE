@@ -1,0 +1,202 @@
+[
+ {
+  "query_id": "AI-01",
+  "label": "assume_then_ask"
+ },
+ {
+  "query_id": "AI-02",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-03",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-04",
+  "label": "assume_then_ask"
+ },
+ {
+  "query_id": "AI-05",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-06",
+  "label": "assume_then_ask"
+ },
+ {
+  "query_id": "AI-07",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-08",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-09",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-10",
+  "label": "assume_then_ask"
+ },
+ {
+  "query_id": "AI-11",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-12",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-13",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-14",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-15",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-16",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-17",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-18",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-19",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-20",
+  "label": "assume_then_ask"
+ },
+ {
+  "query_id": "AI-21",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-22",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-23",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-24",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-25",
+  "label": "assume_then_ask"
+ },
+ {
+  "query_id": "AI-26",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-27",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-28",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-29",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-30",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-31",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-32",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-33",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-34",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-35",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-36",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-37",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-38",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-39",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-40",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-41",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-42",
+  "label": "assume_then_ask"
+ },
+ {
+  "query_id": "AI-43",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-44",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-45",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-46",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-47",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-48",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-49",
+  "label": "pure_ask"
+ },
+ {
+  "query_id": "AI-50",
+  "label": "assume_then_ask"
+ }
+]

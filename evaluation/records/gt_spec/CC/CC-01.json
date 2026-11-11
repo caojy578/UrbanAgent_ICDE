@@ -1,0 +1,121 @@
+{
+  "query_id": "CC-01",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我现在在北京大学 3 公里范围内，想找一家 用户评分不低于 4.6 分 的川菜馆，请帮我搜索相关地点、查看详细评价信息，并规划 步行路线",
+  "checklist": [
+    {
+      "item_id": "CC-01.1",
+      "assertion": "北京大学的坐标(经度、纬度)与官方坐标一致",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 116.309641,
+          "lat": 39.99173
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "采集北京大学主校区中心点坐标,如采用 WGS-84 需转 GCJ-02 | MCP2026-07-09:天地图主源+高德校验 天地图(北京大学颐和园路5号):(116.30355,39.99046);高德校验682.6m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=116.303550 lat=39.990460 → GCJ-02 lng=116.309641 lat=39.991730; 最终来源=wgs84转gcj02 GCJ-02 lng=116.309641 lat=39.991730"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-01.2",
+      "assertion": "返回的川菜馆距离北京大学的直线距离不超过 3000 米",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-01.3",
+      "assertion": "返回的川菜馆用户评分不低于 4.6 分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项/最高仅X分'并说明已检索亦算通过;仅当系统未检索或把低于阈值的对象谎称满足才判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足即可如实报无"
+    },
+    {
+      "item_id": "CC-01.4",
+      "assertion": "返回的川菜馆名称、地址、坐标与本次工具返回一致(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "叶么嬢·爆炒三嫩(中关村5°LAB店)",
+          "address": "北京市海淀区海淀大街5号5°LAB中心场景负一层15-17号商铺",
+          "lng": 116.312593,
+          "lat": 39.983002
+        },
+        "datum": "GCJ-02",
+        "tolerance": "名称含官方名或通用别名,地址区+路名精确匹配,坐标 distance<=150m",
+        "collect_from": "大众点评人工选店+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-12",
+        "note": "[桶B复核 2026-07-12] 大众点评截图复核;eval↔天地图search≈170m↔百度≈350m;高德POI为其他分店不可比;保留eval | 原note: [人工复核 2026-07-11] 大众点评人工选店:rank=4.8,tag=川菜馆,人均55,口味4.8;约束:距北大3km内+评分≥4.6 满足 | 距锚..."
+      }
+    },
+    {
+      "item_id": "CC-01.5",
+      "assertion": "商户评价信息至少包含可溯源的用户评分；评论数、代表性评论可缺省",
+      "gt_source": "trace",
+      "necessary": true,
+      "_assertion_preHumanSync": "商户的详细评价信息(评分、评论数、代表性评论等)可溯源到本次工具返回结果"
+    },
+    {
+      "item_id": "CC-01.6",
+      "assertion": "规划的步行路线起点坐标与本次返回的北京大学坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-01.7",
+      "assertion": "规划的步行路线终点坐标与本次返回的川菜馆坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-01.8",
+      "assertion": "路线规划方式为步行(mode=walking)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-01.9",
+      "assertion": "返回的路线方案(路径节点、距离、预计耗时)可溯源到本次工具返回结果",
+      "gt_source": "trace",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "商户评价"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "POI搜索需支持距离范围和菜系类型过滤;评分过滤(>=4.6)可在 POI搜索阶段或商户评价阶段实现"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

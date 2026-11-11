@@ -1,0 +1,116 @@
+{
+  "query_id": "CC-09",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我现在在天津大学，想在 步行距离 1 公里内 找一家 评分不低于 4.3 分 的打印店，请查看营业时间并规划 步行路线",
+  "checklist": [
+    {
+      "item_id": "CC-09.1",
+      "assertion": "起点坐标为天津大学的官方坐标（GCJ-02坐标系）",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 117.169944,
+          "lat": 39.111329
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图/腾讯地图",
+        "collected_on": "2026-07-10",
+        "note": "天津大学主校区（卫津路校区）中心坐标或主门坐标，若有多校区需采集最知名的卫津路校区坐标 | MCP2026-07-09:天地图主源+高德校验 天地图(天津大学卫津路校区卫津路92号):(117.163576,39.11024);高德校验588.2m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=117.163576 lat=39.110240 → GCJ-02 lng=117.169944 lat=39.111329; 最终来源=wgs84转gcj02 GCJ-02 lng=117.169944 lat=39.111329",
+        "_needs_review": true,
+        "_review_reason": "高德geocode匹配歧义(d=841m,疑地名多义/大范围)"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-09.2",
+      "assertion": "找到的打印店存在且位于天津大学附近（名称、地址、坐标符合官方POI信息）(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "赛可优数码印刷·图文广告·标书打印(卫津路六里台店)",
+          "address": "天津市卫津路99号-1",
+          "lng": 117.18,
+          "lat": 39.115382
+        },
+        "datum": "GCJ-02",
+        "tolerance": "名称含官方名或通用别名，坐标distance<=100m，地址区+路名精确匹配",
+        "collect_from": "大众点评人工选店+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-11",
+        "note": "[人工复核 2026-07-11] 大众点评人工选店:rank=4.5,tag=文印广告;距天大七里台站D口步行260m;约束:1km内+评分≥4.3 满足 | 距锚点978m(约束<=1000m) | GCJ-02 lng=117.18 lat=39.115382"
+      }
+    },
+    {
+      "item_id": "CC-09.3",
+      "assertion": "所选打印店与天津大学的直线距离或步行距离不超过1公里",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-09.4",
+      "assertion": "所选打印店的评分不低于4.3分（基于工具返回的当前评分数据）【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项/最高仅X分'并说明已检索亦算通过;仅当系统未检索或把低于阈值的对象谎称满足才判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足即可如实报无"
+    },
+    {
+      "item_id": "CC-09.5",
+      "assertion": "提供了该打印店的营业时间信息（基于工具返回的当前营业时间数据）",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-09.6",
+      "assertion": "规划的步行路线起点坐标与本次工具返回的天津大学坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-09.7",
+      "assertion": "规划的步行路线终点坐标与本次工具返回的所选打印店坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-09.8",
+      "assertion": "路线规划方式为步行（非驾车/公交/骑行）",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "商户评价"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "需获取天津大学坐标后搜索附近打印店，筛选评分≥4.3且距离≤1km的商户，查询营业时间，最后规划步行路线"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

@@ -1,0 +1,944 @@
+{
+  "query_id": "CC-24",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我明天下午 5 点从成都春熙路的voco酒店回双流机场，要求总耗时不超过 1 小时， 如果地铁需要换乘超过 2 次就改为驾车方案。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:42:04+08:00",
+  "run_timestamp_end": "2026-07-11T22:42:17+08:00",
+  "latency_seconds": 12.888,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 36888,
+    "completion_tokens": 455,
+    "total_tokens": 37343
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "成都春熙路voco酒店",
+        "city": "成都"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "锦江区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "510104",
+            "location": "104.078643,30.657952",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "锦江区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "510104",
+            "location": "104.078643,30.657952",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "锦江区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "510104",
+            "location": "104.078643,30.657952",
+            "level": "道路"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.066
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "成都双流国际机场",
+        "city": "成都"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "双流区",
+            "street": [],
+            "number": [],
+            "adcode": "510116",
+            "location": "103.956321,30.570343",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "双流区",
+            "street": [],
+            "number": [],
+            "adcode": "510116",
+            "location": "103.955583,30.568704",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "双流区",
+            "street": [],
+            "number": [],
+            "adcode": "510116",
+            "location": "103.955146,30.567989",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.062
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_direction_transit_integrated",
+      "arguments": {
+        "city": "成都",
+        "cityd": "成都",
+        "destination": "103.956321,30.570343",
+        "origin": "104.078643,30.657952"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "104.078643,30.657952",
+          "destination": "103.956321,30.570343",
+          "distance": "20891",
+          "transits": [
+            {
+              "duration": "3119",
+              "walking_distance": "1051",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "104.078606,30.657887",
+                    "destination": "104.078964,30.653252",
+                    "distance": "803",
+                    "duration": "688",
+                    "steps": [
+                      {
+                        "instruction": "沿春熙路北段步行291米左转",
+                        "road": "春熙路北段",
+                        "distance": "291",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿春熙路步行街步行307米右转",
+                        "road": "春熙路步行街",
+                        "distance": "307",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿步行街步行28米左转",
+                        "road": "步行街",
+                        "distance": "28",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行20米",
+                        "road": [],
+                        "distance": "20",
+                        "action": [],
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行158米到达春熙路",
+                        "road": [],
+                        "distance": "158",
+                        "action": [],
+                        "assistant_action": "到达春熙路"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁3号线(成都医学院(新都校区)--双流西站)",
+                        "departure_stop": {
+                          "name": "春熙路"
+                        },
+                        "arrival_stop": {
+                          "name": "太平园"
+                        },
+                        "distance": "8520",
+                        "duration": "1080",
+                        "via_stops": [
+                          {
+                            "name": "新南门"
+                          },
+                          {
+                            "name": "磨子桥"
+                          },
+                          {
+                            "name": "省体育馆"
+                          },
+                          {
+                            "name": "衣冠庙"
+                          },
+                          {
+                            "name": "高升桥"
+                          },
+                          {
+                            "name": "红牌楼"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "D口"
+                  },
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁10号线(武侯祠--新平(宝墩))",
+                        "departure_stop": {
+                          "name": "太平园"
+                        },
+                        "arrival_stop": {
+                          "name": "双流机场2航站楼"
+                        },
+                        "distance": "9935",
+                        "duration": "1140",
+                        "via_stops": [
+                          {
+                            "name": "簇锦"
+                          },
+                          {
+                            "name": "华兴"
+                          },
+                          {
+                            "name": "金花"
+                          },
+                          {
+                            "name": "双流机场1航站楼"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {
+                    "name": "L2口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "103.955605,30.569891",
+                    "destination": "103.956459,30.570292",
+                    "distance": "247",
+                    "duration": "211",
+                    "steps": [
+                      {
+                        "instruction": "步行165米往前走",
+                        "road": [],
+                        "distance": "165",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行12米左转",
+                        "road": [],
+                        "distance": "12",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行37米往前走",
+                        "road": [],
+                        "distance": "37",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行21米右转",
+                        "road": [],
+                        "distance": "21",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行12米",
+                        "road": [],
+                        "distance": "12",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "3970",
+              "walking_distance": "728",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "104.078606,30.657887",
+                    "destination": "104.075485,30.658751",
+                    "distance": "386",
+                    "duration": "330",
+                    "steps": [
+                      {
+                        "instruction": "步行35米向左前方行走",
+                        "road": [],
+                        "distance": "35",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行82米向右前方行走",
+                        "road": [],
+                        "distance": "82",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行95米向左前方行走",
+                        "road": [],
+                        "distance": "95",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行174米到达总府路站",
+                        "road": [],
+                        "distance": "174",
+                        "action": [],
+                        "assistant_action": "到达总府路站"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "45路(红光路站--吉顺街站)",
+                        "departure_stop": {
+                          "name": "总府路站"
+                        },
+                        "arrival_stop": {
+                          "name": "地铁省体育馆站"
+                        },
+                        "distance": "3698",
+                        "duration": "1369",
+                        "via_stops": [
+                          {
+                            "name": "盐市口站"
+                          },
+                          {
+                            "name": "大业路站"
+                          },
+                          {
+                            "name": "锦江宾馆站"
+                          },
+                          {
+                            "name": "华西坝站"
+                          },
+                          {
+                            "name": "华西第二、第四医院站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "104.065163,30.633615",
+                    "destination": "104.065674,30.633528",
+                    "distance": "94",
+                    "duration": "80",
+                    "steps": [
+                      {
+                        "instruction": "步行4米右转",
+                        "road": [],
+                        "distance": "4",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行13米右转",
+                        "road": [],
+                        "distance": "13",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行77米到达省体育馆",
+                        "road": [],
+                        "distance": "77",
+                        "action": [],
+                        "assistant_action": "到达省体育馆"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁3号线(成都医学院(新都校区)--双流西站)",
+                        "departure_stop": {
+                          "name": "省体育馆"
+                        },
+                        "arrival_stop": {
+                          "name": "红牌楼"
+                        },
+                        "distance": "3980",
+                        "duration": "600",
+                        "via_stops": [
+                          {
+                            "name": "衣冠庙"
+                          },
+                          {
+                            "name": "高升桥"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "E口"
+                  },
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁10号线(武侯祠--新平(宝墩))",
+                        "departure_stop": {
+                          "name": "红牌楼"
+                        },
+                        "arrival_stop": {
+                          "name": "双流机场2航站楼"
+                        },
+                        "distance": "11281",
+                        "duration": "1380",
+                        "via_stops": [
+                          {
+                            "name": "太平园"
+                          },
+                          {
+                            "name": "簇锦"
+                          },
+                          {
+                            "name": "华兴"
+                          },
+                          {
+                            "name": "金花"
+                          },
+                          {
+                            "name": "双流机场1航站楼"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {
+                    "name": "L2口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "103.955605,30.569891",
+                    "destination": "103.956459,30.570292",
+                    "distance": "247",
+                    "duration": "211",
+                    "steps": [
+                      {
+                        "instruction": "步行165米往前走",
+                        "road": [],
+                        "distance": "165",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行12米左转",
+                        "road": [],
+                        "distance": "12",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行37米往前走",
+                        "road": [],
+                        "distance": "37",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行21米右转",
+                        "road": [],
+                        "distance": "21",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行12米",
+                        "road": [],
+                        "distance": "12",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "4643",
+              "walking_distance": "1968",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "104.078606,30.657887",
+                    "destination": "104.065887,30.657145",
+                    "distance": "1418",
+                    "duration": "1215",
+                    "steps": [
+                      {
+                        "instruction": "步行734米右转",
+                        "road": [],
+                        "distance": "734",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行20米左转",
+                        "road": [],
+                        "distance": "20",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿人民东路步行349米向左后方行走",
+                        "road": "人民东路",
+                        "distance": "349",
+                        "action": "向左后方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿人民东路步行16米右转",
+                        "road": "人民东路",
+                        "distance": "16",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行45米",
+                        "road": [],
+                        "distance": "45",
+                        "action": [],
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行254米到达天府广场",
+                        "road": [],
+                        "distance": "254",
+                        "action": [],
+                        "assistant_action": "到达天府广场"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁1号线(韦家碾--科学城)",
+                        "departure_stop": {
+                          "name": "天府广场"
+                        },
+                        "arrival_stop": {
+                          "name": "倪家桥"
+                        },
+                        "distance": "3600",
+                        "duration": "540",
+                        "via_stops": [
+                          {
+                            "name": "锦江宾馆"
+                          },
+                          {
+                            "name": "华西坝"
+                          },
+                          {
+                            "name": "省体育馆"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "东1北口"
+                  },
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "104.066887,30.624769",
+                    "destination": "104.065643,30.624956",
+                    "distance": "138",
+                    "duration": "256",
+                    "steps": [
+                      {
+                        "instruction": "步行138米到达倪家桥",
+                        "road": [],
+                        "distance": "138",
+                        "action": [],
+                        "assistant_action": "到达倪家桥"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁8号线(桂龙路--龙港)",
+                        "departure_stop": {
+                          "name": "倪家桥"
+                        },
+                        "arrival_stop": {
+                          "name": "珠江路"
+                        },
+                        "distance": "11400",
+                        "duration": "1440",
+                        "via_stops": [
+                          {
+                            "name": "芳草街"
+                          },
+                          {
+                            "name": "永丰"
+                          },
+                          {
+                            "name": "九兴大道"
+                          },
+                          {
+                            "name": "高朋大道"
+                          },
+                          {
+                            "name": "殷家林"
+                          },
+                          {
+                            "name": "庆安"
+                          },
+                          {
+                            "name": "石羊"
+                          },
+                          {
+                            "name": "三元"
+                          },
+                          {
+                            "name": "顺风"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁30号线(龙泉驿火车站南--双流机场2航站楼东)",
+                        "departure_stop": {
+                          "name": "珠江路"
+                        },
+                        "arrival_stop": {
+                          "name": "双流机场2航站楼东"
+                        },
+                        "distance": "6285",
+                        "duration": "840",
+                        "via_stops": [
+                          {
+                            "name": "谢家渡"
+                          },
+                          {
+                            "name": "光明"
+                          },
+                          {
+                            "name": "星月"
+                          },
+                          {
+                            "name": "寺圣"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {
+                    "name": "C口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "103.957863,30.569057",
+                    "destination": "103.956467,30.570295",
+                    "distance": "411",
+                    "duration": "352",
+                    "steps": [
+                      {
+                        "instruction": "步行108米往前走",
+                        "road": [],
+                        "distance": "108",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行15米左转",
+                        "road": [],
+                        "distance": "15",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行126米左转",
+                        "road": [],
+                        "distance": "126",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行22米往前走",
+                        "road": [],
+                        "distance": "22",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行39米往前走",
+                        "road": [],
+                        "distance": "39",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行19米左转",
+                        "road": [],
+                        "distance": "19",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行82米",
+                        "road": [],
+                        "distance": "82",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.199
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_direction_driving",
+      "arguments": {
+        "destination": "103.956321,30.570343",
+        "origin": "104.078643,30.657952"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "104.078643,30.657952",
+          "destination": "103.956321,30.570343",
+          "paths": [
+            {
+              "distance": "19432",
+              "duration": "2031",
+              "steps": [
+                {
+                  "instruction": "沿蜀都大道总府路途径蜀都大道大慈寺路向东南行驶527米右转",
+                  "road": "蜀都大道总府路",
+                  "distance": "527",
+                  "orientation": "东南",
+                  "duration": "298"
+                },
+                {
+                  "instruction": "沿北纱帽街途径中纱帽街、南纱帽街向西南行驶546米右转",
+                  "road": "北纱帽街",
+                  "distance": "546",
+                  "orientation": "西南",
+                  "duration": "253"
+                },
+                {
+                  "instruction": "沿东大街下东大街段向西北行驶229米左转",
+                  "road": "东大街下东大街段",
+                  "distance": "229",
+                  "orientation": "西北",
+                  "duration": "103"
+                },
+                {
+                  "instruction": "沿红星路四段辅路途径红星路四段、复兴桥、新南路向南行驶1.9千米靠左沿主路行驶",
+                  "road": "红星路四段辅路",
+                  "distance": "1919",
+                  "orientation": "南",
+                  "duration": "337"
+                },
+                {
+                  "instruction": "沿磨子桥途径科华北路向南行驶1.4千米靠左沿主路行驶",
+                  "road": "磨子桥",
+                  "distance": "1397",
+                  "orientation": "南",
+                  "duration": "123"
+                },
+                {
+                  "instruction": "沿科华北路途径科华中路、科华南路向南行驶1.5千米向右前方行驶进入右转专用道",
+                  "road": "科华北路",
+                  "distance": "1540",
+                  "orientation": "南",
+                  "duration": "168"
+                },
+                {
+                  "instruction": "沿火车南站东路向西南行驶73米右转",
+                  "road": "火车南站东路",
+                  "distance": "73",
+                  "orientation": "西南",
+                  "duration": "10"
+                },
+                {
+                  "instruction": "沿火车南站东路途径中环路火车南站东路段辅路、中环路火车南站东路段向西行驶898米直行进入中间岔道",
+                  "road": "火车南站东路",
+                  "distance": "898",
+                  "orientation": "西",
+                  "duration": "96"
+                },
+                {
+                  "instruction": "沿S6成都机场高速入口途径S6成都机场高速向西行驶10.5千米靠左沿当前道路行驶",
+                  "road": "S6成都机场高速入口",
+                  "distance": "10523",
+                  "orientation": "西",
+                  "duration": "514"
+                },
+                {
+                  "instruction": "沿S6成都机场高速出口向西行驶411米靠左",
+                  "road": "S6成都机场高速出口",
+                  "distance": "411",
+                  "orientation": "西",
+                  "duration": "31"
+                },
+                {
+                  "instruction": "沿S6成都机场高速出口向西行驶485米靠右",
+                  "road": "S6成都机场高速出口",
+                  "distance": "485",
+                  "orientation": "西",
+                  "duration": "31"
+                },
+                {
+                  "instruction": "沿S6成都机场高速出口向西行驶548米靠右",
+                  "road": "S6成都机场高速出口",
+                  "distance": "548",
+                  "orientation": "西",
+                  "duration": "37"
+                },
+                {
+                  "instruction": "向西南行驶117米靠右",
+                  "distance": "117",
+                  "orientation": "西南",
+                  "duration": "8"
+                },
+                {
+                  "instruction": "向西南行驶219米到达目的地",
+                  "distance": "219",
+                  "orientation": "西南",
+                  "duration": "22"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.094
+    }
+  ],
+  "final_answer": "根据您的要求，为您查询了明天下午 5 点从成都春熙路 voco 酒店前往成都双流国际机场的交通方案：\n\n**方案推荐：地铁出行**\n*   **路线：** 从春熙路地铁站乘坐 **3号线**（往双流西站方向）至“太平园站”，换乘 **10号线**（往新平/双流机场方向）至“双流机场2航站楼站”。\n*   **换乘情况：** 仅需换乘 1 次，符合您“换乘不超过 2 次”的要求。\n*   **预计耗时：** 地铁运行及步行时间约 52 分钟，在 1 小时以内，满足您的时间要求。\n\n**备选方案：驾车出行**\n*   **预计耗时：** 驾车行驶距离约 19.4 公里，预计耗时约 34 分钟（交通情况实时变化，建议您预留充足的候机时间）。\n\n**建议：** 明天下午 5 点正值下班高峰期，路面交通较拥堵，建议您优先选择地铁出行，以便更准确地控制时间。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

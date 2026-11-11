@@ -1,0 +1,56 @@
+{
+  "query_id": "SD-01",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我现在在公司电脑上，不太清楚我这个 IP 在哪个城市。 你帮我查一下这个 IP（218.249.51.90）在哪个城市，然后查一下这个城市今天的天气情况。",
+  "checklist": [
+    {
+      "item_id": "SD-01.1",
+      "assertion": "正确识别 IP 218.249.51.90 所属城市",
+      "gt_source": "static_ref",
+      "necessary": true,
+      "static_gt": {
+        "ref_value": "北京市",
+        "datum": null,
+        "tolerance": "城市名称精确匹配(含直辖市/地级市全称或通用简称)",
+        "collect_from": "ip138.com / ip.cn / ipip.net 等独立 IP 查询服务",
+        "collected_on": "2026-07-09",
+        "note": "IP 归属地可能因运营商分配变化而改变,采集时记录查询日期;若多个来源结果一致则优先采纳 | 2026-07-09: ipapi.co+pconline多源→北京市(非天津)"
+      }
+    },
+    {
+      "item_id": "SD-01.2",
+      "assertion": "查询的天气城市与 IP 归属城市一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-01.3",
+      "assertion": "提供该城市当天的天气情况(含温度、天气现象等关键要素)",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "IP定位",
+      "天气"
+    ],
+    "dependency_pairs": [
+      [
+        "IP定位",
+        "天气"
+      ]
+    ],
+    "notes": "必须先通过 IP定位 获取城市,再用该城市查询天气;天气需为当天实时或预报数据"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": true
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

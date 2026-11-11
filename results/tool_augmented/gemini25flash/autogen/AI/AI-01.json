@@ -1,0 +1,54 @@
+{
+  "query_id": "AI-01",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想去上海迪士尼，帮我看看怎么去。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:27:22+08:00",
+  "run_timestamp_end": "2026-07-12T14:27:33+08:00",
+  "latency_seconds": 10.966,
+  "llm_calls": 3,
+  "usage": {
+    "prompt_tokens": 21446,
+    "completion_tokens": 525,
+    "total_tokens": 21971
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "上海迪士尼乐园",
+        "city": "上海"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "上海市",
+            "city": "上海市",
+            "citycode": "021",
+            "district": "浦东新区",
+            "street": [],
+            "number": [],
+            "adcode": "310115",
+            "location": "121.660294,31.143212",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.156
+    }
+  ],
+  "final_answer": "",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

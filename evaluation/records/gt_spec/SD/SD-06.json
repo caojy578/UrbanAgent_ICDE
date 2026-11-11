@@ -1,0 +1,116 @@
+{
+  "query_id": "SD-06",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我现在在“杭州市西湖区文三路”，想找两个 2 公里以内的健身房，帮我算一下哪个更近， 然后告诉我距离更近的那家过去 24 小时有没有下雨。",
+  "checklist": [
+    {
+      "item_id": "SD-06.1",
+      "assertion": "起始位置'杭州市西湖区文三路'的坐标(经度、纬度)正确",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 120.123832,
+          "lat": 30.276449
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=50m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "文三路为道路,取路段中心代表点坐标;若采集到 WGS-84 坐标需转换为 GCJ-02 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=120.115810 lat=30.278420 → GCJ-02 lng=120.120599 lat=30.276144; 高德POI(文三路,120.123832,30.276449) dist_orig=800.9m dist_gcj02=312.3m tol=50m; 最终来源=高德POI(超容差改用) GCJ-02 lng=120.123832 lat=30.276449"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-06.2",
+      "assertion": "找到的第一个健身房存在且位于杭州市西湖区,距离起始位置<=2公里",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "exists": true,
+          "name": "乐刻健身(黄龙万科店)",
+          "lng": 120.113953,
+          "lat": 30.27926
+        },
+        "datum": "GCJ-02",
+        "tolerance": "POI名称含官方名或通用别名,坐标 distance<=100m,直线距离起点<=2.1km",
+        "collect_from": "天地图或百度地图 POI 搜索",
+        "collected_on": "2026-07-09",
+        "note": "搜索'杭州市西湖区文三路附近健身房',验证距离;记录 POI 官方名称与坐标 | 2026-07-09: 高德周边2km,距文三路起点约260m"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-06.3",
+      "assertion": "找到的第二个健身房存在且位于杭州市西湖区,距离起始位置<=2公里,与第一个健身房不同",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "exists": true,
+          "name": "动词原形健身(星光城店)",
+          "lng": 120.120938,
+          "lat": 30.277154
+        },
+        "datum": "GCJ-02",
+        "tolerance": "POI名称含官方名或通用别名,坐标 distance<=100m,直线距离起点<=2.1km",
+        "collect_from": "天地图或百度地图 POI 搜索",
+        "collected_on": "2026-07-12",
+        "note": "[桶A修正 2026-07-12]  来源=tianditu_search;天地图↔高德=57m;百度→GCJ02↔高德=0m | GCJ-02 lng=120.120938 lat=30.277154"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-06.4",
+      "assertion": "两个健身房与起始位置的距离比较结论正确(基于本次工具返回的坐标计算)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-06.5",
+      "assertion": "距离更近的健身房坐标与本次工具返回的该健身房坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-06.6",
+      "assertion": "距离更近的健身房位置过去 24 小时降水情况(有/无下雨)符合本次查询时该位置的历史天气记录",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "距离测量",
+      "天气"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "距离测量"
+      ],
+      [
+        "距离测量",
+        "天气"
+      ]
+    ],
+    "notes": "需按顺序:1)地理编码获取起点坐标;2)POI搜索找到2个健身房;3)距离测量比较远近;4)对更近的健身房查询过去24小时历史天气。天气工具需支持历史降水查询"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

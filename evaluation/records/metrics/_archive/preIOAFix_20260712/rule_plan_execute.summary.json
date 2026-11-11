@@ -1,0 +1,18 @@
+{
+  "baseline": "plan_execute",
+  "n_runs": 250,
+  "n_process_evaluated": 200,
+  "n_clarified": 0,
+  "termination": {
+    "normal": 239,
+    "step_limit": 10,
+    "timeout": 0,
+    "context_overflow": 1,
+    "framework_error": 0
+  },
+  "avg_total_tokens": 134680.012,
+  "avg_latency_seconds": 260.567,
+  "avg_llm_calls": 15.384,
+  "avg_comp_rate": 0.828,
+  "avg_order_rate": 0.932
+}

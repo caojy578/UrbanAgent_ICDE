@@ -1,0 +1,157 @@
+{
+  "query_id": "CC-08",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从西安北站出发，想在 3 公里范围内 找一家 用户评分 ≥ 4.5 分 的快捷酒店，请查看详细信息并规划 地铁路线",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-21T02:58:41+08:00",
+  "run_timestamp_end": "2026-07-21T02:59:34+08:00",
+  "latency_seconds": 53.088,
+  "llm_calls": 5,
+  "usage": {
+    "prompt_tokens": 19009,
+    "completion_tokens": 1004,
+    "total_tokens": 20013
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "西安北站",
+        "city": "西安市"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "陕西省",
+            "city": "西安市",
+            "citycode": "029",
+            "district": [],
+            "street": [],
+            "number": [],
+            "adcode": "610100",
+            "location": "108.939645,34.343207",
+            "level": "市"
+          },
+          {
+            "country": "中国",
+            "province": "黑龙江省",
+            "city": "牡丹江市",
+            "citycode": "0453",
+            "district": "西安区",
+            "street": [],
+            "number": [],
+            "adcode": "231005",
+            "location": "129.616021,44.577611",
+            "level": "区县"
+          },
+          {
+            "country": "中国",
+            "province": "吉林省",
+            "city": "辽源市",
+            "citycode": "0437",
+            "district": "西安区",
+            "street": [],
+            "number": [],
+            "adcode": "220403",
+            "location": "125.149488,42.927252",
+            "level": "区县"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.139
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "西安北站",
+        "city": "西安市"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "陕西省",
+            "city": "西安市",
+            "citycode": "029",
+            "district": [],
+            "street": [],
+            "number": [],
+            "adcode": "610100",
+            "location": "108.939645,34.343207",
+            "level": "市"
+          },
+          {
+            "country": "中国",
+            "province": "黑龙江省",
+            "city": "牡丹江市",
+            "citycode": "0453",
+            "district": "西安区",
+            "street": [],
+            "number": [],
+            "adcode": "231005",
+            "location": "129.616021,44.577611",
+            "level": "区县"
+          },
+          {
+            "country": "中国",
+            "province": "吉林省",
+            "city": "辽源市",
+            "citycode": "0437",
+            "district": "西安区",
+            "street": [],
+            "number": [],
+            "adcode": "220403",
+            "location": "125.149488,42.927252",
+            "level": "区县"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.051
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_around_search",
+      "arguments": {
+        "keywords": "快捷酒店",
+        "location": "108.939645,34.343207",
+        "radius": "3000"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "maps_around_search returned error: Around Search failed: USER_DAILY_QUERY_OVER_LIMIT",
+      "latency_seconds": 0.049
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "city": "西安市",
+        "keywords": "西安北站 快捷酒店"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "maps_text_search returned error: Text Search failed: USER_DAILY_QUERY_OVER_LIMIT",
+      "latency_seconds": 0.054
+    }
+  ],
+  "final_answer": "抱歉，我无法为您查找酒店。因为目前无法查询到相关的酒店信息。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

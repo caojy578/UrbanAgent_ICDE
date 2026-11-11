@@ -1,0 +1,18 @@
+{
+  "baseline": "native_tool",
+  "n_runs": 204,
+  "n_process_evaluated": 154,
+  "n_clarified": 0,
+  "termination": {
+    "normal": 203,
+    "step_limit": 0,
+    "timeout": 0,
+    "context_overflow": 1,
+    "framework_error": 0
+  },
+  "avg_total_tokens": 24489.078,
+  "avg_latency_seconds": 48.597,
+  "avg_llm_calls": 3.034,
+  "avg_comp_rate": 0.85,
+  "avg_order_rate": 0.992
+}

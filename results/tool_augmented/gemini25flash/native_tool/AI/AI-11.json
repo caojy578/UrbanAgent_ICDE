@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-11",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想订个酒店住两晚。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:08:15+08:00",
+  "run_timestamp_end": "2026-07-11T21:08:20+08:00",
+  "latency_seconds": 5.217,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6878,
+    "completion_tokens": 129,
+    "total_tokens": 7007
+  },
+  "tool_calls": [],
+  "final_answer": "没问题！我很乐意为您提供帮助。为了能给您推荐最合适的酒店，请告诉我以下信息：\n\n1. **您计划入住的城市是哪里？**\n2. **具体的入住和离店日期是什么时候？**（例如：2026-08-05 至 2026-08-07）\n3. **您对酒店有什么特殊要求吗？**（例如：预算范围、星级、周边设施，或者是否有特定的酒店品牌偏好？）\n\n一旦您提供了这些信息，我就可以为您查找酒店并查询房型价格了。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

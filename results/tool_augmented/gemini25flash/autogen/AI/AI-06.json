@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-06",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我下周要去广州出差，帮我规划路线。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-14T01:51:37+08:00",
+  "run_timestamp_end": "2026-07-14T01:53:29+08:00",
+  "latency_seconds": 112.533,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 62486,
+    "completion_tokens": 822,
+    "total_tokens": 63308
+  },
+  "tool_calls": [],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

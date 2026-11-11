@@ -1,0 +1,834 @@
+{
+  "query_id": "CC-15",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从成都春熙路地铁站下地铁，想找 2 公里范围内评分 4.6 以上的火锅店， 然后选步行时间最短的一家，如果步行超过 20 分钟就改为打车。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:34:03+08:00",
+  "run_timestamp_end": "2026-07-11T22:34:23+08:00",
+  "latency_seconds": 19.257,
+  "llm_calls": 5,
+  "usage": {
+    "prompt_tokens": 51389,
+    "completion_tokens": 1019,
+    "total_tokens": 52408
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "春熙路地铁站",
+        "city": "成都"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "锦江区",
+            "street": [],
+            "number": [],
+            "adcode": "510104",
+            "location": "104.080019,30.653389",
+            "level": "公交地铁站点"
+          },
+          {
+            "country": "中国",
+            "province": "云南省",
+            "city": "昭通市",
+            "citycode": "0870",
+            "district": "鲁甸县",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "530621",
+            "location": "103.567245,27.197498",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "云南省",
+            "city": "昆明市",
+            "citycode": "0871",
+            "district": "五华区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "530102",
+            "location": "102.688618,25.065616",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "云南省",
+            "city": "昆明市",
+            "citycode": "0871",
+            "district": "五华区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "530102",
+            "location": "102.688618,25.065616",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "云南省",
+            "city": "昆明市",
+            "citycode": "0871",
+            "district": "五华区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "530102",
+            "location": "102.688618,25.065616",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "贵州省",
+            "city": "黔东南苗族侗族自治州",
+            "citycode": "0855",
+            "district": "凯里市",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "522601",
+            "location": "107.865688,26.516934",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "贵州省",
+            "city": "黔东南苗族侗族自治州",
+            "citycode": "0855",
+            "district": "凯里市",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "522601",
+            "location": "107.865688,26.516934",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "贵州省",
+            "city": "黔东南苗族侗族自治州",
+            "citycode": "0855",
+            "district": "凯里市",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "522601",
+            "location": "107.865688,26.516934",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "广东省",
+            "city": "深圳市",
+            "citycode": "0755",
+            "district": "光明区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "440311",
+            "location": "113.940309,22.755914",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "广东省",
+            "city": "深圳市",
+            "citycode": "0755",
+            "district": "光明区",
+            "street": "春熙路",
+            "number": [],
+            "adcode": "440311",
+            "location": "113.940309,22.755914",
+            "level": "道路"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.072
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_around_search",
+      "arguments": {
+        "keywords": "火锅",
+        "location": "104.080019,30.653389",
+        "radius": "2000"
+      },
+      "success": true,
+      "raw_result": {
+        "pois": [
+          {
+            "id": "B0HDKPDBE0",
+            "name": "海底捞火锅(春熙路银石广场店)",
+            "address": "红星路三段99号银石广场1栋1单元7层1号",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/bcb84a02dd0ebb388d01c309af554414?operate=original"
+            }
+          },
+          {
+            "id": "B0KAXRDBJN",
+            "name": "潮牛行动潮汕牛肉(银石广场店)",
+            "address": "红星路三段99号银石写字楼F5层(春熙路地铁站B口旁)",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0KAXRDBJN/comment/8240f14ee4d1edaaa301bb81fef9518f_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0J3ZUQBJP",
+            "name": "三个椰子·现砍椰子鸡(成都银石广场店)",
+            "address": "红星路三段99号银石广场店5楼(春熙路地铁站A口旁)",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/1a3649acb7aa577566f2b97a3a1478e5"
+            }
+          },
+          {
+            "id": "B0FFGOKT33",
+            "name": "新韩1洞韩国年糕火锅(银石广场购物中心店)",
+            "address": "红星路3段99号银石广场F6层",
+            "typecode": "050203",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/d85417bc9a5a69448bfca60efaacb238"
+            }
+          },
+          {
+            "id": "B0L2OMV6VX",
+            "name": "探蓉城老串串",
+            "address": "东大街97号香槟广场1层132号",
+            "typecode": "050000",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0L2OMV6VX/comment/D3D0FB0D_C4FA_4791_8C3A_B681F7285DEC_L0_001_1500_200_1761434391444_20750805.jpg"
+            }
+          },
+          {
+            "id": "B0L64CPF7I",
+            "name": "义学巷·吃串串·看川剧变脸(香槟广场二楼美食街)",
+            "address": "下东大街段21号附23号香槟广场2楼(义学巷串串火锅)",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/comment/content_service__1769226545944_53865014_1769226569604_29651258.jpg"
+            }
+          },
+          {
+            "id": "B0FFHEKN5H",
+            "name": "小龙翻大江·火锅美学(春熙店)",
+            "address": "下东大街段香槟广场3楼",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFHEKN5H/comment/content_media_external_file_100018947_1744897567466_68757354.jpg"
+            }
+          },
+          {
+            "id": "B0LUKAU9JR",
+            "name": "沛茗·蜀李记美蛙鱼火锅",
+            "address": "东大街下东大街段21号蓝光香槟广场F2层",
+            "typecode": "050000",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0LUKAU9JR/comment/CFABCBD0_864A_4242_8201_1893927A8A0E_L0_001_500_66_1769334354064_76960267.jpg"
+            }
+          },
+          {
+            "id": "B0L2F51F92",
+            "name": "云徕小锅米线(太古里店)",
+            "address": "东大街下东大街段21号蓝光香槟广场F3层",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/5a1e8231ecaf58e10000002600662291?type=pic"
+            }
+          },
+          {
+            "id": "B0LBFLZCS3",
+            "name": "毛孃孃老火锅(春熙路店)",
+            "address": "东大街下东大街段21号附18号(香槟广场二楼)",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0LBFLZCS3/comment/F215DEB5_A7AE_4E2C_A4BA_83A39A6346DD_L0_001_1500_200_1764679241484_95625959.jpg"
+            }
+          },
+          {
+            "id": "B0IBZLC167",
+            "name": "小龙坎火锅(ifs hot店)",
+            "address": "东大街下东大段21号附29号蓝光·香槟广场F2",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/query_pic?id=stec838378-a0f7-4492-8bcc-2d6637544988&user=search&operate=original"
+            }
+          },
+          {
+            "id": "B0IRGRDKVC",
+            "name": "厂花素芬(蓝光香槟广场店)",
+            "address": "东大街下东大街段29-31号",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/ae5214bd7bd43cde0000003020748124?type=pic"
+            }
+          },
+          {
+            "id": "B0KA29I1KH",
+            "name": "蓉城江湖市井火锅(春熙路直营店)",
+            "address": "东大街下东大街段1号",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0KA29I1KH/comment/724574C0_63F0_428E_9F5A_A139479915CB_L0_001_960_71_1766318607071_28242231.jpg"
+            }
+          },
+          {
+            "id": "B0M6RC1M5F",
+            "name": "蜀青城清油火锅",
+            "address": "东大街下东大街段21号蓝光香槟广场F3层",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/6be873b3141acefb0000002264592585?type=pic"
+            }
+          },
+          {
+            "id": "B0JK9CFH87",
+            "name": "爱尚菌·云南野生菌火锅云南菜·汤锅(春熙路太古里店)",
+            "address": "东大街下东大街段21号附29号蓝光·香槟广场F3",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/3ae65b70ccfa40110000002892468349?type=pic"
+            }
+          },
+          {
+            "id": "B0J33UNZI7",
+            "name": "胜友老火锅(太古里店)",
+            "address": "东大街下东大街21号香槟广场1栋3楼304",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/878e7a1d699727410000001185658859?type=pic"
+            }
+          },
+          {
+            "id": "B0KARO9C08",
+            "name": "嘉凌码头老火锅底料坊(春熙路联升巷店)",
+            "address": "联升巷10号附6号",
+            "typecode": "060703",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/373ab27b5504e9c9c34785b061186c48"
+            }
+          },
+          {
+            "id": "B0KKL9L8YT",
+            "name": "春熙路城守街桥头火锅底料",
+            "address": "城守街桥头直营店(春熙路地铁站A口步行150米)",
+            "typecode": "060703",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/26dcf012956f7ffe6a8ededad635f46a"
+            }
+          },
+          {
+            "id": "B0LB1L0T4P",
+            "name": "桥头火锅底料直营店(联升巷店)",
+            "address": "联升巷10号附1号桥头火锅",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/86b613fdcb60ac8bfa4b4c7672fa0ff7"
+            }
+          },
+          {
+            "id": "B0HAHKGZMI",
+            "name": "嘉凌码头老火锅底料坊(太古里纱帽街店)",
+            "address": "南纱帽街41号",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/49fcf18237d38aff4d26c297560be76c"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.194
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0HDKPDBE0"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0HDKPDBE0",
+        "name": "海底捞火锅(春熙路银石广场店)",
+        "location": "104.079797,30.653223",
+        "address": "红星路三段99号银石广场1栋1单元7层1号",
+        "business_area": "东大街",
+        "city": "成都市",
+        "type": "餐饮服务;中餐厅;火锅店",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "https://store.is.autonavi.com/showpic/bcb84a02dd0ebb388d01c309af554414?operate=original"
+        },
+        "cost": "120.00",
+        "opentime2": "周一至周日 10:00-07:00",
+        "rating": "4.7",
+        "open_time": "10:00-07:00",
+        "meal_ordering": "0"
+      },
+      "error": null,
+      "latency_seconds": 0.092
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0FFHEKN5H"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0FFHEKN5H",
+        "name": "小龙翻大江·火锅美学(春熙店)",
+        "location": "104.079728,30.652450",
+        "address": "下东大街段香槟广场3楼",
+        "business_area": "东大街",
+        "city": "成都市",
+        "type": "餐饮服务;中餐厅;火锅店",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "https://aos-comment.amap.com/B0FFHEKN5H/comment/content_media_external_file_100018947_1744897567466_68757354.jpg"
+        },
+        "cost": "125.00",
+        "opentime2": "周一至周日 11:00-23:00",
+        "rating": "4.7",
+        "open_time": "11:00-23:00",
+        "meal_ordering": "0"
+      },
+      "error": null,
+      "latency_seconds": 0.063
+    },
+    {
+      "seq": 5,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0LBFLZCS3"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0LBFLZCS3",
+        "name": "毛孃孃老火锅(春熙路店)",
+        "location": "104.079411,30.652489",
+        "address": "东大街下东大街段21号附18号(香槟广场二楼)",
+        "business_area": "大慈寺",
+        "city": "成都市",
+        "type": "餐饮服务;中餐厅;火锅店",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "https://aos-comment.amap.com/B0LBFLZCS3/comment/F215DEB5_A7AE_4E2C_A4BA_83A39A6346DD_L0_001_1500_200_1764679241484_95625959.jpg"
+        },
+        "cost": "60.00",
+        "opentime2": "周一至周日 09:30-23:00",
+        "rating": "4.6",
+        "open_time": "09:30-23:00",
+        "meal_ordering": "0"
+      },
+      "error": null,
+      "latency_seconds": 0.084
+    },
+    {
+      "seq": 6,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0IBZLC167"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0IBZLC167",
+        "name": "小龙坎火锅(ifs hot店)",
+        "location": "104.079207,30.652578",
+        "address": "东大街下东大段21号附29号蓝光·香槟广场F2",
+        "business_area": "大慈寺",
+        "city": "成都市",
+        "type": "餐饮服务;中餐厅;火锅店",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "http://store.is.autonavi.com/query_pic?id=stec838378-a0f7-4492-8bcc-2d6637544988&user=search&operate=original"
+        },
+        "cost": "99.00",
+        "opentime2": "周一至周日 11:00-02:00",
+        "rating": "4.6",
+        "open_time": "11:00-02:00",
+        "meal_ordering": "0"
+      },
+      "error": null,
+      "latency_seconds": 0.751
+    },
+    {
+      "seq": 7,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0KA29I1KH"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0KA29I1KH",
+        "name": "蓉城江湖市井火锅(春熙路直营店)",
+        "location": "104.079223,30.652553",
+        "address": "东大街下东大街段1号",
+        "business_area": "东大街",
+        "city": "成都市",
+        "type": "餐饮服务;中餐厅;火锅店",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "https://aos-comment.amap.com/B0KA29I1KH/comment/724574C0_63F0_428E_9F5A_A139479915CB_L0_001_960_71_1766318607071_28242231.jpg"
+        },
+        "cost": "66.00",
+        "opentime2": "周一至周日 10:30-02:00",
+        "rating": "4.7",
+        "open_time": "10:30-02:00",
+        "meal_ordering": "0"
+      },
+      "error": null,
+      "latency_seconds": 0.066
+    },
+    {
+      "seq": 8,
+      "server": "amap-maps",
+      "tool": "maps_direction_walking",
+      "arguments": {
+        "destination": "104.079797,30.653223",
+        "origin": "104.080019,30.653389"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "104.080019,30.653389",
+          "destination": "104.079797,30.653223",
+          "paths": [
+            {
+              "distance": "203",
+              "duration": "162",
+              "steps": [
+                {
+                  "instruction": "向西南步行3米右转",
+                  "road": [],
+                  "distance": "3",
+                  "orientation": "西南",
+                  "duration": "2"
+                },
+                {
+                  "instruction": "向西步行75米左转",
+                  "road": [],
+                  "distance": "75",
+                  "orientation": "西",
+                  "duration": "60"
+                },
+                {
+                  "instruction": "沿红星路三段辅路向西南步行33米左转",
+                  "road": "红星路三段辅路",
+                  "distance": "33",
+                  "orientation": "西南",
+                  "duration": "26"
+                },
+                {
+                  "instruction": "向东步行28米左转",
+                  "road": [],
+                  "distance": "28",
+                  "orientation": "东",
+                  "duration": "22"
+                },
+                {
+                  "instruction": "向东步行64米到达目的地",
+                  "road": [],
+                  "distance": "64",
+                  "orientation": "东",
+                  "duration": "51"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.051
+    },
+    {
+      "seq": 9,
+      "server": "amap-maps",
+      "tool": "maps_direction_walking",
+      "arguments": {
+        "destination": "104.079728,30.652450",
+        "origin": "104.080019,30.653389"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "104.080019,30.653389",
+          "destination": "104.079728,30.652450",
+          "paths": [
+            {
+              "distance": "499",
+              "duration": "399",
+              "steps": [
+                {
+                  "instruction": "向西南步行3米右转",
+                  "road": [],
+                  "distance": "3",
+                  "orientation": "西南",
+                  "duration": "2"
+                },
+                {
+                  "instruction": "向西步行75米左转",
+                  "road": [],
+                  "distance": "75",
+                  "orientation": "西",
+                  "duration": "60"
+                },
+                {
+                  "instruction": "沿红星路三段辅路向西南步行157米左转",
+                  "road": "红星路三段辅路",
+                  "distance": "157",
+                  "orientation": "西南",
+                  "duration": "126"
+                },
+                {
+                  "instruction": "沿东大街下东大街段向东南步行150米左转",
+                  "road": "东大街下东大街段",
+                  "distance": "150",
+                  "orientation": "东南",
+                  "duration": "120"
+                },
+                {
+                  "instruction": "向北步行114米到达目的地",
+                  "road": [],
+                  "distance": "114",
+                  "orientation": "北",
+                  "duration": "91"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.061
+    },
+    {
+      "seq": 10,
+      "server": "amap-maps",
+      "tool": "maps_direction_walking",
+      "arguments": {
+        "destination": "104.079411,30.652489",
+        "origin": "104.080019,30.653389"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "104.080019,30.653389",
+          "destination": "104.079411,30.652489",
+          "paths": [
+            {
+              "distance": "208",
+              "duration": "166",
+              "steps": [
+                {
+                  "instruction": "向西南步行3米右转",
+                  "road": [],
+                  "distance": "3",
+                  "orientation": "西南",
+                  "duration": "2"
+                },
+                {
+                  "instruction": "向西步行75米左转",
+                  "road": [],
+                  "distance": "75",
+                  "orientation": "西",
+                  "duration": "60"
+                },
+                {
+                  "instruction": "沿红星路三段辅路向西南步行59米左转",
+                  "road": "红星路三段辅路",
+                  "distance": "59",
+                  "orientation": "西南",
+                  "duration": "47"
+                },
+                {
+                  "instruction": "向东南步行17米右转",
+                  "road": [],
+                  "distance": "17",
+                  "orientation": "东南",
+                  "duration": "14"
+                },
+                {
+                  "instruction": "向南步行54米到达目的地",
+                  "road": [],
+                  "distance": "54",
+                  "orientation": "南",
+                  "duration": "43"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.048
+    },
+    {
+      "seq": 11,
+      "server": "amap-maps",
+      "tool": "maps_direction_walking",
+      "arguments": {
+        "destination": "104.079207,30.652578",
+        "origin": "104.080019,30.653389"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "104.080019,30.653389",
+          "destination": "104.079207,30.652578",
+          "paths": [
+            {
+              "distance": "208",
+              "duration": "166",
+              "steps": [
+                {
+                  "instruction": "向西南步行3米右转",
+                  "road": [],
+                  "distance": "3",
+                  "orientation": "西南",
+                  "duration": "2"
+                },
+                {
+                  "instruction": "向西步行75米左转",
+                  "road": [],
+                  "distance": "75",
+                  "orientation": "西",
+                  "duration": "60"
+                },
+                {
+                  "instruction": "沿红星路三段辅路向西南步行59米左转",
+                  "road": "红星路三段辅路",
+                  "distance": "59",
+                  "orientation": "西南",
+                  "duration": "47"
+                },
+                {
+                  "instruction": "向东南步行17米右转",
+                  "road": [],
+                  "distance": "17",
+                  "orientation": "东南",
+                  "duration": "14"
+                },
+                {
+                  "instruction": "向南步行54米到达目的地",
+                  "road": [],
+                  "distance": "54",
+                  "orientation": "南",
+                  "duration": "43"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.72
+    },
+    {
+      "seq": 12,
+      "server": "amap-maps",
+      "tool": "maps_direction_walking",
+      "arguments": {
+        "destination": "104.079223,30.652553",
+        "origin": "104.080019,30.653389"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "104.080019,30.653389",
+          "destination": "104.079223,30.652553",
+          "paths": [
+            {
+              "distance": "208",
+              "duration": "166",
+              "steps": [
+                {
+                  "instruction": "向西南步行3米右转",
+                  "road": [],
+                  "distance": "3",
+                  "orientation": "西南",
+                  "duration": "2"
+                },
+                {
+                  "instruction": "向西步行75米左转",
+                  "road": [],
+                  "distance": "75",
+                  "orientation": "西",
+                  "duration": "60"
+                },
+                {
+                  "instruction": "沿红星路三段辅路向西南步行59米左转",
+                  "road": "红星路三段辅路",
+                  "distance": "59",
+                  "orientation": "西南",
+                  "duration": "47"
+                },
+                {
+                  "instruction": "向东南步行17米右转",
+                  "road": [],
+                  "distance": "17",
+                  "orientation": "东南",
+                  "duration": "14"
+                },
+                {
+                  "instruction": "向南步行54米到达目的地",
+                  "road": [],
+                  "distance": "54",
+                  "orientation": "南",
+                  "duration": "43"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.047
+    }
+  ],
+  "final_answer": "在成都春熙路地铁站附近，为您筛选出的评分 4.6 以上且步行距离最近的火锅店如下：\n\n其中，步行时间最短的是**蓉城江湖市井火锅(春熙路直营店)**、**小龙坎火锅(ifs hot店)**以及**毛孃孃老火锅(春熙路店)**，这三家店步行仅需约 **3 分钟**（约 166 秒），远低于 20 分钟的步行阈值，因此建议您步行前往。\n\n以下是具体的店铺信息供您选择：\n\n1.  **蓉城江湖市井火锅(春熙路直营店)**\n    *   **评分**：4.7\n    *   **步行时间**：约 3 分钟\n    *   **地址**：东大街下东大街段1号\n    *   **人均消费**：约 66 元\n\n2.  **小龙坎火锅(ifs hot店)**\n    *   **评分**：4.6\n    *   **步行时间**：约 3 分钟\n    *   **地址**：东大街下东大段21号附29号蓝光·香槟广场F2\n    *   **人均消费**：约 99 元\n\n3.  **毛孃孃老火锅(春熙路店)**\n    *   **评分**：4.6\n    *   **步行时间**：约 3 分钟\n    *   **地址**：东大街下东大街段21号附18号(香槟广场二楼)\n    *   **人均消费**：约 60 元\n\n4.  **海底捞火锅(春熙路银石广场店)**\n    *   **评分**：4.7\n    *   **步行时间**：约 3 分钟（162 秒）\n    *   **地址**：红星路三段99号银石广场1栋1单元7层1号\n    *   **人均消费**：约 120 元\n\n**建议**：上述火锅店步行均在 3-7 分钟左右，无需打车。您可以根据您的口味偏好或人均预算从中选择一家。祝您用餐愉快！",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

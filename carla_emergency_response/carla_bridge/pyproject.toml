@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carlabridge"
+version = "0.1.0"
+description = "Realtime middleware bridging CARLA simulation to web frontend and urban agent."
+requires-python = ">=3.12,<3.13"
+authors = [{ name = "CarlaBridge Team" }]
+readme = "README.md"
+license = { text = "Proprietary" }
+
+dependencies = [
+    # Python client for CARLA 0.9.16 (must match the simulator runtime). Wheels on PyPI.
+    "carla==0.9.16",
+    "aiohttp>=3.9",
+    "python-socketio>=5.10",
+    "aiortc>=1.7",
+    "av>=12.0",
+    "numpy>=1.26,<2",
+    "pydantic>=2.5",
+    "pydantic-settings>=2.1",
+    "psutil>=5.9",
+    "tomli-w>=1.0",
+    # Required by CARLA's vendored agents subpackage (carlabridge/vendor/agents/).
+    "shapely>=2.0",
+    "networkx>=3.0",
+    # From CARLA PythonAPI/carla/requirements.txt
+    "distro>=1.9",
+    "packaging",
+    # From CARLA PythonAPI/examples/requirements.txt
+    "future",
+    "pygame>=2.0",
+    "matplotlib>=3.0",
+    "open3d",
+    "Pillow>=9.0",
+    # From CARLA PythonAPI/util/requirements.txt
+    "py-cpuinfo",
+    "GPUtil",
+    "python-tr",
+    "imageio",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-asyncio>=0.23",
+]
+carla-examples = [
+    # invertedai requires Python >=3.10 and is installed from git
+    "invertedai @ git+https://github.com/inverted-ai/invertedai.git@develop ; python_version >= '3.10'",
+]
+
+[project.scripts]
+carlabridge = "carlabridge.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["carlabridge*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+# CARLA UE 仿真本体仍须单独安装（见 README）；本项目通过 PyPI `carla==0.9.16` 提供
+# Python 绑定。若离线环境无法用 PyPI，可改为 `pip install <CARLA_ROOT>/PythonAPI/carla/dist/*.whl`。
+#
+# CARLA's `agents` subpackage (GlobalRoutePlanner et al) is vendored under
+# carlabridge/vendor/agents/ and added to sys.path at runtime by
+# carlabridge/__init__.py — no external CARLA PythonAPI path is required.

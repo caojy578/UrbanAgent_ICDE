@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-20",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我最近开车出差挺多的，想知道大概排多少碳。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:09:47+08:00",
+  "run_timestamp_end": "2026-07-11T21:09:53+08:00",
+  "latency_seconds": 5.241,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6885,
+    "completion_tokens": 182,
+    "total_tokens": 7067
+  },
+  "tool_calls": [],
+  "final_answer": "为了帮您估算开车出差的碳排放，我可以使用 `travel-emission` 工具为您进行计算。\n\n为了提供准确的估算结果，我需要您提供以下几项信息：\n\n1. **行程距离**：大约一共开了多少公里（或者告诉我起点和终点城市，我可以帮您估算距离）。\n2. **车辆类型**：是小型车、中型车还是大型车？\n3. **燃料类型**：是燃油车（Regular）、电动车（Electric）还是混合动力（Hybrid）？\n4. **行程年份**：这有助于获取更准确的排放因子（通常默认为2022年）。\n5. **乘客人数**：车上通常有几个人？\n\n您可以直接告诉我这些信息，或者告诉我想了解的起止点，我可以为您查询相关数据并计算。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

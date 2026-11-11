@@ -1,0 +1,2188 @@
+{
+  "query_id": "CC-16",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我周六上午要从深圳南山去香港机场，如果地铁耗时超过 90 分钟就改为驾车",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:34:24+08:00",
+  "run_timestamp_end": "2026-07-11T22:34:38+08:00",
+  "latency_seconds": 14.152,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 40100,
+    "completion_tokens": 257,
+    "total_tokens": 40357
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "深圳南山",
+        "city": "深圳"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "广东省",
+            "city": "深圳市",
+            "citycode": "0755",
+            "district": "南山区",
+            "street": [],
+            "number": [],
+            "adcode": "440305",
+            "location": "113.930478,22.533191",
+            "level": "区县"
+          },
+          {
+            "country": "中国",
+            "province": "黑龙江省",
+            "city": "鹤岗市",
+            "citycode": "0468",
+            "district": "南山区",
+            "street": [],
+            "number": [],
+            "adcode": "230404",
+            "location": "130.285991,47.315121",
+            "level": "区县"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.07
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "香港机场",
+        "city": "香港"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": [],
+            "street": [],
+            "number": [],
+            "adcode": "810000",
+            "location": "114.170714,22.278354",
+            "level": "省"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.055
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "香港国际机场",
+        "city": "香港"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.920541,22.309761",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941226,22.312031",
+            "level": "公交地铁站点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941995,22.313424",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941965,22.313505",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941926,22.313609",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941611,22.312004",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941884,22.313721",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941856,22.313795",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941808,22.313923",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.941372,22.311543",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.055
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_direction_transit_integrated",
+      "arguments": {
+        "city": "深圳",
+        "cityd": "香港",
+        "destination": "113.920541,22.309761",
+        "origin": "113.930478,22.533191"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "113.930478,22.533191",
+          "destination": "113.920541,22.309761",
+          "distance": "23455",
+          "transits": [
+            {
+              "duration": "8548",
+              "walking_distance": "2130",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.930481,22.533129",
+                    "destination": "113.924858,22.532356",
+                    "distance": "768",
+                    "duration": "658",
+                    "steps": [
+                      {
+                        "instruction": "步行41米右转",
+                        "road": [],
+                        "distance": "41",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行18米右转",
+                        "road": [],
+                        "distance": "18",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行36米左转",
+                        "road": [],
+                        "distance": "36",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行16米右转",
+                        "road": [],
+                        "distance": "16",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行49米右转",
+                        "road": [],
+                        "distance": "49",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行233米向右前方行走",
+                        "road": "桃园路",
+                        "distance": "233",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿南光路步行12米向左前方行走",
+                        "road": "南光路",
+                        "distance": "12",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行39米右转",
+                        "road": "桃园路",
+                        "distance": "39",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行211米右转",
+                        "road": "桃园路",
+                        "distance": "211",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行17米",
+                        "road": [],
+                        "distance": "17",
+                        "action": [],
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行96米到达桃园",
+                        "road": [],
+                        "distance": "96",
+                        "action": [],
+                        "assistant_action": "到达桃园"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁1号线(罗宝线)(机场东--罗湖)",
+                        "departure_stop": {
+                          "name": "桃园"
+                        },
+                        "arrival_stop": {
+                          "name": "会展中心"
+                        },
+                        "distance": "14880",
+                        "duration": "1740",
+                        "via_stops": [
+                          {
+                            "name": "深大"
+                          },
+                          {
+                            "name": "高新园"
+                          },
+                          {
+                            "name": "白石洲"
+                          },
+                          {
+                            "name": "世界之窗"
+                          },
+                          {
+                            "name": "华侨城"
+                          },
+                          {
+                            "name": "侨城东"
+                          },
+                          {
+                            "name": "竹子林"
+                          },
+                          {
+                            "name": "车公庙"
+                          },
+                          {
+                            "name": "香蜜湖"
+                          },
+                          {
+                            "name": "购物公园"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "A口"
+                  },
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁4号线(龙华线)(牛湖--福田口岸)",
+                        "departure_stop": {
+                          "name": "会展中心"
+                        },
+                        "arrival_stop": {
+                          "name": "福田口岸"
+                        },
+                        "distance": "2390",
+                        "duration": "420",
+                        "via_stops": [
+                          {
+                            "name": "福民"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {
+                    "name": "A口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "114.069244,22.515707",
+                    "destination": "114.071762,22.512110",
+                    "distance": "747",
+                    "duration": "640",
+                    "steps": [
+                      {
+                        "instruction": "步行46米左转",
+                        "road": [],
+                        "distance": "46",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行21米右转",
+                        "road": [],
+                        "distance": "21",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿裕亨路步行115米右转",
+                        "road": "裕亨路",
+                        "distance": "115",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行103米往前走",
+                        "road": [],
+                        "distance": "103",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行248米往前走",
+                        "road": [],
+                        "distance": "248",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行121米左转",
+                        "road": [],
+                        "distance": "121",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行93米到达福田口岸",
+                        "road": [],
+                        "distance": "93",
+                        "action": [],
+                        "assistant_action": "到达福田口岸"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "九巴B1路(福田口岸--天慈总站)",
+                        "departure_stop": {
+                          "name": "福田口岸"
+                        },
+                        "arrival_stop": {
+                          "name": "元朗大棠路(S7月台)"
+                        },
+                        "distance": "13309",
+                        "duration": "1542",
+                        "via_stops": [
+                          {
+                            "name": "下湾村"
+                          },
+                          {
+                            "name": "下湾渔民新村"
+                          },
+                          {
+                            "name": "洲头村"
+                          },
+                          {
+                            "name": "新田运输交汇处"
+                          },
+                          {
+                            "name": "元点(Y1月台)"
+                          },
+                          {
+                            "name": "元朗又新街(S2月台)"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "114.033386,22.441641",
+                    "destination": "114.033226,22.441641",
+                    "distance": "17",
+                    "duration": "14",
+                    "steps": [
+                      {
+                        "instruction": "沿青山公路-元朗段步行17米到达大棠路",
+                        "road": "青山公路-元朗段",
+                        "distance": "17",
+                        "action": [],
+                        "assistant_action": "到达大棠路"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "九巴/龙巴E36路(八乡路--机场(地面运输中心)巴士总站)",
+                        "departure_stop": {
+                          "name": "大棠路"
+                        },
+                        "arrival_stop": {
+                          "name": "空邮中心"
+                        },
+                        "distance": "30803",
+                        "duration": "3023",
+                        "via_stops": [
+                          {
+                            "name": "康乐路"
+                          },
+                          {
+                            "name": "元朗警署"
+                          },
+                          {
+                            "name": "水边村"
+                          },
+                          {
+                            "name": "元朗公园"
+                          },
+                          {
+                            "name": "屯门赤鱲角隧道转车站"
+                          },
+                          {
+                            "name": "东涌消防局"
+                          },
+                          {
+                            "name": "东堤湾畔，顺东路"
+                          },
+                          {
+                            "name": "赤鱲角南路"
+                          },
+                          {
+                            "name": "骏运北路"
+                          },
+                          {
+                            "name": "香港空运货站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.935921,22.299023",
+                    "destination": "113.935379,22.301077",
+                    "distance": "597",
+                    "duration": "511",
+                    "steps": [
+                      {
+                        "instruction": "沿航膳西路步行112米右转",
+                        "road": "航膳西路",
+                        "distance": "112",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行180米左转",
+                        "road": [],
+                        "distance": "180",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿航膳中路步行110米左转",
+                        "road": "航膳中路",
+                        "distance": "110",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行148米右转",
+                        "road": "跑道南路",
+                        "distance": "148",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行47米",
+                        "road": "跑道南路",
+                        "distance": "47",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "8046",
+              "walking_distance": "2804",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.930481,22.533129",
+                    "destination": "113.924858,22.532356",
+                    "distance": "768",
+                    "duration": "658",
+                    "steps": [
+                      {
+                        "instruction": "步行41米右转",
+                        "road": [],
+                        "distance": "41",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行18米右转",
+                        "road": [],
+                        "distance": "18",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行36米左转",
+                        "road": [],
+                        "distance": "36",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行16米右转",
+                        "road": [],
+                        "distance": "16",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行49米右转",
+                        "road": [],
+                        "distance": "49",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行233米向右前方行走",
+                        "road": "桃园路",
+                        "distance": "233",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿南光路步行12米向左前方行走",
+                        "road": "南光路",
+                        "distance": "12",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行39米右转",
+                        "road": "桃园路",
+                        "distance": "39",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行211米右转",
+                        "road": "桃园路",
+                        "distance": "211",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行17米",
+                        "road": [],
+                        "distance": "17",
+                        "action": [],
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行96米到达桃园",
+                        "road": [],
+                        "distance": "96",
+                        "action": [],
+                        "assistant_action": "到达桃园"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁1号线(罗宝线)(机场东--罗湖)",
+                        "departure_stop": {
+                          "name": "桃园"
+                        },
+                        "arrival_stop": {
+                          "name": "深大"
+                        },
+                        "distance": "2340",
+                        "duration": "420",
+                        "via_stops": []
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "A口"
+                  },
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.944168,22.538668",
+                    "destination": "113.945526,22.537170",
+                    "distance": "314",
+                    "duration": "269",
+                    "steps": [
+                      {
+                        "instruction": "步行314米到达深大",
+                        "road": [],
+                        "distance": "314",
+                        "action": [],
+                        "assistant_action": "到达深大"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁13号线(石岩线)(李松蓢--深圳湾口岸)",
+                        "departure_stop": {
+                          "name": "深大"
+                        },
+                        "arrival_stop": {
+                          "name": "深圳湾口岸"
+                        },
+                        "distance": "4344",
+                        "duration": "780",
+                        "via_stops": [
+                          {
+                            "name": "粤海门"
+                          },
+                          {
+                            "name": "科苑"
+                          },
+                          {
+                            "name": "后海"
+                          },
+                          {
+                            "name": "人才公园"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {
+                    "name": "B口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.950577,22.502943",
+                    "destination": "113.950211,22.498377",
+                    "distance": "990",
+                    "duration": "848",
+                    "steps": [
+                      {
+                        "instruction": "步行118米向左前方行走",
+                        "road": [],
+                        "distance": "118",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行9米右转",
+                        "road": [],
+                        "distance": "9",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行65米向右后方行走",
+                        "road": [],
+                        "distance": "65",
+                        "action": "向右后方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行131米左转",
+                        "road": [],
+                        "distance": "131",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行57米右转",
+                        "road": [],
+                        "distance": "57",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行419米向右前方行走",
+                        "road": [],
+                        "distance": "419",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行110米右转",
+                        "road": [],
+                        "distance": "110",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行17米向右前方行走",
+                        "road": [],
+                        "distance": "17",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行64米到达深圳湾口岸",
+                        "road": [],
+                        "distance": "64",
+                        "action": [],
+                        "assistant_action": "到达深圳湾口岸"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "城巴B3X路(深圳湾口岸--屯门市中心，屯门乡事会路)",
+                        "departure_stop": {
+                          "name": "深圳湾口岸"
+                        },
+                        "arrival_stop": {
+                          "name": "屯门市中心，屯门乡事会路"
+                        },
+                        "distance": "16363",
+                        "duration": "1756",
+                        "via_stops": [
+                          {
+                            "name": "红桥，屯门公路"
+                          },
+                          {
+                            "name": "屯门官立中学，屯兴路"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.980080,22.389448",
+                    "destination": "113.980423,22.388685",
+                    "distance": "135",
+                    "duration": "115",
+                    "steps": [
+                      {
+                        "instruction": "沿屯门乡事会路步行63米向右前方行走",
+                        "road": "屯门乡事会路",
+                        "distance": "63",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行5米左转",
+                        "road": [],
+                        "distance": "5",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行47米右转",
+                        "road": [],
+                        "distance": "47",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行20米到达屯门市中心",
+                        "road": [],
+                        "distance": "20",
+                        "action": [],
+                        "assistant_action": "到达屯门市中心"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "九巴/龙巴E33路(屯门市中心--机场(地面运输中心)巴士总站)",
+                        "departure_stop": {
+                          "name": "屯门市中心"
+                        },
+                        "arrival_stop": {
+                          "name": "空邮中心"
+                        },
+                        "distance": "21557",
+                        "duration": "2689",
+                        "via_stops": [
+                          {
+                            "name": "安定邨"
+                          },
+                          {
+                            "name": "兆麟苑"
+                          },
+                          {
+                            "name": "丰景园"
+                          },
+                          {
+                            "name": "龙逸邨"
+                          },
+                          {
+                            "name": "富健花园"
+                          },
+                          {
+                            "name": "新屯门中心"
+                          },
+                          {
+                            "name": "兆山苑柳景阁"
+                          },
+                          {
+                            "name": "蝴蝶湾"
+                          },
+                          {
+                            "name": "屯门赤鱲角隧道转车站"
+                          },
+                          {
+                            "name": "东涌消防局"
+                          },
+                          {
+                            "name": "东堤湾畔"
+                          },
+                          {
+                            "name": "赤鱲角南路"
+                          },
+                          {
+                            "name": "骏运北路"
+                          },
+                          {
+                            "name": "香港空运货站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.935921,22.299023",
+                    "destination": "113.935379,22.301077",
+                    "distance": "597",
+                    "duration": "511",
+                    "steps": [
+                      {
+                        "instruction": "沿航膳西路步行112米右转",
+                        "road": "航膳西路",
+                        "distance": "112",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行180米左转",
+                        "road": [],
+                        "distance": "180",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿航膳中路步行110米左转",
+                        "road": "航膳中路",
+                        "distance": "110",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行148米右转",
+                        "road": "跑道南路",
+                        "distance": "148",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行47米",
+                        "road": "跑道南路",
+                        "distance": "47",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "8613",
+              "walking_distance": "3355",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.930481,22.533129",
+                    "destination": "113.924858,22.532356",
+                    "distance": "768",
+                    "duration": "658",
+                    "steps": [
+                      {
+                        "instruction": "步行41米右转",
+                        "road": [],
+                        "distance": "41",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行18米右转",
+                        "road": [],
+                        "distance": "18",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行36米左转",
+                        "road": [],
+                        "distance": "36",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行16米右转",
+                        "road": [],
+                        "distance": "16",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行49米右转",
+                        "road": [],
+                        "distance": "49",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行233米向右前方行走",
+                        "road": "桃园路",
+                        "distance": "233",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿南光路步行12米向左前方行走",
+                        "road": "南光路",
+                        "distance": "12",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行39米右转",
+                        "road": "桃园路",
+                        "distance": "39",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行211米右转",
+                        "road": "桃园路",
+                        "distance": "211",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行17米",
+                        "road": [],
+                        "distance": "17",
+                        "action": [],
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行96米到达桃园",
+                        "road": [],
+                        "distance": "96",
+                        "action": [],
+                        "assistant_action": "到达桃园"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁1号线(罗宝线)(机场东--罗湖)",
+                        "departure_stop": {
+                          "name": "桃园"
+                        },
+                        "arrival_stop": {
+                          "name": "深大"
+                        },
+                        "distance": "2340",
+                        "duration": "420",
+                        "via_stops": []
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "A口"
+                  },
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.944168,22.538668",
+                    "destination": "113.945526,22.537170",
+                    "distance": "314",
+                    "duration": "269",
+                    "steps": [
+                      {
+                        "instruction": "步行314米到达深大",
+                        "road": [],
+                        "distance": "314",
+                        "action": [],
+                        "assistant_action": "到达深大"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁13号线(石岩线)(李松蓢--深圳湾口岸)",
+                        "departure_stop": {
+                          "name": "深大"
+                        },
+                        "arrival_stop": {
+                          "name": "深圳湾口岸"
+                        },
+                        "distance": "4344",
+                        "duration": "780",
+                        "via_stops": [
+                          {
+                            "name": "粤海门"
+                          },
+                          {
+                            "name": "科苑"
+                          },
+                          {
+                            "name": "后海"
+                          },
+                          {
+                            "name": "人才公园"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {
+                    "name": "B口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.950577,22.502943",
+                    "destination": "113.950272,22.498602",
+                    "distance": "1019",
+                    "duration": "873",
+                    "steps": [
+                      {
+                        "instruction": "步行118米向左前方行走",
+                        "road": [],
+                        "distance": "118",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行9米右转",
+                        "road": [],
+                        "distance": "9",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行65米向右后方行走",
+                        "road": [],
+                        "distance": "65",
+                        "action": "向右后方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行131米左转",
+                        "road": [],
+                        "distance": "131",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行57米右转",
+                        "road": [],
+                        "distance": "57",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行419米向右前方行走",
+                        "road": [],
+                        "distance": "419",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行110米右转",
+                        "road": [],
+                        "distance": "110",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行17米向右前方行走",
+                        "road": [],
+                        "distance": "17",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行93米到达深圳湾口岸",
+                        "road": [],
+                        "distance": "93",
+                        "action": [],
+                        "assistant_action": "到达深圳湾口岸"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "城巴B3路(深圳湾口岸--屯门码头)",
+                        "departure_stop": {
+                          "name": "深圳湾口岸"
+                        },
+                        "arrival_stop": {
+                          "name": "屯门市中心，屯门乡事会路"
+                        },
+                        "distance": "15451",
+                        "duration": "2245",
+                        "via_stops": []
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "九巴A33X路(经国泰城)(富泰邨总站--机场(地面运输中心)巴士总站)",
+                        "departure_stop": {
+                          "name": "屯门市中心总站"
+                        },
+                        "arrival_stop": {
+                          "name": "二号检查闸，畅连路"
+                        },
+                        "distance": "19773",
+                        "duration": "2294",
+                        "via_stops": [
+                          {
+                            "name": "安定邨"
+                          },
+                          {
+                            "name": "兆麟苑"
+                          },
+                          {
+                            "name": "丰景园"
+                          },
+                          {
+                            "name": "屯门赤鱲角隧道转车站"
+                          },
+                          {
+                            "name": "港珠澳大桥旅检大楼"
+                          },
+                          {
+                            "name": "国泰城，观景路"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.941360,22.307812",
+                    "destination": "113.935379,22.301077",
+                    "distance": "1253",
+                    "duration": "1074",
+                    "steps": [
+                      {
+                        "instruction": "沿畅连路步行34米向左后方行走",
+                        "road": "畅连路",
+                        "distance": "34",
+                        "action": "向左后方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿畅连路步行128米左转",
+                        "road": "畅连路",
+                        "distance": "128",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行1044米右转",
+                        "road": "跑道南路",
+                        "distance": "1044",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行47米",
+                        "road": "跑道南路",
+                        "distance": "47",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "9234",
+              "walking_distance": "2123",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.930481,22.533129",
+                    "destination": "113.924858,22.532356",
+                    "distance": "768",
+                    "duration": "658",
+                    "steps": [
+                      {
+                        "instruction": "步行41米右转",
+                        "road": [],
+                        "distance": "41",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行18米右转",
+                        "road": [],
+                        "distance": "18",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行36米左转",
+                        "road": [],
+                        "distance": "36",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行16米右转",
+                        "road": [],
+                        "distance": "16",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行49米右转",
+                        "road": [],
+                        "distance": "49",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行233米向右前方行走",
+                        "road": "桃园路",
+                        "distance": "233",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿南光路步行12米向左前方行走",
+                        "road": "南光路",
+                        "distance": "12",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行39米右转",
+                        "road": "桃园路",
+                        "distance": "39",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿桃园路步行211米右转",
+                        "road": "桃园路",
+                        "distance": "211",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行17米",
+                        "road": [],
+                        "distance": "17",
+                        "action": [],
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行96米到达桃园",
+                        "road": [],
+                        "distance": "96",
+                        "action": [],
+                        "assistant_action": "到达桃园"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁1号线(罗宝线)(机场东--罗湖)",
+                        "departure_stop": {
+                          "name": "桃园"
+                        },
+                        "arrival_stop": {
+                          "name": "会展中心"
+                        },
+                        "distance": "14880",
+                        "duration": "1740",
+                        "via_stops": [
+                          {
+                            "name": "深大"
+                          },
+                          {
+                            "name": "高新园"
+                          },
+                          {
+                            "name": "白石洲"
+                          },
+                          {
+                            "name": "世界之窗"
+                          },
+                          {
+                            "name": "华侨城"
+                          },
+                          {
+                            "name": "侨城东"
+                          },
+                          {
+                            "name": "竹子林"
+                          },
+                          {
+                            "name": "车公庙"
+                          },
+                          {
+                            "name": "香蜜湖"
+                          },
+                          {
+                            "name": "购物公园"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "A口"
+                  },
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁4号线(龙华线)(牛湖--福田口岸)",
+                        "departure_stop": {
+                          "name": "会展中心"
+                        },
+                        "arrival_stop": {
+                          "name": "福田口岸"
+                        },
+                        "distance": "2390",
+                        "duration": "420",
+                        "via_stops": [
+                          {
+                            "name": "福民"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {
+                    "name": "A口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "114.069244,22.515707",
+                    "destination": "114.071518,22.512392",
+                    "distance": "756",
+                    "duration": "648",
+                    "steps": [
+                      {
+                        "instruction": "步行46米左转",
+                        "road": [],
+                        "distance": "46",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行21米右转",
+                        "road": [],
+                        "distance": "21",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿裕亨路步行115米右转",
+                        "road": "裕亨路",
+                        "distance": "115",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行103米往前走",
+                        "road": [],
+                        "distance": "103",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行248米往前走",
+                        "road": [],
+                        "distance": "248",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行121米左转",
+                        "road": [],
+                        "distance": "121",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行70米左转",
+                        "road": [],
+                        "distance": "70",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行32米到达未命名通道，近落马洲站",
+                        "road": [],
+                        "distance": "32",
+                        "action": [],
+                        "assistant_action": "到达未命名通道，近落马洲站"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "新界区专线小巴75路(未命名通道，近落马洲站--福康街，近金宝楼)",
+                        "departure_stop": {
+                          "name": "未命名通道，近落马洲站"
+                        },
+                        "arrival_stop": {
+                          "name": "青山公路-元朗段，近凹头回旋处"
+                        },
+                        "distance": "11889",
+                        "duration": "1895",
+                        "via_stops": [
+                          {
+                            "name": "落马洲路，近潘屋村"
+                          },
+                          {
+                            "name": "青山公路－新田段，近新田公共运输交汇处过境穿梭巴士新田总站"
+                          },
+                          {
+                            "name": "青山公路－新田段，近文天祥公园"
+                          },
+                          {
+                            "name": "青山公路－米埔段，近加州豪园"
+                          },
+                          {
+                            "name": "新潭路，近宏园"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "九巴/龙巴E36路(八乡路--机场(地面运输中心)巴士总站)",
+                        "departure_stop": {
+                          "name": "东成里"
+                        },
+                        "arrival_stop": {
+                          "name": "空邮中心"
+                        },
+                        "distance": "32666",
+                        "duration": "3362",
+                        "via_stops": [
+                          {
+                            "name": "杨屋村"
+                          },
+                          {
+                            "name": "形点I"
+                          },
+                          {
+                            "name": "元朗又新街"
+                          },
+                          {
+                            "name": "大棠路"
+                          },
+                          {
+                            "name": "康乐路"
+                          },
+                          {
+                            "name": "元朗警署"
+                          },
+                          {
+                            "name": "水边村"
+                          },
+                          {
+                            "name": "元朗公园"
+                          },
+                          {
+                            "name": "屯门赤鱲角隧道转车站"
+                          },
+                          {
+                            "name": "东涌消防局"
+                          },
+                          {
+                            "name": "东堤湾畔，顺东路"
+                          },
+                          {
+                            "name": "赤鱲角南路"
+                          },
+                          {
+                            "name": "骏运北路"
+                          },
+                          {
+                            "name": "香港空运货站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.935921,22.299023",
+                    "destination": "113.935379,22.301077",
+                    "distance": "597",
+                    "duration": "511",
+                    "steps": [
+                      {
+                        "instruction": "沿航膳西路步行112米右转",
+                        "road": "航膳西路",
+                        "distance": "112",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行180米左转",
+                        "road": [],
+                        "distance": "180",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿航膳中路步行110米左转",
+                        "road": "航膳中路",
+                        "distance": "110",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行148米右转",
+                        "road": "跑道南路",
+                        "distance": "148",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行47米",
+                        "road": "跑道南路",
+                        "distance": "47",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "8044",
+              "walking_distance": "2771",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.930481,22.533129",
+                    "destination": "113.931847,22.533884",
+                    "distance": "235",
+                    "duration": "201",
+                    "steps": [
+                      {
+                        "instruction": "步行41米向左前方行走",
+                        "road": [],
+                        "distance": "41",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行47米左转",
+                        "road": [],
+                        "distance": "47",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行66米右转",
+                        "road": [],
+                        "distance": "66",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行57米左转",
+                        "road": [],
+                        "distance": "57",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿南海大道辅路步行24米到达深圳大学",
+                        "road": "南海大道辅路",
+                        "distance": "24",
+                        "action": [],
+                        "assistant_action": "到达深圳大学"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "362路(燕罗塘下涌综合场站--福田口岸公交总站)",
+                        "departure_stop": {
+                          "name": "深圳大学"
+                        },
+                        "arrival_stop": {
+                          "name": "滨海之窗2"
+                        },
+                        "distance": "2344",
+                        "duration": "747",
+                        "via_stops": [
+                          {
+                            "name": "桂庙新村"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.938263,22.521202",
+                    "destination": "113.943504,22.518173",
+                    "distance": "814",
+                    "duration": "697",
+                    "steps": [
+                      {
+                        "instruction": "沿滨海大道辅路步行63米右转",
+                        "road": "滨海大道辅路",
+                        "distance": "63",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行273米左转",
+                        "road": [],
+                        "distance": "273",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行60米右转",
+                        "road": [],
+                        "distance": "60",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行114米左转",
+                        "road": [],
+                        "distance": "114",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行29米往前走",
+                        "road": [],
+                        "distance": "29",
+                        "action": "往前走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行275米到达后海",
+                        "road": [],
+                        "distance": "275",
+                        "action": [],
+                        "assistant_action": "到达后海"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "地铁13号线(石岩线)(李松蓢--深圳湾口岸)",
+                        "departure_stop": {
+                          "name": "后海"
+                        },
+                        "arrival_stop": {
+                          "name": "深圳湾口岸"
+                        },
+                        "distance": "2179",
+                        "duration": "480",
+                        "via_stops": [
+                          {
+                            "name": "人才公园"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {
+                    "name": "J口"
+                  },
+                  "exit": {
+                    "name": "B口"
+                  },
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.950577,22.502943",
+                    "destination": "113.950211,22.498377",
+                    "distance": "990",
+                    "duration": "848",
+                    "steps": [
+                      {
+                        "instruction": "步行118米向左前方行走",
+                        "road": [],
+                        "distance": "118",
+                        "action": "向左前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行9米右转",
+                        "road": [],
+                        "distance": "9",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行65米向右后方行走",
+                        "road": [],
+                        "distance": "65",
+                        "action": "向右后方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行131米左转",
+                        "road": [],
+                        "distance": "131",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行57米右转",
+                        "road": [],
+                        "distance": "57",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行419米向右前方行走",
+                        "road": [],
+                        "distance": "419",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行110米右转",
+                        "road": [],
+                        "distance": "110",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行17米向右前方行走",
+                        "road": [],
+                        "distance": "17",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行64米到达深圳湾口岸",
+                        "road": [],
+                        "distance": "64",
+                        "action": [],
+                        "assistant_action": "到达深圳湾口岸"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "城巴B3X路(深圳湾口岸--屯门市中心，屯门乡事会路)",
+                        "departure_stop": {
+                          "name": "深圳湾口岸"
+                        },
+                        "arrival_stop": {
+                          "name": "屯门市中心，屯门乡事会路"
+                        },
+                        "distance": "16363",
+                        "duration": "1756",
+                        "via_stops": [
+                          {
+                            "name": "红桥，屯门公路"
+                          },
+                          {
+                            "name": "屯门官立中学，屯兴路"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.980080,22.389448",
+                    "destination": "113.980423,22.388685",
+                    "distance": "135",
+                    "duration": "115",
+                    "steps": [
+                      {
+                        "instruction": "沿屯门乡事会路步行63米向右前方行走",
+                        "road": "屯门乡事会路",
+                        "distance": "63",
+                        "action": "向右前方行走",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行5米左转",
+                        "road": [],
+                        "distance": "5",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行47米右转",
+                        "road": [],
+                        "distance": "47",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行20米到达屯门市中心",
+                        "road": [],
+                        "distance": "20",
+                        "action": [],
+                        "assistant_action": "到达屯门市中心"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "九巴/龙巴E33路(屯门市中心--机场(地面运输中心)巴士总站)",
+                        "departure_stop": {
+                          "name": "屯门市中心"
+                        },
+                        "arrival_stop": {
+                          "name": "空邮中心"
+                        },
+                        "distance": "21557",
+                        "duration": "2689",
+                        "via_stops": [
+                          {
+                            "name": "安定邨"
+                          },
+                          {
+                            "name": "兆麟苑"
+                          },
+                          {
+                            "name": "丰景园"
+                          },
+                          {
+                            "name": "龙逸邨"
+                          },
+                          {
+                            "name": "富健花园"
+                          },
+                          {
+                            "name": "新屯门中心"
+                          },
+                          {
+                            "name": "兆山苑柳景阁"
+                          },
+                          {
+                            "name": "蝴蝶湾"
+                          },
+                          {
+                            "name": "屯门赤鱲角隧道转车站"
+                          },
+                          {
+                            "name": "东涌消防局"
+                          },
+                          {
+                            "name": "东堤湾畔"
+                          },
+                          {
+                            "name": "赤鱲角南路"
+                          },
+                          {
+                            "name": "骏运北路"
+                          },
+                          {
+                            "name": "香港空运货站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.935921,22.299023",
+                    "destination": "113.935379,22.301077",
+                    "distance": "597",
+                    "duration": "511",
+                    "steps": [
+                      {
+                        "instruction": "沿航膳西路步行112米右转",
+                        "road": "航膳西路",
+                        "distance": "112",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行180米左转",
+                        "road": [],
+                        "distance": "180",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿航膳中路步行110米左转",
+                        "road": "航膳中路",
+                        "distance": "110",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行148米右转",
+                        "road": "跑道南路",
+                        "distance": "148",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿跑道南路步行47米",
+                        "road": "跑道南路",
+                        "distance": "47",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 1.231
+    }
+  ],
+  "final_answer": "根据查询结果，从深圳南山前往香港机场的公共交通方案耗时均超过了 90 分钟（即 5400 秒以上），最短耗时约为 8044 秒（约 134 分钟）。\n\n既然您设定的标准是如果地铁/公共交通耗时超过 90 分钟则改为驾车，建议您选择驾车前往。需要提醒的是，驾车前往香港国际机场需要注意跨境驾驶的相关要求和口岸通关情况。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

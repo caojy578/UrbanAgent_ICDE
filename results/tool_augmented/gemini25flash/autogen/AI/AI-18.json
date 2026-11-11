@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-18",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想找家酒店住一晚。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:33:10+08:00",
+  "run_timestamp_end": "2026-07-12T14:34:10+08:00",
+  "latency_seconds": 59.791,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 181497,
+    "completion_tokens": 86,
+    "total_tokens": 181583
+  },
+  "tool_calls": [],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

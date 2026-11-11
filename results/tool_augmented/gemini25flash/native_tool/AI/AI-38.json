@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-38",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想知道这个地址在地图上的经纬度。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:12:55+08:00",
+  "run_timestamp_end": "2026-07-11T21:12:59+08:00",
+  "latency_seconds": 4.461,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6881,
+    "completion_tokens": 21,
+    "total_tokens": 6902
+  },
+  "tool_calls": [],
+  "final_answer": "请提供您想要查询的具体地址，我将为您查找其在地图上的经纬度坐标。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

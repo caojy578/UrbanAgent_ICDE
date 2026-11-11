@@ -1,0 +1,58 @@
+{
+  "query_id": "CR-28",
+  "query_type": "复杂检索型",
+  "level": "L1",
+  "query": "查询美国德克萨斯州（当前时间2026年7月11日）近 9 天 ≥3.9 级地震，并计算 独栋住宅空调用电 260 kWh（夏季工况） 的排放。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-16T12:48:08+08:00",
+  "run_timestamp_end": "2026-07-16T12:48:30+08:00",
+  "latency_seconds": 22.469,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 2747,
+    "completion_tokens": 1216,
+    "total_tokens": 3963
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "usgs-quakes-mcp",
+      "tool": "find-earthquakes",
+      "arguments": {
+        "endTime": "2026-07-11T23:59:59Z",
+        "maxLatitude": 36.500704,
+        "maxLongitude": -93.507208,
+        "minLatitude": 25.83738,
+        "minLongitude": -106.645646,
+        "minmagnitude": 3.9,
+        "startTime": "2026-07-02T00:00:00Z"
+      },
+      "success": true,
+      "raw_result": [],
+      "error": null,
+      "latency_seconds": 0.964
+    },
+    {
+      "seq": 2,
+      "server": "climatiq-mcp-server",
+      "tool": "electricity-emission",
+      "arguments": {
+        "energy": 260,
+        "energy_unit": "kWh",
+        "region": "US"
+      },
+      "success": true,
+      "raw_result": "Electricity consumption of 260 kWh in US results in 119.69480172 kg of CO2e emissions.\nEmission factor used: Electricity supplied from grid - residual mix\n\nDetailed results are available as a resource with ID: electricity_260_kWh_US_140291109849216",
+      "error": null,
+      "latency_seconds": 3.024
+    }
+  ],
+  "final_answer": "好的，美国德克萨斯州在 2026年7月2日 至 2026年7月11日 期间没有发生 3.9 级及以上的地震。\n\n独栋住宅空调用电 260 kWh（夏季工况）的排放量为 119.69480172 kg 的二氧化碳当量。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

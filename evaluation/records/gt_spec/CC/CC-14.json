@@ -1,0 +1,68 @@
+{
+  "query_id": "CC-14",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我在 San Francisco Mission District 想安排一次约会晚餐， 要求评分 4.5 以上，人均不超过 80 美元，并可在线预订。",
+  "checklist": [
+    {
+      "item_id": "CC-14.1",
+      "assertion": "返回的每家餐厅位置均在 San Francisco Mission District 区域内",
+      "gt_source": "static_ref",
+      "necessary": true,
+      "static_gt": {
+        "ref_value": "Mission District",
+        "datum": null,
+        "tolerance": "行政区划匹配:餐厅地址需明确含 Mission District / Mission 或对应邮编(94110等),可通过 Yelp 或 Google Maps 验证其 neighborhood 标签",
+        "collect_from": "Yelp 官网(yelp.com)搜索餐厅详情页的 Location & Hours 部分,或 Google Maps 查看餐厅地址所属 neighborhood",
+        "collected_on": "2026-07-09",
+        "note": "Mission District 是旧金山的一个明确社区(neighborhood),不要与整个 San Francisco 市混淆;采集时核对餐厅页面显示的具体社区归属 | MCP2026-07-09:天地图主源+高德校验 语义真值"
+      }
+    },
+    {
+      "item_id": "CC-14.2",
+      "assertion": "返回的每家餐厅当前评分 >= 4.5 星",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-14.3",
+      "assertion": "返回的每家餐厅人均消费 <= 80 美元",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-14.4",
+      "assertion": "返回的每家餐厅支持在线预订功能",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-14.5",
+      "assertion": "返回结果包含至少一家符合所有条件的餐厅,且关键信息(名称/评分/价格区间/预订方式)可溯源到本次商户评价工具返回数据",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-14.6",
+      "assertion": "返回结果适合约会晚餐场景(如有氛围/菜系描述应与浪漫晚餐相符)",
+      "gt_source": "computed",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "商户评价"
+    ],
+    "dependency_pairs": [],
+    "notes": "需使用商户评价工具(Yelp)搜索 San Francisco Mission District 区域餐厅,筛选条件:评分>=4.5、价格区间$$(人均约60-80美元)或以下、supports_reservation=true;最小充分集只需商户评价工具,地理编码非必需(区域名可直接传参)"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

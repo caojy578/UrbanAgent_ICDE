@@ -1,0 +1,109 @@
+{
+  "query_id": "CC-12",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我准备7月12号到14号去杭州玩 3 天，帮我规划酒店路线，房间价格控制在 1000 元以内， 并且第一晚住西湖附近，第二晚换到市中心.。",
+  "checklist": [
+    {
+      "item_id": "CC-12.1",
+      "assertion": "第一晚(4月4日)推荐的酒店位于西湖附近区域(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "如家酒店·neo(杭州西湖湖滨延安路步行街in77店)",
+          "address": "浙江省杭州市上城区湖滨街道菩提寺路1号(延安路298号)",
+          "lng": 120.164908,
+          "lat": 30.255781
+        },
+        "datum": "GCJ-02",
+        "tolerance": "酒店坐标距西湖景区边界<=2km 或位于西湖区且距西湖核心景点<=3km",
+        "collect_from": "大众点评人工选店+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-12",
+        "note": "[桶A修正 2026-07-12]  来源=tianditu_search;天地图↔高德=7m;百度→GCJ02↔高德=332m | GCJ-02 lng=120.164908 lat=30.255781"
+      }
+    },
+    {
+      "item_id": "CC-12.2",
+      "assertion": "第一晚(4月4日)推荐的酒店在4月4日有房且房价<=1000元",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-12.3",
+      "assertion": "第二晚(4月5日)推荐的酒店位于杭州市中心区域(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "汉庭(杭州中心武林广场地铁站店)",
+          "address": "拱墅区中山北路522号",
+          "lng": 120.166814,
+          "lat": 30.271398
+        },
+        "datum": "GCJ-02",
+        "tolerance": "酒店位于上城区/拱墅区/西湖区的市中心商圈(如武林广场/延安路/湖滨商圈),或距杭州市政府/武林广场<=3km",
+        "collect_from": "大众点评人工选店+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-11",
+        "note": "[人工复核 2026-07-11] 大众点评:rank=4.3,tag=经济型,距武林广场360m;作废:四季酒店(超1000元);价格≤1000由trace判定 | GCJ-02 lng=120.166814 lat=30.271398"
+      }
+    },
+    {
+      "item_id": "CC-12.4",
+      "assertion": "第二晚(4月5日)推荐的酒店在4月5日有房且房价<=1000元",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-12.5",
+      "assertion": "第一晚酒店与第二晚酒店是不同的酒店(满足'换到'要求)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-12.6",
+      "assertion": "提供了从某起点(用户当前位置或合理推断的起点)到第一晚酒店的路线方案",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-12.7",
+      "assertion": "提供了从第一晚酒店到第二晚酒店的路线方案",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-12.8",
+      "assertion": "路线起点坐标与本次工具返回的第一晚酒店坐标一致(内部一致性)",
+      "gt_source": "computed",
+      "necessary": false
+    },
+    {
+      "item_id": "CC-12.9",
+      "assertion": "路线终点坐标与本次工具返回的第二晚酒店坐标一致(内部一致性)",
+      "gt_source": "computed",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "酒店搜索"
+    ],
+    "dependency_pairs": [],
+    "notes": "需先完成两晚酒店搜索(含位置区域约束和价格约束),再基于确定的酒店坐标规划路线;酒店搜索需分别查询4月4日和4月5日的房态房价"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  },
+  "_date_sync": {
+    "from": "我准备4月4号到6号去杭州玩 3 天，帮我规划酒店路线，房间价格控制在 1000 元以内， 并且第一晚住西湖附近，第二晚换到市中心.。",
+    "to": "我准备7月12号到14号去杭州玩 3 天，帮我规划酒店路线，房间价格控制在 1000 元以内， 并且第一晚住西湖附近，第二晚换到市中心.。",
+    "synced": "2026-07-11 base"
+  }
+}

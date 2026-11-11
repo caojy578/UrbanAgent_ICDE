@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-14",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想找个地方吃晚饭。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:08:47+08:00",
+  "run_timestamp_end": "2026-07-11T21:08:52+08:00",
+  "latency_seconds": 5.01,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6878,
+    "completion_tokens": 126,
+    "total_tokens": 7004
+  },
+  "tool_calls": [],
+  "final_answer": "好的，没问题。为了能给您更精准的推荐，能告诉我您现在的位置（或者想去的区域）吗？\n\n此外，如果有以下偏好也请告诉我：\n1. **菜系口味**（例如：川菜、粤菜、西餐、日料等）\n2. **预算范围**（例如：人均50-100元，或者追求高端精致）\n3. **就餐环境**（例如：安静适合聊天、适合家庭聚餐、热闹的网红店）\n\n您可以直接告诉我大概位置，我会为您搜索附近的优质餐厅。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

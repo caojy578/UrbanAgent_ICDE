@@ -1,0 +1,42 @@
+{
+  "query_id": "AI-47",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我朋友给我发了一个坐标，帮我看看是哪。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:14:24+08:00",
+  "run_timestamp_end": "2026-07-11T21:14:32+08:00",
+  "latency_seconds": 7.845,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 13829,
+    "completion_tokens": 60,
+    "total_tokens": 13889
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_regeocode",
+      "arguments": {
+        "location": "116.481488,39.990464"
+      },
+      "success": true,
+      "raw_result": {
+        "provice": "北京市",
+        "city": [],
+        "district": "朝阳区"
+      },
+      "error": null,
+      "latency_seconds": 0.07
+    }
+  ],
+  "final_answer": "请提供一下您朋友给您的坐标（经纬度），我会帮您查看该坐标具体所在的地址信息。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

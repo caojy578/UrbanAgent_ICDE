@@ -1,0 +1,743 @@
+{
+  "query_id": "CC-41",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我明天早上八点从泉州「西街」去「开元寺」， 如果未来 2 小时内持续降雨就改为打车； 否则步行； 如果步行距离超过 3 公里就改为骑行。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T10:02:02+08:00",
+  "run_timestamp_end": "2026-07-12T10:02:13+08:00",
+  "latency_seconds": 10.129,
+  "llm_calls": 3,
+  "usage": {
+    "prompt_tokens": 29126,
+    "completion_tokens": 106,
+    "total_tokens": 29232
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "西街",
+        "city": "泉州"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "甘南藏族自治州",
+            "citycode": "0941",
+            "district": "舟曲县",
+            "street": "西街",
+            "number": [],
+            "adcode": "623023",
+            "location": "104.376987,33.782784",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "临夏回族自治州",
+            "citycode": "0930",
+            "district": "和政县",
+            "street": "西街",
+            "number": [],
+            "adcode": "622925",
+            "location": "103.347866,35.423591",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "临夏回族自治州",
+            "citycode": "0930",
+            "district": "广河县",
+            "street": "西街",
+            "number": [],
+            "adcode": "622924",
+            "location": "103.570378,35.481307",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "临夏回族自治州",
+            "citycode": "0930",
+            "district": "康乐县",
+            "street": "西街",
+            "number": [],
+            "adcode": "622922",
+            "location": "103.708845,35.373334",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "陇南市",
+            "citycode": "2935",
+            "district": "徽县",
+            "street": "西街",
+            "number": [],
+            "adcode": "621227",
+            "location": "106.085496,33.767181",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "陇南市",
+            "citycode": "2935",
+            "district": "两当县",
+            "street": "西街",
+            "number": [],
+            "adcode": "621228",
+            "location": "106.304858,33.908011",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "定西市",
+            "citycode": "0932",
+            "district": "通渭县",
+            "street": "西街",
+            "number": [],
+            "adcode": "621121",
+            "location": "105.248617,35.206879",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "庆阳市",
+            "citycode": "0934",
+            "district": "镇原县",
+            "street": "西街",
+            "number": [],
+            "adcode": "621027",
+            "location": "107.189067,35.682483",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "酒泉市",
+            "citycode": "0937",
+            "district": "肃北蒙古族自治县",
+            "street": "西街",
+            "number": [],
+            "adcode": "620923",
+            "location": "94.876158,39.512886",
+            "level": "道路"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "平凉市",
+            "citycode": "0933",
+            "district": "崇信县",
+            "street": "西街",
+            "number": [],
+            "adcode": "620823",
+            "location": "107.037485,35.304477",
+            "level": "道路"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.119
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "开元寺",
+        "city": "泉州"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "陇南市",
+            "citycode": "2935",
+            "district": "成县",
+            "street": [],
+            "number": [],
+            "adcode": "621221",
+            "location": "105.543982,33.744525",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "宜宾市",
+            "citycode": "0831",
+            "district": "南溪区",
+            "street": [],
+            "number": [],
+            "adcode": "511503",
+            "location": "104.942771,28.924170",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "乐山市",
+            "citycode": "0833",
+            "district": "沙湾区",
+            "street": [],
+            "number": [],
+            "adcode": "511111",
+            "location": "103.507186,29.371455",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "内江市",
+            "citycode": "1832",
+            "district": "威远县",
+            "street": [],
+            "number": [],
+            "adcode": "511024",
+            "location": "104.303903,29.682693",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "温江区",
+            "street": [],
+            "number": [],
+            "adcode": "510115",
+            "location": "103.927430,30.713031",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "四川省",
+            "city": "成都市",
+            "citycode": "028",
+            "district": "邛崃市",
+            "street": [],
+            "number": [],
+            "adcode": "510183",
+            "location": "103.647277,30.415039",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "重庆市",
+            "city": "重庆市",
+            "citycode": "023",
+            "district": "合川区",
+            "street": [],
+            "number": [],
+            "adcode": "500117",
+            "location": "106.374835,30.218463",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "重庆市",
+            "city": "重庆市",
+            "citycode": "023",
+            "district": "两江新区",
+            "street": [],
+            "number": [],
+            "adcode": "500157",
+            "location": "106.837224,29.805092",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "山东省",
+            "city": "泰安市",
+            "citycode": "0538",
+            "district": "宁阳县",
+            "street": [],
+            "number": [],
+            "adcode": "370921",
+            "location": "116.762380,35.874043",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "江苏省",
+            "city": "扬州市",
+            "citycode": "0514",
+            "district": "邗江区",
+            "street": [],
+            "number": [],
+            "adcode": "321003",
+            "location": "119.427882,32.542240",
+            "level": "村庄"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.071
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "city": "泉州",
+        "keywords": "泉州西街"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B0I13O0Z4I",
+            "name": "泉州西街",
+            "address": "开元街道城西路与西街交叉口",
+            "typecode": "061000",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0I13O0Z4I/comment/file_media_Photo_1219_IMG_1774313272_1167_IMG_20260324_084612_jpg_ss__1774313702380_88020936.jpg"
+            }
+          },
+          {
+            "id": "B0IA3ARYVV",
+            "name": "西街",
+            "address": "南安市",
+            "typecode": "190301",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/3c8caaaead5425d60000000963944913"
+            }
+          },
+          {
+            "id": "B0IA3AQPUL",
+            "name": "西街",
+            "address": "丰泽区",
+            "typecode": "190301"
+          },
+          {
+            "id": "B0HR4SXYY9",
+            "name": "汉庭酒店(泉州西湖公园西街店)",
+            "address": "西湖街71号",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "酒店外观",
+              "url": "https://store.is.autonavi.com/showpic/38b4333307493df94d6a11ebd398080e"
+            }
+          },
+          {
+            "id": "B0I3F7P19E",
+            "name": "花度影院西街酒店(泉州古城店)",
+            "address": "义全街35号",
+            "typecode": "100000",
+            "photos": {
+              "provider": [],
+              "title": "客房",
+              "url": "https://store.is.autonavi.com/showpic/586c25c06b216a2ee207910acc4d26df"
+            }
+          },
+          {
+            "id": "B0KDG4E8Q0",
+            "name": "泉州西街万达广场柏纳酒店",
+            "address": "津淮街123号",
+            "typecode": "100000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/d32fb667e758d652f23a48df81410278"
+            }
+          },
+          {
+            "id": "B0FFM86O19",
+            "name": "泉州西街行舍(开元寺店)",
+            "address": "鲤中街道通政社区会通巷57-2号",
+            "typecode": "100000",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/31fbea65bcad6a7624c95a6934f000a1"
+            }
+          },
+          {
+            "id": "B0K2HOPQJ2",
+            "name": "西街停车场",
+            "address": "奉圣巷与西街交叉口东80米",
+            "typecode": "150904",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/166228d575d16409733a3faf8bf017ba"
+            }
+          },
+          {
+            "id": "B0J3OSW76S",
+            "name": "西街停车点",
+            "address": "泉州西街",
+            "typecode": "150904"
+          },
+          {
+            "id": "B0L0FD39GL",
+            "name": "泉州西街九一街亚朵酒店",
+            "address": "九一街24号",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/276d2e1325e2c2385c7731fdf2546b0f"
+            }
+          },
+          {
+            "id": "B0LA75OW6F",
+            "name": "泉州西街中山路亚朵酒店",
+            "address": "涂门街51号",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "酒店外观",
+              "url": "https://store.is.autonavi.com/showpic/59e62e6ae5044ac39df9c593785e7d85"
+            }
+          },
+          {
+            "id": "B0MG5R4HL4",
+            "name": "泉州西街花间府·流熹",
+            "address": "新华北路32号",
+            "typecode": "100000",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/d9862415ce2bb23fa06b17af0eca275a"
+            }
+          },
+          {
+            "id": "B0J1BSP45M",
+            "name": "巷往民宿(泉州西街钟楼店)",
+            "address": "玉犀巷1号",
+            "typecode": "100000",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/3d03fbf4cdfbad9ecc07f62c02ec7208"
+            }
+          },
+          {
+            "id": "B0K2NZ09ES",
+            "name": "汉庭酒店(泉州西街中山路店)",
+            "address": "胭脂巷59号",
+            "typecode": "100105",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/c0b046e62cd0b2304b317362c4f3a863"
+            }
+          },
+          {
+            "id": "B0FFGTJM8P",
+            "name": "通港西街",
+            "address": "丰泽区",
+            "typecode": "190301"
+          },
+          {
+            "id": "B0253042JH",
+            "name": "泉州霞客酒店(泉州西街开元盛世店)",
+            "address": "环城北路272-273号西站大楼内",
+            "typecode": "100104",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/0ccd973d0d3431a49b10bf8cca0585cd"
+            }
+          },
+          {
+            "id": "B0LDR9GJ16",
+            "name": "简居泉州西街分店客栈(西街1号分店)",
+            "address": "西街简筑雅居简筑·雅居西",
+            "typecode": "100200",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/c986817a09c16b0471784b0570bf61cb"
+            }
+          },
+          {
+            "id": "B0KRHHRY8N",
+            "name": "全季酒店(泉州西街中山路店)",
+            "address": "胭脂巷39号",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "酒店外观",
+              "url": "https://store.is.autonavi.com/showpic/08c9fd0ceae2d26ab92586d9ade17b66"
+            }
+          },
+          {
+            "id": "B0FFGTJLS8",
+            "name": "朝盛西街",
+            "address": "惠安县",
+            "typecode": "190301"
+          },
+          {
+            "id": "B0KB6U5BRN",
+            "name": "西街精品公寓(泉州古城店)",
+            "address": "新华南路173号4楼",
+            "typecode": "100000",
+            "photos": {
+              "provider": [],
+              "title": "客房",
+              "url": "https://store.is.autonavi.com/showpic/7567e8449caa8e4c2c77f515ddb51fe2"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.256
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "city": "泉州",
+        "keywords": "泉州开元寺"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B0253016EC",
+            "name": "泉州大开元寺",
+            "address": "西街176号",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/b4d215027e8a6092dd4e953e232967fc"
+            }
+          },
+          {
+            "id": "B0FFH241TX",
+            "name": "泉州开元寺-古佛",
+            "address": "开元街道开元街道大寺后泉州开元寺(北侧)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFH241TX/comment/339ac2d6911d21e7abd8ebd982424850_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0253000CB",
+            "name": "泉州开元寺-镇国塔",
+            "address": "西街176号泉州开元寺内(东南角)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0253000CB/comment/5AAC27A1_650F_4B65_A9B3_F09542FDB62F_L0_001_2048_153_1769429528897_87439363.jpg"
+            }
+          },
+          {
+            "id": "B0JDSHQ2A4",
+            "name": "泉州开元寺游客服务中心",
+            "address": "西街176号泉州大开元寺",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/5624c6c0fae6bc30cd5c588a87087cfa"
+            }
+          },
+          {
+            "id": "B0FFHYL15Y",
+            "name": "泉州开元寺-假山",
+            "address": "西街与旧馆驿交叉口北100米",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/4aea1c45ad2b150d099bb313266740bc"
+            }
+          },
+          {
+            "id": "B0J2YXSBR1",
+            "name": "泉州开元寺-檀樾祠",
+            "address": "江滨北路2461号开元寺大雄宝殿",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/acd01ebaa2829cf00000002269240290?type=pic"
+            }
+          },
+          {
+            "id": "B0253048WC",
+            "name": "永春开元寺",
+            "address": "南环路桃溪69号",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/86e4cc6990fb1e2e0000002748738299?type=pic"
+            }
+          },
+          {
+            "id": "B02530R8V9",
+            "name": "泉州开元寺-宋代二塔",
+            "address": "西街176号泉州大开元寺",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B02530R8V9/comment/content_media_external_images_media_1000031840_ss__1738892309054_83332795.jpg"
+            }
+          },
+          {
+            "id": "B0253004E6",
+            "name": "泉州开元寺-仁寿塔",
+            "address": "开元街道开元街道西街176大开元寺内",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/88cb656b3bcd319c0000002453954045?type=pic"
+            }
+          },
+          {
+            "id": "B0FFH2GFK7",
+            "name": "泉州开元寺-祖堂",
+            "address": "大寺后与新华路交叉口东南120米",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/8faab5f64ef8fd3c7c77a9c354b23dc2"
+            }
+          },
+          {
+            "id": "B0FFFA7E6P",
+            "name": "水陆禅寺",
+            "address": "西街176号泉州大开元寺",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFFA7E6P/comment/3C0CD97E_36A6_40CD_B67D_E2D69F827218_L0_001_1500_200_1763131992954_23523492.jpg"
+            }
+          },
+          {
+            "id": "B0FFIDK77G",
+            "name": "泉州开元寺藏经楼",
+            "address": "西街176号泉州开元寺",
+            "typecode": "110200",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFIDK77G/comment/content_media_external_file_1000015691_ss__1754838157903_05801146.jpg"
+            }
+          },
+          {
+            "id": "B02530R6P9",
+            "name": "泉州开元寺-千年古桑",
+            "address": "西街176号",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/26336dc76d881c980000002995466384"
+            }
+          },
+          {
+            "id": "B0FFF3O9HJ",
+            "name": "开元寺大雄宝殿",
+            "address": "江滨北路2461号",
+            "typecode": "110200",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFF3O9HJ/comment/content_media_external_images_media_16469856_ss__1741740170654_33022508.jpg"
+            }
+          },
+          {
+            "id": "B0FFHYQUNR",
+            "name": "泉州开元寺-道祖塔院",
+            "address": "大寺后与新华路交叉口东南100米",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFHYQUNR/comment/20260314-3cc7baa7907f3dfc020902cc-1kA2bfsqXG17C93COn9gUC.jpg"
+            }
+          },
+          {
+            "id": "BV10214767",
+            "name": "开元寺西门(公交站)",
+            "address": "26路(敬老线路);33路;41路;6路;K602路;古城旅游专线2号线;旅游5路",
+            "typecode": "150700",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/7e357e6ef10d5a5eb2e9e5e7f1a4d6dc"
+            }
+          },
+          {
+            "id": "B025302TWU",
+            "name": "泉州少林寺",
+            "address": "古道街66号",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B025302TWU/comment/content_media_external_file_8891_1773436537118_50755133.jpg"
+            }
+          },
+          {
+            "id": "BV11051828",
+            "name": "开元寺(公交站)",
+            "address": "(停运)永春2路内环;(停运)永春2路外环;永春18路;永春5路;永春X19路;永春观光2路内环;永春观光2路外环",
+            "typecode": "150700"
+          },
+          {
+            "id": "B0FFHXLJ5V",
+            "name": "泉州开元寺-焚帛炉",
+            "address": "象峰巷与三朝巷交叉口东北140米",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/9f2d61a551a314460000003027312201?type=pic"
+            }
+          },
+          {
+            "id": "B0K1R555J7",
+            "name": "开元寺景区寄存点",
+            "address": "开元街道平水庙25",
+            "typecode": "070000"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.198
+    }
+  ],
+  "final_answer": "",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

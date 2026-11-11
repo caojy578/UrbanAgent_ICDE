@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-45",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我查查这个店的信息。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:14:09+08:00",
+  "run_timestamp_end": "2026-07-11T21:14:13+08:00",
+  "latency_seconds": 4.326,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6878,
+    "completion_tokens": 24,
+    "total_tokens": 6902
+  },
+  "tool_calls": [],
+  "final_answer": "请告诉我您想查询的店铺名称，以及它所在的城市，这样我可以更准确地为您搜索相关信息。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

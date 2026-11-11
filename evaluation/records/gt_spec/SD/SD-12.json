@@ -1,0 +1,78 @@
+{
+  "query_id": "SD-12",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "请帮我算一下“深圳市南山区科技园”和“深圳市福田区会展中心”之间的驾车距离。",
+  "checklist": [
+    {
+      "item_id": "SD-12.1",
+      "assertion": "起点深圳市南山区科技园的坐标可溯源到本次地理编码工具返回,且与官方真值在容差内一致",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 113.94631,
+          "lat": 22.543723
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图或百度地图坐标拾取器,查询深圳市南山区科技园中心点坐标,若为WGS-84需转GCJ-02",
+        "collected_on": "2026-07-10",
+        "note": "科技园为区域性地标,取代表性中心点坐标;天地图默认CGCS2000需转GCJ-02后比对 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=113.946790 lat=22.543920 → GCJ-02 lng=113.951671 lat=22.540911; 高德POI(深圳科技园,113.946310,22.543723) dist_orig=53.9m dist_gcj02=633.2m tol=150m; 最终来源=高德POI(超容差改用) GCJ-02 lng=113.946310 lat=22.543723"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-12.2",
+      "assertion": "终点深圳市福田区会展中心的坐标可溯源到本次地理编码工具返回,且与官方真值在容差内一致",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 114.060416,
+          "lat": 22.531272
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图或百度地图坐标拾取器,查询深圳会展中心主入口坐标,若为WGS-84需转GCJ-02",
+        "collected_on": "2026-07-10",
+        "note": "会展中心取主入口或建筑中心点;天地图默认CGCS2000需转GCJ-02后比对 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=114.055306 lat=22.533994 → GCJ-02 lng=114.060416 lat=22.531272; 高德POI(深圳会展中心,114.059815,22.530828) dist_orig=581.7m dist_gcj02=79.0m tol=150m; 最终来源=wgs84转gcj02 GCJ-02 lng=114.060416 lat=22.531272"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-12.3",
+      "assertion": "驾车距离数值可溯源到本次距离测量或路线规划工具返回,且与评测时官方路线距离在容差内一致",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-12.4",
+      "assertion": "答案明确呈现了驾车距离的数值,且数值与本次工具返回一致",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "距离测量"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "距离测量"
+      ]
+    ],
+    "notes": "需先对起点和终点分别进行地理编码获取坐标,再调用距离测量工具计算驾车距离"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

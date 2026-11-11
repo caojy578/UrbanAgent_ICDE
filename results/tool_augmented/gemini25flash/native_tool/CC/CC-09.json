@@ -1,0 +1,414 @@
+{
+  "query_id": "CC-09",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我现在在天津大学，想在 步行距离 1 公里内 找一家 评分不低于 4.3 分 的打印店，请查看营业时间并规划 步行路线",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:32:10+08:00",
+  "run_timestamp_end": "2026-07-11T22:32:28+08:00",
+  "latency_seconds": 17.843,
+  "llm_calls": 6,
+  "usage": {
+    "prompt_tokens": 54042,
+    "completion_tokens": 384,
+    "total_tokens": 54426
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "天津大学"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "天津市",
+            "city": "天津市",
+            "citycode": "022",
+            "district": "津南区",
+            "street": [],
+            "number": [],
+            "adcode": "120112",
+            "location": "117.311568,38.992672",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "天津市",
+            "city": "天津市",
+            "citycode": "022",
+            "district": "南开区",
+            "street": [],
+            "number": [],
+            "adcode": "120104",
+            "location": "117.162956,39.110673",
+            "level": "公交地铁站点"
+          },
+          {
+            "country": "中国",
+            "province": "天津市",
+            "city": "天津市",
+            "citycode": "022",
+            "district": "和平区",
+            "street": [],
+            "number": [],
+            "adcode": "120101",
+            "location": "117.179587,39.111187",
+            "level": "公交地铁站点"
+          },
+          {
+            "country": "中国",
+            "province": "天津市",
+            "city": "天津市",
+            "citycode": "022",
+            "district": "滨海新区",
+            "street": [],
+            "number": [],
+            "adcode": "120116",
+            "location": "117.500760,38.724460",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.048
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_around_search",
+      "arguments": {
+        "keywords": "打印店",
+        "location": "117.162956,39.110673",
+        "radius": "1000"
+      },
+      "success": true,
+      "raw_result": {
+        "pois": [
+          {
+            "id": "B0L1DRV5H2",
+            "name": "贤集图文(天津大学卫津路校区北五村社区店)",
+            "address": "天津大学四季村36号楼1门101",
+            "typecode": "071300",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/f5f73b101e388773478f37dce6a71a24"
+            }
+          },
+          {
+            "id": "B0FFK97D25",
+            "name": "天办行(天津大学店)",
+            "address": "天津大学四季村7号楼3门",
+            "typecode": "061200|071300",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFK97D25/comment/a5d3e81d5b33a169243e39921e22f36d_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0FFKWFL06",
+            "name": "天艺星打印社",
+            "address": "天津大学六村北1门旁",
+            "typecode": "071300",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/6bb70c3cef33b0296accb0d36a3f83dc"
+            }
+          },
+          {
+            "id": "B001605SA9",
+            "name": "敬业印刷",
+            "address": "天津大学六村北1门旁",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/e3772792f6d3dd69285fadb7e5ff4065"
+            }
+          },
+          {
+            "id": "B0GUBYM6GN",
+            "name": "宏艺图文",
+            "address": "学府街道府湖里16-1-101",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/7affd1d9627ccefd3925f879014d038d"
+            }
+          },
+          {
+            "id": "B0FFKV3PB9",
+            "name": "星创图文广告",
+            "address": "湖波道14号",
+            "typecode": "170201",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/48d6f740d488dc25d327aa0d913b7cde"
+            }
+          },
+          {
+            "id": "B0L14S1L8M",
+            "name": "星创图文复印广告店",
+            "address": "学府街道湖波道14号",
+            "typecode": "170201",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/00e8d4a73d204f056b32f0719eb83fd6"
+            }
+          },
+          {
+            "id": "B0FFJPYHV7",
+            "name": "希望数码彩扩(鞍山西道店)",
+            "address": "鞍山西道297号增2号",
+            "typecode": "071300",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/ac34a0da4d63ddb409b6a17bb827009c"
+            }
+          },
+          {
+            "id": "B0HD1Z4BH0",
+            "name": "微度数码快印(天津大学出版社)",
+            "address": "卫津路天津大学57斋底商",
+            "typecode": "071300",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/60d8fe1a4333f854ab04a4c376835a12"
+            }
+          },
+          {
+            "id": "B0J19R5SMA",
+            "name": "天津大学出版社快印中心",
+            "address": "天津大学卫津路校区金晖路57斋底商建设银行旁",
+            "typecode": "141105|070400|071300",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/a7b92866cf087ac39dfd86e4f4655eb2"
+            }
+          },
+          {
+            "id": "B0FFHFP2SF",
+            "name": "天办行数码印刷(馨达园店)",
+            "address": "白堤路馨达园1号楼2门底商(天办行数码印刷)税务局斜对面",
+            "typecode": "170201|071300",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/567fee4cf24d20c35e7437fc1e9e2fd8"
+            }
+          },
+          {
+            "id": "B0FFJEYL30",
+            "name": "天美广告图文",
+            "address": "鞍山西道龙井里小区龙井里13号楼",
+            "typecode": "170201|070000",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/a86da534f4423d57e4c8c411523bfb0d"
+            }
+          },
+          {
+            "id": "B0FFFE09QE",
+            "name": "光辉岁月打印店",
+            "address": "卫津路94号南开大学",
+            "typecode": "071300",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/5b12f2feabef4399d130bf6608b87b94"
+            }
+          },
+          {
+            "id": "B0IUCYK33G",
+            "name": "津工标牌(龙井里社区店)",
+            "address": "白堤路177号",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/67e92852e40e627abead109a39ddeca1"
+            }
+          },
+          {
+            "id": "B00160CJKN",
+            "name": "博学数码快印(南开大学八里台校区学者公寓店)",
+            "address": "南开大学学者公寓底商2号",
+            "typecode": "071300",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/4f1b83fed5e099939944337c734f79e7"
+            }
+          },
+          {
+            "id": "B0MBBSVO8D",
+            "name": "赛可优图文广告(白堤路店)",
+            "address": "学府街道白堤路269号",
+            "typecode": "060000",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/cda662c63952a094c3c715ea54214ce1"
+            }
+          },
+          {
+            "id": "B001606SMV",
+            "name": "天大赛奇广告喷绘印刷制作中心",
+            "address": "鞍山西道209号",
+            "typecode": "170201|070000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/c68a934ff4b5e22c48bc25f119dbfd0e"
+            }
+          },
+          {
+            "id": "B0FFI9CU6D",
+            "name": "顺意快印",
+            "address": "玉泉路便利蜂59号中通快递旁边",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/0922bfc0023769ab95bd67b790c7f1d3"
+            }
+          },
+          {
+            "id": "B0LB2MNL4B",
+            "name": "天津市南致图文设计有限公司",
+            "address": "白堤路240号A501-1",
+            "typecode": "170200",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/4d2ded5a801e379b584471f8620e7335"
+            }
+          },
+          {
+            "id": "B0LA7UOCDU",
+            "name": "印艺空间数码快印",
+            "address": "科研东路8号A座4楼",
+            "typecode": "071300"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.113
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0J19R5SMA"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0J19R5SMA",
+        "name": "天津大学出版社快印中心",
+        "location": "117.169216,39.110970",
+        "address": "天津大学卫津路校区金晖路57斋底商建设银行旁",
+        "business_area": [],
+        "city": "天津市",
+        "type": "科教文化服务;传媒机构;出版社|生活服务;邮局;邮局|生活服务;摄影冲印店;摄影冲印",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "http://store.is.autonavi.com/showpic/a7b92866cf087ac39dfd86e4f4655eb2"
+        },
+        "cost": [],
+        "opentime2": "周一至周五 09:00-21:00；周六至周日 09:00-17:00",
+        "rating": "4.1",
+        "open_time": "09:00-17:00"
+      },
+      "error": null,
+      "latency_seconds": 0.055
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0FFK97D25"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0FFK97D25",
+        "name": "天办行(天津大学店)",
+        "location": "117.164617,39.109130",
+        "address": "天津大学四季村7号楼3门",
+        "business_area": [],
+        "city": "天津市",
+        "type": "购物服务;专卖店;专营店|生活服务;摄影冲印店;摄影冲印",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "https://aos-comment.amap.com/B0FFK97D25/comment/a5d3e81d5b33a169243e39921e22f36d_2048_2048_80.jpg"
+        },
+        "cost": "21.00",
+        "opentime2": "周一至周日 08:00-21:00",
+        "rating": "4.3",
+        "open_time": "08:00-21:00"
+      },
+      "error": null,
+      "latency_seconds": 0.072
+    },
+    {
+      "seq": 5,
+      "server": "amap-maps",
+      "tool": "maps_direction_walking",
+      "arguments": {
+        "destination": "117.164617,39.109130",
+        "origin": "117.162956,39.110673"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "117.162956,39.110673",
+          "destination": "117.164617,39.109130",
+          "paths": [
+            {
+              "distance": "308",
+              "duration": "246",
+              "steps": [
+                {
+                  "instruction": "沿南丰路向南步行55米左转",
+                  "road": "南丰路",
+                  "distance": "55",
+                  "orientation": "南",
+                  "duration": "44"
+                },
+                {
+                  "instruction": "向东步行65米右转",
+                  "road": [],
+                  "distance": "65",
+                  "orientation": "东",
+                  "duration": "52"
+                },
+                {
+                  "instruction": "向南步行116米左转",
+                  "road": [],
+                  "distance": "116",
+                  "orientation": "南",
+                  "duration": "93"
+                },
+                {
+                  "instruction": "向东步行72米到达目的地",
+                  "road": [],
+                  "distance": "72",
+                  "orientation": "东",
+                  "duration": "58"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.057
+    }
+  ],
+  "final_answer": "为您找到了一家符合您要求的打印店：\n\n### 推荐打印店：天办行 (天津大学店)\n*   **评分**：4.3 分\n*   **地址**：天津大学四季村 7 号楼 3 门\n*   **营业时间**：周一至周日 08:00 - 21:00\n\n---\n\n### 步行路线规划\n从天津大学（您当前位置附近）出发，距离约 **308 米**，预计步行时间约 **4 分钟**：\n\n1.  沿南丰路向南步行约 55 米，左转；\n2.  向东步行约 65 米，右转；\n3.  向南步行约 116 米，左转；\n4.  继续向东步行约 72 米，即可到达目的地。\n\n请您根据营业时间合理安排出行！",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

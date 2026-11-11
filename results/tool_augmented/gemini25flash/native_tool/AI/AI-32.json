@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-32",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我推荐一家性价比高的酒店。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:12:07+08:00",
+  "run_timestamp_end": "2026-07-11T21:12:12+08:00",
+  "latency_seconds": 4.602,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6878,
+    "completion_tokens": 32,
+    "total_tokens": 6910
+  },
+  "tool_calls": [],
+  "final_answer": "请告诉我您计划前往的**城市**、**入住日期**以及**大致的预算范围**，这样我才能为您精准推荐性价比高的酒店。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

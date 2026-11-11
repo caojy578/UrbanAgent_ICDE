@@ -1,0 +1,116 @@
+{
+  "query_id": "CC-06",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从成都双流机场到达，想在 5 公里范围内 找一家 评分 ≥ 4.6 分 的火锅店，请查看用户评价并规划 驾车路线",
+  "checklist": [
+    {
+      "item_id": "CC-06.1",
+      "assertion": "成都双流机场的坐标(经纬度)与官方真值一致",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 103.96014,
+          "lat": 30.581318
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度/腾讯地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "采集成都双流国际航站楼中心点坐标,若来源为 WGS-84 需转换为 GCJ-02 | MCP2026-07-09:天地图主源+高德校验 天地图(成都双流国际机场):(103.95798,30.58405);高德校验1532.4m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=103.957980 lat=30.584050 → GCJ-02 lng=103.960140 lat=30.581318; 最终来源=wgs84转gcj02 GCJ-02 lng=103.960140 lat=30.581318",
+        "_needs_review": true,
+        "_review_reason": "高德geocode匹配歧义(d=1274m,疑地名多义/大范围)"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-06.2",
+      "assertion": "找到的火锅店距离成都双流机场的直线距离或道路距离 ≤ 5 公里",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-06.3",
+      "assertion": "找到的火锅店评分 ≥ 4.6 分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项'并说明已检索亦算通过;仅当系统未检索/瞎编才判错,不因'区域内确无≥阈值对象'本身判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足阈值POI时,如实报无即通过"
+    },
+    {
+      "item_id": "CC-06.4",
+      "assertion": "返回了该火锅店的用户评价内容",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-06.5",
+      "assertion": "推荐的火锅店坐标与官方真值一致(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "肖记鲜鱼美蛙自助火锅(双流店)",
+          "address": "成都市长治路四段4-6号",
+          "lng": 103.931602,
+          "lat": 30.560572
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "大众点评人工选店+百度地图POI(BD-09转GCJ-02)交叉验证",
+        "collected_on": "2026-07-12",
+        "note": "[桶B复核 2026-07-12] 原点评/天地图扎点(103.923774,30.573726)与地址geocode差881m、与百度/高德POI差1643m;百度Place+高德Place同址长治路4-6号互差1m→采用百度BD-09→GCJ02 lng=103.931602 lat=30.560572;距双流机场3576m(≤5km)"
+      }
+    },
+    {
+      "item_id": "CC-06.6",
+      "assertion": "规划的驾车路线起点坐标与本次返回的成都双流机场坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-06.7",
+      "assertion": "规划的驾车路线终点坐标与本次返回的火锅店坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-06.8",
+      "assertion": "返回的路线方案包含驾车导航关键信息(如总距离、预计时间、主要道路)",
+      "gt_source": "trace",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "商户评价"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "POI搜索需支持距离约束(5km范围)和评分过滤(≥4.6);商户评价需获取用户评论文本;路线规划需指定驾车模式"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

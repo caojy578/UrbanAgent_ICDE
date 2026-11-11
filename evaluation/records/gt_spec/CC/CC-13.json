@@ -1,0 +1,60 @@
+{
+  "query_id": "CC-13",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "查询过去 7 天日本 5 级以上地震数量，如果超过 3 次就取消旅行计划。",
+  "checklist": [
+    {
+      "item_id": "CC-13.1",
+      "assertion": "查询时间范围覆盖过去7天(从评测当天往前推7个完整自然日)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-13.2",
+      "assertion": "查询区域正确定位到日本(国家级范围)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-13.3",
+      "assertion": "地震震级筛选条件为5级及以上(≥5.0级)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-13.4",
+      "assertion": "给出的地震次数与本次地震工具返回的符合条件(过去7天日本≥5级)记录数一致",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-13.5",
+      "assertion": "条件判断逻辑正确:次数>3时建议取消旅行,≤3时不建议取消(或明确说明符合/不符合取消条件)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-13.6",
+      "assertion": "基于本次查询结果执行了条件分支决策(给出了是否取消旅行的明确结论)",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地震"
+    ],
+    "dependency_pairs": [],
+    "notes": "需调用地震查询工具,参数包含时间范围(过去7天)、区域(日本)、震级阈值(≥5级);基于返回结果进行计数与条件判断"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

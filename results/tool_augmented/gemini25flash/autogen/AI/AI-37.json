@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-37",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我查一下这个地点的坐标，我要做地图标记。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:42:46+08:00",
+  "run_timestamp_end": "2026-07-12T14:43:43+08:00",
+  "latency_seconds": 56.749,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 180253,
+    "completion_tokens": 30,
+    "total_tokens": 180283
+  },
+  "tool_calls": [],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

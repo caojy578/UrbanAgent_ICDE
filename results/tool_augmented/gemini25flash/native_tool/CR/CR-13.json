@@ -1,0 +1,152 @@
+{
+  "query_id": "CR-13",
+  "query_type": "复杂检索型",
+  "level": "L1",
+  "query": "我在Austin Downtown，准备2026 年 7 月 13 日 21:00自驾中型燃油轿车去Franklin Barbecue，距离约 2.9 公里，查询评价、天气和碳排放。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-16T12:37:51+08:00",
+  "run_timestamp_end": "2026-07-16T12:38:52+08:00",
+  "latency_seconds": 61.141,
+  "llm_calls": 7,
+  "usage": {
+    "prompt_tokens": 31847,
+    "completion_tokens": 2028,
+    "total_tokens": 33875
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "Franklin Barbecue",
+        "city": "Austin"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "江苏省",
+            "city": "无锡市",
+            "citycode": "0510",
+            "district": "江阴市",
+            "street": [],
+            "number": [],
+            "adcode": "320281",
+            "location": "120.186375,31.897475",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.064
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "Franklin Barbecue",
+        "city": "Austin"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "江苏省",
+            "city": "无锡市",
+            "citycode": "0510",
+            "district": "江阴市",
+            "street": [],
+            "number": [],
+            "adcode": "320281",
+            "location": "120.186375,31.897475",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.05
+    },
+    {
+      "seq": 3,
+      "server": "yelp_agent",
+      "tool": "yelp_agent",
+      "arguments": {
+        "natural_language_query": "Franklin Barbecue in Austin, TX"
+      },
+      "success": true,
+      "raw_result": "# Formatted Business Data for LLM Processing\n\n## Introduction\nFranklin Barbecue is an iconic Austin spot known for its tender brisket and jalapeño cheddar sausage. Expect long lines, but they offer both indoor and outdoor seating, plus amenities like chairs and water stations for those waiting. They do not accept reservations through Yelp, but you can call them at (512) 653-1187 or visit their website for more information.\n \n## Chat ID\nBwZh76F7g0pCMOyVXfLonQ\n\n\n## Business 1: Franklin Barbecue\n- **Price**: $$\n- **Rating**: 4.5/5 (6461 reviews)\n- **Type**: Barbeque\n- **Location**: 900 E 11th St, Austin, TX 78702\n- **Coordinates**: 30.2701348, -97.7313451068641\n- **URL**: [View on Yelp](https://www.yelp.com/biz/franklin-barbecue-austin?adjust_creative=jzUA-mfuwi5hXzyoOg8Dsw&utm_campaign=yelp_api_v3&utm_medium=api_v3_public_ai_api_chat_v2&utm_source=jzUA-mfuwi5hXzyoOg8Dsw)\n- **Phone**: +15126531187\n- **Website**: https://franklinbbq.com\n- **Services and Amenities**: \n  - Accepts Apple Pay ✓\n  - Gender-Neutral Restrooms ✓\n  - Open to All ✓\n  - Pokestop Nearby ✓\n  - Bike Parking Available ✓\n  - Accepts Credit Cards ✓\n  - Dog-friendly ✓\n  - Good for Kids ✓\n  - Platform Delivery ✓\n  - Counter Service ✓\n  - Good for Groups ✓\n  - Offers Takeout ✓\n  - Alcohol: Beer And Wine\n  - Noise Level: Average\n  - WiFi: Not Available\n  - Ambience: Casual\n  - Parking: Street, Lot\n  - Good for: Lunch\n  - Price Range: $$\n  - History: With the encouragement of family and friends, Aaron and Stacy Franklin debuted Franklin BBQ in late 2009. 10+ years later, they are still aiming to se...\n  - Specialties: Line experience \nOrder in Advance\nTasty smoked meats\nDine In or Take Away\nNatural Brisket\nPork spare ribs\nPulled pork\nSausage\n  - Established: 2009\n  - Menu: [View Menu](https://franklinbbq.com/menu/)\n- **Review Highlight**: **Franklin Barbecue** is hands down one of the most popular BBQ places in America.\n- **Photos**:\n  - https://s3-media0.fl.yelpcdn.com/bphoto/zRAg5oHjVOMpQzZegIJzng/o.jpg\n  - https://s3-media0.fl.yelpcdn.com/bphoto/5RvWNV4cLwqFkhcJe3Wkdw/o.jpg\n  - https://s3-media0.fl.yelpcdn.com/bphoto/tkwU9iTwvKjLFZIGKrX4Ug/o.jpg\n- **Description**: Iconic barbecue destination offering a well-known selection of smoked meats, including brisket, pork ribs, and jalapeño cheddar sausage. Known for its long lines, the establishment offers seating options and amenities such as chairs and water stations for those waiting. The brisket is noted for its tenderness and flavor, while the smoked turkey and pulled pork are recognized. Merchandise and barbecue-related products are available for purchase, and nationwide shipping is offered for select items.\n",
+      "error": null,
+      "latency_seconds": 6.298
+    },
+    {
+      "seq": 4,
+      "server": "caiyun-weather",
+      "tool": "get_realtime_weather",
+      "arguments": {
+        "lat": 30.2701348,
+        "lng": -97.7313451068641
+      },
+      "success": true,
+      "raw_result": "\nTemperature: 25.05°C\nHumidity: 95%\nWind: 9.54 km/h, From north clockwise 122.67°\nPrecipitation: 0.0 mm/hr\nAir Quality:\n    PM2.5: 0 μg/m³\n    PM10: 0 μg/m³\n    O3: 0 μg/m³\n    SO2: 0 μg/m³\n    NO2: 0 μg/m³\n    CO: 0 mg/m³\n    AQI:\n        China: 0\n        USA: 0\n    Life Index:\n        UV: None\n        Comfort: Hot\n",
+      "error": null,
+      "latency_seconds": 3.481
+    },
+    {
+      "seq": 5,
+      "server": "climatiq-mcp-server",
+      "tool": "travel-emission",
+      "arguments": {
+        "car_details": {
+          "fuel_type": "regular",
+          "vehicle_type": "medium"
+        },
+        "destination": {
+          "latitude": 30.2701348,
+          "longitude": -97.7313451068641
+        },
+        "mode": "car",
+        "origin": {
+          "latitude": 30.266667,
+          "longitude": -97.740556
+        },
+        "passengers": 1
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "travel-emission returned error: Error calculating travel emissions with locations: Error during Climatiq API request: API request failed with status 403: forbidden",
+      "latency_seconds": 3.258
+    },
+    {
+      "seq": 6,
+      "server": "climatiq-mcp-server",
+      "tool": "travel-emission",
+      "arguments": {
+        "car_details": {
+          "fuel_type": "regular",
+          "vehicle_type": "medium"
+        },
+        "distance": 2.9,
+        "distance_unit": "km",
+        "mode": "car",
+        "passengers": 1,
+        "year": 2026
+      },
+      "success": true,
+      "raw_result": "Car travel of 2.9 km results in 0.551 kg of CO2e emissions.\nEmission factor used: Car\n\nDetailed results are available as a resource with ID: travel_car_2.9_km_140291092026816",
+      "error": null,
+      "latency_seconds": 3.124
+    }
+  ],
+  "final_answer": "您此次2.9公里的自驾行程将产生约 **0.551 千克二氧化碳当量**的碳排放。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

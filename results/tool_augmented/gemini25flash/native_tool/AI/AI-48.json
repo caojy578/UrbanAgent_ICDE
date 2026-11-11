@@ -1,0 +1,144 @@
+{
+  "query_id": "AI-48",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我找个离机场近的酒店。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:14:34+08:00",
+  "run_timestamp_end": "2026-07-11T21:14:44+08:00",
+  "latency_seconds": 9.701,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 14924,
+    "completion_tokens": 253,
+    "total_tokens": 15177
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "机场附近的酒店"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B0H24KM4HX",
+            "name": "北京首都机场精选酒店(T3航站楼店)",
+            "address": "天竺北京市首都机场岗山路42号(近首都机场3号航站楼)",
+            "typecode": "100000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0H24KM4HX/comment/f7d6e5be127639790d89f50bfa334780_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0KD0ZVLIP",
+            "name": "艺龙瑞云酒店(北京首都机场新国展店)",
+            "address": "机场货运路海关2号楼",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/c710e0dce521e479ca99f999fbead685"
+            }
+          },
+          {
+            "id": "B000A9ETGW",
+            "name": "锦江之星酒店(北京首都国际机场新国展店)",
+            "address": "天竺镇府前二街1号院14楼",
+            "typecode": "100105",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/4eb921b3903d7d1749bdddf729e11194"
+            }
+          },
+          {
+            "id": "B0FFHC91QB",
+            "name": "格林豪泰智选酒店(北京首都国际机场T3航站楼店)",
+            "address": "李桥镇李天路甲1号(通顺路与交叉口向西60米)",
+            "typecode": "100105",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/8e9bc63dd03f41fa33d88f6d3316f55a"
+            }
+          },
+          {
+            "id": "B0G0UZM1BK",
+            "name": "北京大兴国际机场木棉花酒店",
+            "address": "大兴国际机场综合服务楼一层苑景路2号A1008号",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/4411ddf38f0769664c673597892a8747"
+            }
+          },
+          {
+            "id": "B0I0RZU2PE",
+            "name": "北京大兴国际机场希尔顿花园酒店",
+            "address": "苑景西二路2号院1号楼1-9层",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/180c11bbc987efd33d458d1b8f159c6e"
+            }
+          },
+          {
+            "id": "B0K1G5QP8R",
+            "name": "桔子酒店(北京大兴国际机场航站楼店)",
+            "address": "苑景西二路1号院3号楼一层",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/46ea2b51694a1806ebdf3d589301761e"
+            }
+          },
+          {
+            "id": "B0KKSZW68M",
+            "name": "北京远航花园酒店(北京大兴国际机场店)",
+            "address": "大兴机场片区航科街3号教育科研基地A2号楼",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/6c2e651fcaef5b6bf780ae6b1778512f"
+            }
+          },
+          {
+            "id": "B0FFLN4AVI",
+            "name": "全季酒店(固安大兴机场店)",
+            "address": "育才北路21号",
+            "typecode": "100100",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/604cd0fe8bea06ec4663db8e390798fa"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.202
+    }
+  ],
+  "final_answer": "请问您指的是哪一个机场呢？\n\n在北京，**首都国际机场**和**大兴国际机场**附近都有很多酒店，为您列举几家：\n\n**如果您在首都国际机场附近：**\n1.  **北京首都机场精选酒店(T3航站楼店)**：地址在北京市首都机场岗山路42号。\n2.  **锦江之星酒店(北京首都国际机场新国展店)**：地址在天竺镇府前二街1号院14楼。\n\n**如果您在大兴国际机场附近：**\n1.  **北京大兴国际机场木棉花酒店**：位于大兴国际机场综合服务楼，非常便利。\n2.  **北京大兴国际机场希尔顿花园酒店**：位于苑景西二路2号院。\n3.  **桔子酒店(北京大兴国际机场航站楼店)**：位于苑景西二路1号院。\n\n请告诉我您具体是要去哪个机场，或者您的预算范围，我可以为您进一步查询房型和价格。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

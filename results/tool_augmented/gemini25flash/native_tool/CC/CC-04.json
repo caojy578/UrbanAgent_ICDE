@@ -1,0 +1,187 @@
+{
+  "query_id": "CC-04",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从杭州东站下高铁，想在 步行 10 分钟范围内 找一家 用户评分 ≥ 4.3 分 的行李寄存点，请查看收费标准并规划 步行路线",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:30:28+08:00",
+  "run_timestamp_end": "2026-07-11T22:30:44+08:00",
+  "latency_seconds": 16.594,
+  "llm_calls": 5,
+  "usage": {
+    "prompt_tokens": 37344,
+    "completion_tokens": 442,
+    "total_tokens": 37786
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "杭州东站",
+        "city": "杭州市"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "浙江省",
+            "city": "杭州市",
+            "citycode": "0571",
+            "district": "上城区",
+            "street": [],
+            "number": [],
+            "adcode": "330102",
+            "location": "120.212600,30.290851",
+            "level": "门牌号"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.067
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_around_search",
+      "arguments": {
+        "keywords": "行李寄存",
+        "location": "120.212600,30.290851",
+        "radius": "800"
+      },
+      "success": true,
+      "raw_result": {
+        "pois": [
+          {
+            "id": "B0JAFCHC44",
+            "name": "南3行李寄存(杭州东站)",
+            "address": "火车东站到达层南3出租车通道(火车东站地铁站E口旁)",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/5abb541c13dc649b903dd716bcef4b81"
+            }
+          },
+          {
+            "id": "B0LDGREVXS",
+            "name": "轻松游(顺丰)行李服务(杭州东站)",
+            "address": "天城路1号杭州东站B1层",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/0e0e9da125bd2006da5d03fe72196e5b"
+            }
+          },
+          {
+            "id": "B0LDGRBN16",
+            "name": "行李寄存(杭州东站富西店)",
+            "address": "天城路1号杭州东站B1层",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/3d666f6227dffe0cb925d71b70840559"
+            }
+          },
+          {
+            "id": "B0KRMC2LK5",
+            "name": "行李寄存(杭州东站富东店)",
+            "address": "天城路1号杭州东站B1层",
+            "typecode": "070000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/3ae12e1e45b3be7f832e32eb3a06ff93"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.109
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0JAFCHC44"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0JAFCHC44",
+        "name": "南3行李寄存(杭州东站)",
+        "location": "120.213934,30.291119",
+        "address": "火车东站到达层南3出租车通道(火车东站地铁站E口旁)",
+        "business_area": "天城路沿线",
+        "city": "杭州市",
+        "type": "生活服务;生活服务场所;生活服务场所",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "http://store.is.autonavi.com/showpic/5abb541c13dc649b903dd716bcef4b81"
+        },
+        "cost": [],
+        "opentime2": "周一至周日 08:00-21:00",
+        "rating": "4.3",
+        "open_time": "08:00-21:00"
+      },
+      "error": null,
+      "latency_seconds": 0.068
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_direction_walking",
+      "arguments": {
+        "destination": "120.213934,30.291119",
+        "origin": "120.212600,30.290851"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "120.212600,30.290851",
+          "destination": "120.213934,30.291119",
+          "paths": [
+            {
+              "distance": "197",
+              "duration": "158",
+              "steps": [
+                {
+                  "instruction": "向东北步行37米右转",
+                  "road": [],
+                  "distance": "37",
+                  "orientation": "东北",
+                  "duration": "30"
+                },
+                {
+                  "instruction": "向东南步行83米左转",
+                  "road": [],
+                  "distance": "83",
+                  "orientation": "东南",
+                  "duration": "66"
+                },
+                {
+                  "instruction": "向东北步行77米到达目的地",
+                  "road": [],
+                  "distance": "77",
+                  "orientation": "东北",
+                  "duration": "62"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.066
+    }
+  ],
+  "final_answer": "为您找到了一家符合要求的行李寄存点：\n\n### 推荐地点：南3行李寄存 (杭州东站)\n*   **用户评分**：4.3 分\n*   **地址**：火车东站到达层南3出租车通道（靠近火车东站地铁站E口）\n*   **营业时间**：08:00-21:00\n\n### 步行路线规划\n从杭州东站出发，步行距离约 200 米，预计耗时约 3 分钟（完全在 10 分钟步行范围内）：\n1.  向东北步行约 37 米后右转。\n2.  向东南步行约 83 米后左转。\n3.  向东北步行约 77 米即可到达目的地。\n\n**关于收费标准**：\n由于该寄存点属于站内服务设施，建议您在到达该点位后，通过现场公示的二维码或咨询工作人员获取最新的实时收费标准（通常按照寄存时长和行李大小收费）。\n\n**温馨提示**：\n*   该寄存点位于到达层，请下车后注意查看“到达层”或“地铁/出租车”的标识引导。\n*   建议随身携带贵重物品，并妥善保管好寄存凭证。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

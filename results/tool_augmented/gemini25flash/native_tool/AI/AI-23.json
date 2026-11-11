@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-23",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我规划一下去机场的路线。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:10:24+08:00",
+  "run_timestamp_end": "2026-07-11T21:10:28+08:00",
+  "latency_seconds": 4.572,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6879,
+    "completion_tokens": 53,
+    "total_tokens": 6932
+  },
+  "tool_calls": [],
+  "final_answer": "请问您目前在哪个城市，出发地在哪里，以及要去哪一个机场？\n\n如果您能提供**出发地的具体地址（或地标）**和**机场名称**，我可以为您规划出详细的驾车、公交或步行路线。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

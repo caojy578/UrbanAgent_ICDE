@@ -1,0 +1,50 @@
+{
+  "query_id": "AI-42",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我在欧洲自驾了一段路，排放大概多少？",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:13:26+08:00",
+  "run_timestamp_end": "2026-07-11T21:13:43+08:00",
+  "latency_seconds": 17.253,
+  "llm_calls": 3,
+  "usage": {
+    "prompt_tokens": 21224,
+    "completion_tokens": 190,
+    "total_tokens": 21414
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "climatiq-mcp-server",
+      "tool": "search-emission-factors",
+      "arguments": {
+        "query": "passenger car travel Europe"
+      },
+      "success": true,
+      "raw_result": "No emission factors found matching your search criteria.",
+      "error": null,
+      "latency_seconds": 3.651
+    },
+    {
+      "seq": 2,
+      "server": "climatiq-mcp-server",
+      "tool": "search-emission-factors",
+      "arguments": {
+        "query": "car travel"
+      },
+      "success": true,
+      "raw_result": "Found 20 emission factors matching 'car travel'.\n\nHere are the first 5 results:\n\n1. Car (average) - business travel\n   Activity ID: passenger_vehicle-vehicle_type_business_travel_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na\n   Region: United Kingdom\n   Year: 2024\n   Source: BEIS\n   Unit: kg/km\n\n2. Car (average) - business travel\n   Activity ID: passenger_vehicle-vehicle_type_business_travel_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na\n   Region: United Kingdom\n   Year: 2019\n   Source: BEIS\n   Unit: kg/mile\n\n3. Car (average) - business travel\n   Activity ID: passenger_vehicle-vehicle_type_business_travel_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na\n   Region: United Kingdom\n   Year: 2024\n   Source: BEIS\n   Unit: kg/mile\n\n4. Car (average) - business travel\n   Activity ID: passenger_vehicle-vehicle_type_business_travel_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na\n   Region: United Kingdom\n   Year: 2022\n   Source: BEIS\n   Unit: kg/mile\n\n5. Car (average) - business travel\n   Activity ID: passenger_vehicle-vehicle_type_business_travel_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na\n   Region: United Kingdom\n   Year: 2018\n   Source: BEIS\n   Unit: kg/km\n\n\n... and 15 more results.\n\nTo use one of these emission factors, copy its Activity ID and use it with the custom-emission-calculation tool.",
+      "error": null,
+      "latency_seconds": 3.3
+    }
+  ],
+  "final_answer": "为了更准确地为您计算这段欧洲自驾之旅的碳排放量，我需要您提供以下几点信息：\n\n1.  **大致行程**：比如您是从哪个城市出发，到达哪个城市？（或者您可以直接告知预估的总里程数及单位，如：公里或英里）。\n2.  **车辆信息**：车辆的大致类型（如：小型车、中型车、大型车）以及燃油类型（如：汽油、柴油、纯电动或混合动力）。\n3.  **乘客人数**：车上大概有多少人？（这有助于计算人均排放量）。\n\n如果您能提供这些细节，我可以为您进行更精确的估算。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

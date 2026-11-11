@@ -1,0 +1,37 @@
+{
+  "Native": {
+    "pure_ask": 42,
+    "assume_then_ask": 8,
+    "guess": 0,
+    "err": 0,
+    "n": 50
+  },
+  "ReAct": {
+    "pure_ask": 43,
+    "assume_then_ask": 7,
+    "guess": 0,
+    "err": 0,
+    "n": 50
+  },
+  "Plan": {
+    "pure_ask": 43,
+    "assume_then_ask": 7,
+    "guess": 0,
+    "err": 0,
+    "n": 50
+  },
+  "AutoGen": {
+    "pure_ask": 45,
+    "assume_then_ask": 5,
+    "guess": 0,
+    "err": 0,
+    "n": 50
+  },
+  "UrbanAgent": {
+    "pure_ask": 49,
+    "assume_then_ask": 0,
+    "guess": 1,
+    "err": 0,
+    "n": 50
+  }
+}

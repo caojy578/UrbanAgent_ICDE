@@ -1,0 +1,112 @@
+{
+  "query_id": "CC-02",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从上海虹桥火车站出发，想在 2 公里范围内 找一家 评分 ≥ 4.4 分 的经济型酒店，请查看详情并规划 地铁路线",
+  "checklist": [
+    {
+      "item_id": "CC-02.1",
+      "assertion": "上海虹桥火车站坐标准确(GCJ-02,与官方坐标距离≤150m)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 121.320733,
+          "lat": 31.193454
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "上海虹桥火车站为官方固定地标,采集时注意坐标系为GCJ-02(火星坐标),若采集到WGS-84需转换 | MCP2026-07-09:天地图主源+高德校验 天地图(上海虹桥火车站):(121.31622,31.19542);高德校验301.4m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=121.316220 lat=31.195420 → GCJ-02 lng=121.320733 lat=31.193454; 最终来源=wgs84转gcj02 GCJ-02 lng=121.320733 lat=31.193454"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-02.2",
+      "assertion": "返回的酒店坐标与上海虹桥火车站坐标直线距离≤2km",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-02.3",
+      "assertion": "返回的酒店评分≥4.4分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项/最高仅X分'并说明已检索亦算通过;仅当系统未检索或把低于阈值的对象谎称满足才判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足即可如实报无"
+    },
+    {
+      "item_id": "CC-02.4",
+      "assertion": "返回的酒店属于经济型；优先采用详情标签，若对象由明确的“经济型/快捷酒店”工具检索直接返回且无高档反证，可将检索类别作为有限辅助证据，不能仅凭名称或模型自述推断【判定口径:酒店为经济/快捷连锁定位(如家/汉庭/7天/锦江之星等品牌或价位定位体现经济即可,不强求详情页显式'经济型'标签)】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_assertion_preHumanSync": "返回的酒店属于经济型(类型/档次标签包含'经济型'或同义表述)",
+      "_typelabel_relax_20260719": "经济型按品牌/价位判,不强求显式标签"
+    },
+    {
+      "item_id": "CC-02.5",
+      "assertion": "规划的地铁路线起点坐标与上海虹桥火车站坐标一致(距离≤50m)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-02.6",
+      "assertion": "规划的地铁路线终点坐标与本次返回的酒店坐标一致(距离≤50m)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-02.7",
+      "assertion": "规划的路线策略为地铁(transit类型且仅含地铁,不含公交/出租车)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-02.8",
+      "assertion": "返回的酒店名称、地址、评分、类型等详情信息完整且可溯源到工具返回数据",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "距离测量",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "地理编码",
+        "距离测量"
+      ],
+      [
+        "POI搜索",
+        "距离测量"
+      ],
+      [
+        "POI搜索",
+        "商户评价"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "地理编码获取虹桥火车站坐标→POI搜索酒店→距离测量验证2km约束→商户评价验证评分约束→路线规划必须strategy=transit且仅地铁"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

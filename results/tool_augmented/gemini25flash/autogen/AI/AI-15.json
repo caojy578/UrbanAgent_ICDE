@@ -1,0 +1,89 @@
+{
+  "query_id": "AI-15",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "附近有没有比较安静的咖啡馆可以办公？",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:32:05+08:00",
+  "run_timestamp_end": "2026-07-12T14:32:43+08:00",
+  "latency_seconds": 38.277,
+  "llm_calls": 12,
+  "usage": {
+    "prompt_tokens": 84955,
+    "completion_tokens": 138,
+    "total_tokens": 85093
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_ip_location",
+      "arguments": {},
+      "success": true,
+      "raw_result": {
+        "province": [],
+        "city": [],
+        "adcode": [],
+        "rectangle": []
+      },
+      "error": null,
+      "latency_seconds": 0.074
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B001A83N14"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "maps_search_detail returned error: Error: Cannot read properties of undefined (reading 'id')",
+      "latency_seconds": 0.071
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "安静 咖啡馆 办公"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": []
+      },
+      "error": null,
+      "latency_seconds": 0.199
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "咖啡馆"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": []
+      },
+      "error": null,
+      "latency_seconds": 0.217
+    }
+  ],
+  "final_answer": "",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

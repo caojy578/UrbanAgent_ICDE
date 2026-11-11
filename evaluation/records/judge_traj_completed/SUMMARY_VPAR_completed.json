@@ -1,0 +1,110 @@
+{
+  "GPT-5-mini": {
+    "UrbanAgent": {
+      "credit": 95,
+      "denom_withtool": 99,
+      "VPAR": 0.96
+    },
+    "Native": {
+      "credit": 79,
+      "denom_withtool": 95,
+      "VPAR": 0.832
+    },
+    "ReAct": {
+      "credit": 76,
+      "denom_withtool": 90,
+      "VPAR": 0.844
+    },
+    "AutoGen": {
+      "credit": 80,
+      "denom_withtool": 96,
+      "VPAR": 0.833
+    },
+    "Plan-Exec.": {
+      "credit": 77,
+      "denom_withtool": 92,
+      "VPAR": 0.837
+    }
+  },
+  "Gemini": {
+    "UrbanAgent": {
+      "credit": 81,
+      "denom_withtool": 94,
+      "VPAR": 0.862
+    },
+    "Native": {
+      "credit": 79,
+      "denom_withtool": 100,
+      "VPAR": 0.79
+    },
+    "ReAct": {
+      "credit": 80,
+      "denom_withtool": 97,
+      "VPAR": 0.825
+    },
+    "AutoGen": {
+      "credit": 92,
+      "denom_withtool": 99,
+      "VPAR": 0.929
+    },
+    "Plan-Exec.": {
+      "credit": 90,
+      "denom_withtool": 100,
+      "VPAR": 0.9
+    }
+  },
+  "DeepSeek": {
+    "UrbanAgent": {
+      "credit": 87,
+      "denom_withtool": 93,
+      "VPAR": 0.935
+    },
+    "Native": {
+      "credit": 96,
+      "denom_withtool": 100,
+      "VPAR": 0.96
+    },
+    "ReAct": {
+      "credit": 95,
+      "denom_withtool": 100,
+      "VPAR": 0.95
+    },
+    "AutoGen": {
+      "credit": 91,
+      "denom_withtool": 99,
+      "VPAR": 0.919
+    },
+    "Plan-Exec.": {
+      "credit": 96,
+      "denom_withtool": 98,
+      "VPAR": 0.98
+    }
+  },
+  "Qwen3": {
+    "UrbanAgent": {
+      "credit": 67,
+      "denom_withtool": 78,
+      "VPAR": 0.859
+    },
+    "Native": {
+      "credit": 46,
+      "denom_withtool": 100,
+      "VPAR": 0.46
+    },
+    "ReAct": {
+      "credit": 53,
+      "denom_withtool": 100,
+      "VPAR": 0.53
+    },
+    "AutoGen": {
+      "credit": 62,
+      "denom_withtool": 100,
+      "VPAR": 0.62
+    },
+    "Plan-Exec.": {
+      "credit": 72,
+      "denom_withtool": 100,
+      "VPAR": 0.72
+    }
+  }
+}

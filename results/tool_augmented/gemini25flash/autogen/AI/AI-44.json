@@ -1,0 +1,43 @@
+{
+  "query_id": "AI-44",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想知道我家的经纬度坐标",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:47:24+08:00",
+  "run_timestamp_end": "2026-07-12T14:47:34+08:00",
+  "latency_seconds": 10.53,
+  "llm_calls": 3,
+  "usage": {
+    "prompt_tokens": 21008,
+    "completion_tokens": 105,
+    "total_tokens": 21113
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_ip_location",
+      "arguments": {
+        "ip": "116.10.191.196"
+      },
+      "success": true,
+      "raw_result": {
+        "province": "广西壮族自治区",
+        "city": "南宁市",
+        "adcode": "450100",
+        "rectangle": "108.0737436,22.62314202;108.5486448,22.98727639"
+      },
+      "error": null,
+      "latency_seconds": 0.069
+    }
+  ],
+  "final_answer": "",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

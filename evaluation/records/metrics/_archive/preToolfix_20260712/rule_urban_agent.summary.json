@@ -1,0 +1,18 @@
+{
+  "baseline": "urban_agent",
+  "n_runs": 250,
+  "n_process_evaluated": 200,
+  "n_clarified": 55,
+  "termination": {
+    "normal": 247,
+    "step_limit": 2,
+    "timeout": 1,
+    "context_overflow": 0,
+    "framework_error": 0
+  },
+  "avg_total_tokens": 16030.148,
+  "avg_latency_seconds": 98.989,
+  "avg_llm_calls": 6.86,
+  "avg_comp_rate": 0.84,
+  "avg_order_rate": 0.96
+}

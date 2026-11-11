@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-18",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想找家酒店住一晚。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:09:34+08:00",
+  "run_timestamp_end": "2026-07-11T21:09:39+08:00",
+  "latency_seconds": 5.329,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6878,
+    "completion_tokens": 47,
+    "total_tokens": 6925
+  },
+  "tool_calls": [],
+  "final_answer": "好的，没问题！为了能为您推荐最合适的酒店，请问您打算去哪个城市住宿？另外，您对酒店的预算大概是多少呢？或者您有心仪的酒店品牌或地段要求吗？",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

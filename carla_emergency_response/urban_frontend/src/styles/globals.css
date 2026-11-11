@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Surface stack — Architectural Light (warm off-white paper) ── */
+    --bg-canvas: 242 239 232;
+    --bg-surface-1: 248 245 238;
+    --bg-surface-2: 237 233 224;
+    --bg-surface-3: 226 221 210;
+
+    /* ── Foreground — Warm near-black over warm paper ── */
+    --fg-1: 28 26 22;
+    --fg-2: 78 72 64;
+    --fg-3: 130 122 110;
+    --fg-4: 178 168 152;
+
+    /* ── Single accent — Low-saturation warm bronze ── */
+    --accent: 142 122 92;
+
+    /* ── Semantic states — All desaturated, tuned for light bg ── */
+    --state-ok: 96 122 88;
+    --state-warn: 168 130 70;
+    --state-danger: 168 92 76;
+
+    /* Mid-line on light bg ── used for hairlines, dividers */
+    --line: 0 0 0;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-feature-settings: 'ss01', 'cv11', 'tnum';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: rgb(var(--bg-canvas));
+    color: rgb(var(--fg-1));
+    font-family: theme('fontFamily.sans');
+    font-size: 13px;
+    overflow: hidden;
+  }
+
+  /* Tabular numerals everywhere a number lives */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+
+  /* Custom scrollbar — minimal */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(0 0 0 / 0.10);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(0 0 0 / 0.20);
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgb(var(--accent) / 0.32);
+    color: rgb(var(--fg-1));
+  }
+
+  /* Focus ring — uniform */
+  :focus-visible {
+    outline: none;
+    box-shadow: theme('boxShadow.ring');
+    border-radius: 6px;
+  }
+}
+
+@layer utilities {
+  /* Subtle paper grain — vignette pulled toward the center */
+  .bg-grain {
+    background-image:
+      radial-gradient(
+        ellipse at top,
+        rgb(var(--accent) / 0.04) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse at bottom right,
+        rgb(0 0 0 / 0.02) 0%,
+        transparent 50%
+      );
+  }
+
+  /* Hairline divider that respects DPI */
+  .divider-x {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      rgb(0 0 0 / 0.08) 16%,
+      rgb(0 0 0 / 0.08) 84%,
+      transparent
+    );
+    height: 1px;
+  }
+  .divider-y {
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(0 0 0 / 0.08) 16%,
+      rgb(0 0 0 / 0.08) 84%,
+      transparent
+    );
+    width: 1px;
+  }
+
+  /* Glass surface — used sparingly */
+  .glass {
+    background: rgb(248 245 238 / 0.78);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+    border: 1px solid rgb(0 0 0 / 0.06);
+  }
+}

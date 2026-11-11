@@ -1,0 +1,103 @@
+{
+  "query_id": "CC-08",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从西安北站出发，想在 3 公里范围内 找一家 用户评分 ≥ 4.5 分 的快捷酒店，请查看详细信息并规划 地铁路线",
+  "checklist": [
+    {
+      "item_id": "CC-08.1",
+      "assertion": "西安北站的坐标(经纬度)与官方值匹配",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 108.94113,
+          "lat": 34.371795
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=50m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "西安北站为高铁站,坐标相对固定;如采集到 WGS-84 坐标需转换为 GCJ-02 | MCP2026-07-09:天地图主源+高德校验 天地图(西安北站草滩街道元朔路):(108.93648,34.37334);高德校验424.2m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=108.936480 lat=34.373340 → GCJ-02 lng=108.941130 lat=34.371795; 最终来源=wgs84转gcj02 GCJ-02 lng=108.941130 lat=34.371795"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-08.2",
+      "assertion": "筛选出的酒店位于西安北站 3 公里范围内",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-08.3",
+      "assertion": "筛选出的酒店为快捷/经济连锁定位(如家/汉庭/7天/锦江之星等品牌,或价位/定位体现经济快捷即可,不强求显式标注'快捷'字样)",
+      "gt_source": "computed",
+      "necessary": true,
+      "_typelabel_relax_20260718": "快捷酒店:按品牌/价位定位判断,不强求显式标注"
+    },
+    {
+      "item_id": "CC-08.4",
+      "assertion": "筛选出的酒店用户评分 ≥ 4.5 分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项'并说明已检索亦算通过;仅当系统未检索/瞎编才判错,不因'区域内确无≥阈值对象'本身判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足阈值POI时,如实报无即通过"
+    },
+    {
+      "item_id": "CC-08.5",
+      "assertion": "返回的酒店详细信息包含必要字段(名称/地址/评分/价格等)且可溯源到本次工具返回",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-08.6",
+      "assertion": "规划的地铁路线起点坐标与西安北站坐标一致(内部一致性)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-08.7",
+      "assertion": "规划的地铁路线终点坐标与返回的酒店坐标一致(内部一致性)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-08.8",
+      "assertion": "规划的路线交通方式为地铁",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-08.9",
+      "assertion": "路线方案与耗时可溯源到本次工具返回",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "酒店搜索",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "酒店搜索"
+      ],
+      [
+        "酒店搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "地理编码获取西安北站坐标 → 酒店搜索(范围3km+类型快捷+评分≥4.5) → 路线规划(地铁方式);评分阈值与距离约束须在搜索阶段完成过滤"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

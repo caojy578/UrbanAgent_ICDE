@@ -1,0 +1,85 @@
+{
+  "query_id": "AI-23",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我规划一下去机场的路线。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:36:57+08:00",
+  "run_timestamp_end": "2026-07-12T14:37:58+08:00",
+  "latency_seconds": 61.68,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 192718,
+    "completion_tokens": 72,
+    "total_tokens": 192790
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "机场"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B0FFJKHNUU",
+            "name": "北京大兴国际机场",
+            "address": "大安路",
+            "typecode": "150104",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/ff6905576e6fe7bf1642091a95d09683"
+            }
+          },
+          {
+            "id": "B000A28DAE",
+            "name": "北京首都国际机场",
+            "address": "首都机场路11号",
+            "typecode": "150104",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/1e8274f6dd7702000000002556108633?type=pic"
+            }
+          },
+          {
+            "id": "B000A84PH5",
+            "name": "北京首都国际机场3号航站楼",
+            "address": "二纬路1号北京首都国际机场",
+            "typecode": "150104",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/fdec0668288a3498ba5dd279440aefbd"
+            }
+          },
+          {
+            "id": "B000A9FG1Q",
+            "name": "北京首都国际机场2号航站楼",
+            "address": "首都机场路11(2号航站楼地铁站D西南口旁)",
+            "typecode": "150104",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B000A9FG1Q/comment/68803306-b33b-469b-b64f-e96f4a2f8589.png"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.136
+    }
+  ],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

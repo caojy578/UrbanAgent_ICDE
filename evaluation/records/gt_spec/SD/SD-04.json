@@ -1,0 +1,107 @@
+{
+  "query_id": "SD-04",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我打算从“苏州市工业园区”去“南京市新街口”，请帮我规划公共交通路线， 然后告诉我到达南京之后当天的天气情况。",
+  "checklist": [
+    {
+      "item_id": "SD-04.1",
+      "assertion": "苏州市工业园区的地理编码坐标正确(含经纬度)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 120.723444,
+          "lat": 31.323995
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)坐标拾取器或百度/腾讯地图",
+        "collected_on": "2026-07-10",
+        "note": "采集苏州市工业园区中心点或管委会坐标;如工具返回境外坐标系需转换为GCJ-02后对比 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=120.719095 lat=31.326003 → GCJ-02 lng=120.723444 lat=31.323995; 高德POI(苏州工业园区,120.723343,31.324036) dist_orig=459.0m dist_gcj02=10.7m tol=150m; 最终来源=wgs84转gcj02 GCJ-02 lng=120.723444 lat=31.323995"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-04.2",
+      "assertion": "南京市新街口的地理编码坐标正确(含经纬度)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 118.784136,
+          "lat": 32.041806
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)坐标拾取器或百度/腾讯地图",
+        "collected_on": "2026-07-10",
+        "note": "采集南京新街口商圈中心点或地标坐标;如工具返回境外坐标系需转换为GCJ-02后对比 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=118.784500 lat=32.043620 → GCJ-02 lng=118.789701 lat=32.041565; 高德POI(新街口(地铁站),118.784136,32.041806) dist_orig=204.6m dist_gcj02=525.2m tol=150m; 最终来源=高德POI(超容差改用) GCJ-02 lng=118.784136 lat=32.041806"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-04.3",
+      "assertion": "公共交通路线规划方案存在且起点终点正确",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-04.4",
+      "assertion": "路线规划返回的交通方式为公共交通(地铁/公交/火车等,非驾车/步行)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-04.5",
+      "assertion": "路线规划包含关键信息:总时长/总距离/换乘次数/主要交通工具",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-04.6",
+      "assertion": "南京当天天气预报数据正确(温度/天气状况/风力等核心要素)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-04.7",
+      "assertion": "天气查询的城市定位为南京市",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-04.8",
+      "assertion": "天气查询的日期为当天(查询执行日)",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "路线规划",
+      "天气"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "路线规划"
+      ],
+      [
+        "地理编码",
+        "天气"
+      ]
+    ],
+    "notes": "天气查询必须在路线规划之后执行,因为需要明确到达南京这一上下文;地理编码需先于路线规划获取起终点坐标;天气查询需使用当天日期"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

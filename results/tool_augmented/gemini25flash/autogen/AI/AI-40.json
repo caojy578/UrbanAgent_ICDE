@@ -1,0 +1,265 @@
+{
+  "query_id": "AI-40",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我看看从学校到博物馆怎么走。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:44:56+08:00",
+  "run_timestamp_end": "2026-07-12T14:45:08+08:00",
+  "latency_seconds": 11.937,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 34893,
+    "completion_tokens": 84,
+    "total_tokens": 34977
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "学校"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": []
+      },
+      "error": null,
+      "latency_seconds": 0.161
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "博物馆"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B000A8UIN8",
+            "name": "故宫博物院",
+            "address": "景山前街4号",
+            "typecode": "110201|140100",
+            "photos": {
+              "provider": [],
+              "title": "春季",
+              "url": "http://store.is.autonavi.com/showpic/2f968490d105bb2741e17f90b85c6b79"
+            }
+          },
+          {
+            "id": "B000A83U0P",
+            "name": "中国国家博物馆",
+            "address": "东长安街16号天安门广场东侧",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B000A83U0P/headerImg/c18b1708f9b307ca92bf78809f7a0220_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B000A76B0A",
+            "name": "首都博物馆",
+            "address": "复兴门外大街16号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/a77f0bbd578a6e932e98d939fec47ede"
+            }
+          },
+          {
+            "id": "B000A88E4C",
+            "name": "中国地质博物馆",
+            "address": "西四羊肉胡同15号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/2c936a301df230738dc17b8f8a81528d"
+            }
+          },
+          {
+            "id": "B000A3BE77",
+            "name": "北京鲁迅博物馆",
+            "address": "阜城门内宫门口二条19号(阜成门地铁站B东北口步行260米)",
+            "typecode": "110210",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/dc6a77943c5893fa0000002953582697?type=pic"
+            }
+          },
+          {
+            "id": "B000A7S1GC",
+            "name": "中国人民革命军事博物馆",
+            "address": "复兴路9号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B000A7S1GC/comment/b08a6ee7daec8d789881a41c12aabead_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B000A7BC2S",
+            "name": "中国美术馆",
+            "address": "五四大街1号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/7bd6fc174fed670cf2ea3a6ffcfa303a"
+            }
+          },
+          {
+            "id": "B000A8UMB4",
+            "name": "中国钱币博物馆",
+            "address": "西交民巷17号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B000A8UMB4/comment/content_media_external_file_100006572_1768058312246_20893829.jpg"
+            }
+          },
+          {
+            "id": "B0L0LUA3GD",
+            "name": "巧克巧蔻·巧克力博物馆(北京馆)",
+            "address": "廊坊头条2号院5号楼1层01号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/comment/content_service__1769922873038_06657985_1769922878238_88490056.jpg"
+            }
+          },
+          {
+            "id": "B0HUFDX2SZ",
+            "name": "中央礼品文物管理中心",
+            "address": "西兴隆街1号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0HUFDX2SZ/comment/20260316-b5582c984891c4a88f54bd59-8cKsyj7BsM06ngumxuJdK8.jpg"
+            }
+          },
+          {
+            "id": "B000A7CRPA",
+            "name": "国家自然博物馆",
+            "address": "天桥南大街126号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/75fe64b469bd6b88564a9644a9a471ca"
+            }
+          },
+          {
+            "id": "B000A84MRF",
+            "name": "中国铁道博物馆正阳门馆",
+            "address": "前门大街甲2号(前门地铁站E2北口旁)",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/b5db866cf1e2fef06088957b9085a417"
+            }
+          },
+          {
+            "id": "B000A8U9K7",
+            "name": "北京宣南文化博物馆",
+            "address": "北京市广安门内街道长椿街9号(近宣武医院)",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B000A8U9K7/comment/content_media_external_file_24369_ss__1762469818651_82196308.jpg"
+            }
+          },
+          {
+            "id": "B000A3E189",
+            "name": "北京警察博物馆",
+            "address": "东交民巷36号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/5d743251217083210b996dc20c818bd5"
+            }
+          },
+          {
+            "id": "B000A16BBC",
+            "name": "北京古代建筑博物馆",
+            "address": "东经路21号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/584ac3caafa9d9a3b44649f96af5faff"
+            }
+          },
+          {
+            "id": "B0FFL77VUJ",
+            "name": "白塔寺博物馆",
+            "address": "新街口街道新街口街道阜成门内大街171号妙应寺白塔",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/77734651abe1bebd995e89ba536836fb"
+            }
+          },
+          {
+            "id": "B000A7B47A",
+            "name": "中国古动物馆",
+            "address": "西直门外大街142号(北京动物园向西300米路南,北京天文馆西50米)",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/ac717adec521ea7c6e5aa4c0de97ccec"
+            }
+          },
+          {
+            "id": "B0K2O57QJB",
+            "name": "北京检察博物馆",
+            "address": "东交民巷39号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/c60a0a85c359981c937b226e30f1dd4d"
+            }
+          },
+          {
+            "id": "B0FFFLJLZF",
+            "name": "93号院博物馆",
+            "address": "铁树斜街93号院",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/15a446aa9aff245a86c8506e5f587703"
+            }
+          },
+          {
+            "id": "B000A7IKC6",
+            "name": "北京石刻艺术博物馆",
+            "address": "五塔寺村24号",
+            "typecode": "140100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B000A7IKC6/comment/file_media_Photo_2748_IMG_1770597915_036_29581d6b8ead7761c01129ec729ac91f_jp_1770597975131_15972282.jpg"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.203
+    }
+  ],
+  "final_answer": "",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

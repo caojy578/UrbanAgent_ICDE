@@ -1,0 +1,95 @@
+{
+  "query_id": "CC-05",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我现在在武汉大学 2.5 公里范围内，想找一家 评分不低于 4.5 分 的自习室，请查看开放时间并规划 步行路线",
+  "checklist": [
+    {
+      "item_id": "CC-05.1",
+      "assertion": "找到的自习室与武汉大学的实际距离不超过 2.5 公里(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "和光自习馆·沉浸自习室(武大店)",
+          "address": "武昌区珞狮路樱花大厦B座24楼(武汉大学正门旁)",
+          "lng": 114.355466,
+          "lat": 30.533793,
+          "distance_m": 1348,
+          "within_2_5km": true,
+          "rating": 4.6
+        },
+        "datum": "GCJ-02",
+        "tolerance": "直线距离<=2.5km,或工具返回的路径距离<=2.5km(以工具种类适配)",
+        "collect_from": "大众点评人工选店+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-11",
+        "note": "[人工复核 2026-07-11] 大众点评:rank=4.6,tag=自习室,距小洪山站A口320m;距武汉大学(114.3619,30.54458)1348m(≤2.5km);作废:开物空间自习室(天地图首条未核实) | GCJ-02 lng=114.355466 lat=30.533793"
+      }
+    },
+    {
+      "item_id": "CC-05.2",
+      "assertion": "找到的自习室评分不低于 4.5 分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项'并说明已检索亦算通过;仅当系统未检索/瞎编才判错,不因'区域内确无≥阈值对象'本身判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足阈值POI时,如实报无即通过"
+    },
+    {
+      "item_id": "CC-05.3",
+      "assertion": "获取到该自习室的开放时间信息",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-05.4",
+      "assertion": "规划的路线起点位置与武汉大学的实际位置一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-05.5",
+      "assertion": "规划的路线终点坐标与本次工具返回的自习室坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-05.6",
+      "assertion": "规划的路线为步行模式",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-05.7",
+      "assertion": "返回的自习室名称、地址与本次工具查询到的信息一致",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "需先对武汉大学进行地理编码获取中心坐标;然后以该坐标为中心搜索 2.5km 范围内的自习室;筛选评分>=4.5 的结果;获取开放时间;最后规划从武汉大学到选定自习室的步行路线"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

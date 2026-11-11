@@ -1,0 +1,97 @@
+{
+  "query_id": "SD-50",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我在石家庄勒泰中心，准备坐公交去正定古城，帮我规划一下路线，然后看看现在天气情况。",
+  "checklist": [
+    {
+      "item_id": "SD-50.1",
+      "assertion": "识别出起点为石家庄勒泰中心的准确位置(坐标)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 114.50733,
+          "lat": 38.044639
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图或腾讯地图",
+        "collected_on": "2026-07-10",
+        "note": "搜索'石家庄勒泰中心'或'勒泰中心石家庄',取主入口或中心点坐标;如来源为 WGS-84 需转 GCJ-02 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=114.501300 lat=38.043980 → GCJ-02 lng=114.507330 lat=38.044639; 高德POI(勒泰中心,114.506700,38.044918) dist_orig=484.2m dist_gcj02=63.3m tol=150m; 最终来源=wgs84转gcj02 GCJ-02 lng=114.507330 lat=38.044639"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-50.2",
+      "assertion": "识别出终点为正定古城的准确位置(坐标)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 114.574037,
+          "lat": 38.144749
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图或腾讯地图",
+        "collected_on": "2026-07-10",
+        "note": "搜索'正定古城'或'河北正定古城',取景区主入口或核心区域中心点坐标;如来源为 WGS-84 需转 GCJ-02 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=114.582404 lat=38.140499 → GCJ-02 lng=114.588200 lat=38.140965; 高德POI(正定古城,114.574037,38.144749) dist_orig=871.1m dist_gcj02=1308.1m tol=150m; 最终来源=高德POI(超容差改用) GCJ-02 lng=114.574037 lat=38.144749"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-50.3",
+      "assertion": "规划的公交路线起点坐标与勒泰中心位置一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-50.4",
+      "assertion": "规划的公交路线终点坐标与正定古城位置一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-50.5",
+      "assertion": "提供的公交路线方案包含具体线路名称、换乘站点、预计用时等关键信息",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-50.6",
+      "assertion": "天气查询的城市为石家庄(起点所在城市)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-50.7",
+      "assertion": "提供的天气信息为查询当天石家庄的实时天气状况(温度、天气现象、风力等)",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "POI搜索",
+      "路线规划",
+      "天气"
+    ],
+    "dependency_pairs": [
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "需先通过 POI搜索 获取起终点坐标,再进行公交路线规划,最后查询天气;天气应查询起点城市石家庄的实时天气"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

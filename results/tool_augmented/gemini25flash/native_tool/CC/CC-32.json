@@ -1,0 +1,40 @@
+{
+  "query_id": "CC-32",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我想找上海浦东机场附近酒店，最好满足价格低于 500 元且提供接送服务。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-14T01:42:50+08:00",
+  "run_timestamp_end": "2026-07-14T01:43:15+08:00",
+  "latency_seconds": 24.996,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 2723,
+    "completion_tokens": 230,
+    "total_tokens": 2953
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "特惠酒店MCP",
+      "tool": "find_hotels",
+      "arguments": {
+        "city": "上海",
+        "maxPrice": 500,
+        "query": "浦东机场 酒店 接送"
+      },
+      "success": true,
+      "raw_result": "为您找到以下符合条件的酒店：\n\n1. 新爵皇家酒店(上海浦东机场大道店) (上海) - 178.00元/晚\n2. 新爵皇家酒店(上海浦东机场大道店) (上海) - 188.00元/晚\n3. 上海香榭·丽舍酒店 (上海) - 199.00元/晚\n4. 新爵皇家酒店(上海浦东机场大道店) (上海) - 208.00元/晚\n5. 上海浦东机场祝桥智选假日酒店 (上海) - 288.00元/晚\n6. 上海野生动物园万达悦华酒店 (上海) - 289.00元/晚\n\n您可以直接输入序号进行选择。",
+      "error": null,
+      "latency_seconds": 5.081
+    }
+  ],
+  "final_answer": "请问您对哪家酒店感兴趣？或者您有其他要求吗，比如需要大床房或者双床房，入住和退房日期等？",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

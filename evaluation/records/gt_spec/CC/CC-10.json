@@ -1,0 +1,132 @@
+{
+  "query_id": "CC-10",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从重庆江北机场下飞机，想在 公交出行距离 8 公里内 找一家民宿，请查看入住评价并规划 公交路线",
+  "checklist": [
+    {
+      "item_id": "CC-10.1",
+      "assertion": "重庆江北机场的坐标准确(误差≤150米)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 106.65523,
+          "lat": 29.710248
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "采集重庆江北国际机场T2/T3航站楼中心坐标,若官方给出 WGS-84 需转换为 GCJ-02 | MCP2026-07-09:天地图主源+高德校验 天地图(重庆江北国际机场):(106.65144,29.71305);高德校验1216.1m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=106.651440 lat=29.713050 → GCJ-02 lng=106.655230 lat=29.710248; 最终来源=wgs84转gcj02 GCJ-02 lng=106.655230 lat=29.710248",
+        "_needs_review": true,
+        "_review_reason": "高德geocode匹配歧义(d=1389m,疑地名多义/大范围)"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-10.2",
+      "assertion": "返回的民宿存在且位置准确(坐标误差≤150米)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "name": "屿念·City民宿(重庆江北国际机场T2航站楼地铁站店)",
+          "address": "重庆市渝北区渝阳路206号文兴苑",
+          "lng": 106.637458,
+          "lat": 29.715551
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "去哪儿网商户信息+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-11",
+        "note": "[人工复核 2026-07-11] 大众点评未检索到合适民宿,改去哪儿网:评分4.7,优选民宿,免费接送机/行李寄存,距T2B直线约541m | 天地图geocode'重庆江北机场T2屿念City民宿'距机场中心1815m | 作废:片刻居所酒店(经济型非民宿) | GCJ-02 lng=106.637458 lat=29.715551 | [师兄网络核对修正 2026-07-11] 址改渝北区渝阳路206号文兴苑;坐标待师弟重拾",
+        "_needs_review": true,
+        "_review_reason": "note无「天地图(地址)」可提取地标,无法自动geocode核验"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-10.3",
+      "assertion": "民宿类型正确(属于民宿/客栈类别,非酒店/宾馆)",
+      "gt_source": "static_ref",
+      "necessary": true,
+      "static_gt": {
+        "ref_value": "民宿",
+        "datum": null,
+        "tolerance": "POI类别标注为民宿/客栈/家庭旅馆",
+        "collect_from": "去哪儿网(与CC-10.2同一商户)",
+        "collected_on": "2026-07-11",
+        "note": "CC-10.2商户屿念·City民宿,去哪儿网标注为优选民宿;大众点评江北机场民宿检索无合适结果,商户身份以去哪儿网为准"
+      }
+    },
+    {
+      "item_id": "CC-10.4",
+      "assertion": "民宿到重庆江北机场的公交路线距离≤8公里(硬约束)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-10.5",
+      "assertion": "规划的公交路线起点坐标与重庆江北机场坐标一致(误差≤50米)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-10.6",
+      "assertion": "规划的公交路线终点坐标与返回的民宿坐标一致(误差≤50米)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-10.7",
+      "assertion": "规划的路线为公交出行方式(非驾车/步行/骑行)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-10.8",
+      "assertion": "提供的入住评价数据可溯源到本次工具返回(评分/评论数/评价内容)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-10.9",
+      "assertion": "评价数据的时效性(数据时间戳在评测执行日期前合理范围内)",
+      "gt_source": "trace",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "路线规划",
+      "商户评价"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "路线规划"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ],
+      [
+        "POI搜索",
+        "商户评价"
+      ]
+    ],
+    "notes": "地理编码获取机场坐标 → POI搜索找民宿 → 路线规划验证8公里约束并输出方案 + 商户评价获取入住评价;路线规划需使用公交(transit)模式"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

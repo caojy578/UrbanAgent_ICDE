@@ -1,0 +1,113 @@
+{
+  "query_id": "SD-10",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我现在在“广州天河体育中心”，帮我找一家 1 公里以内评分最高的咖啡馆，如果现在天气温度低于 10 度，我就打车过去，如果温度适合，就帮我规划步行路线。",
+  "checklist": [
+    {
+      "item_id": "SD-10.1",
+      "assertion": "广州天河体育中心的坐标(经度、纬度)与官方数据一致,误差不超过150米",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 113.324465,
+          "lat": 23.137516
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "需查询'广州天河体育中心'官方位置坐标;若来源为 WGS-84 需转换为 GCJ-02;天河体育中心为大型场馆,取主入口或中心点坐标 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=113.319053 lat=23.140115 → GCJ-02 lng=113.324465 lat=23.137516; 高德POI(广州天河体育中心,113.325064,23.137455) dist_orig=682.1m dist_gcj02=61.6m tol=150m; 最终来源=wgs84转gcj02 GCJ-02 lng=113.324465 lat=23.137516"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-10.2",
+      "assertion": "找到的咖啡馆位于广州天河体育中心 1 公里范围内(基于本次工具返回的起点坐标计算)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.3",
+      "assertion": "找到的咖啡馆类型/类目属于咖啡馆/咖啡厅",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.4",
+      "assertion": "在 1 公里范围内的所有咖啡馆中,返回的咖啡馆评分为最高(或并列最高)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.5",
+      "assertion": "返回的咖啡馆评分数值可溯源到本次工具返回的评分数据",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.6",
+      "assertion": "广州当前实时温度可溯源到本次天气工具返回的温度值",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.7",
+      "assertion": "条件分支判断正确:若本次天气工具返回温度<10°C,则给出打车方案(驾车路线);若温度≥10°C,则给出步行路线",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.8",
+      "assertion": "路线规划的起点坐标与本次工具返回的'广州天河体育中心'坐标一致(误差≤50米)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.9",
+      "assertion": "路线规划的终点坐标与本次工具返回的目标咖啡馆坐标一致(误差≤50米)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-10.10",
+      "assertion": "路线规划的出行方式与温度条件匹配:温度<10°C 时为驾车(driving),温度≥10°C 时为步行(walking)",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "天气",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ],
+      [
+        "天气",
+        "路线规划"
+      ]
+    ],
+    "notes": "天气需获取广州实时温度;POI搜索需支持距离过滤(1公里)和评分排序;路线规划方式(步行/驾车)依赖天气温度条件判断"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

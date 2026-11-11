@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-37",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我查一下这个地点的坐标，我要做地图标记。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:12:49+08:00",
+  "run_timestamp_end": "2026-07-11T21:12:53+08:00",
+  "latency_seconds": 4.349,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6884,
+    "completion_tokens": 22,
+    "total_tokens": 6906
+  },
+  "tool_calls": [],
+  "final_answer": "请提供您需要查询的地点名称或具体地址，我会立即为您查询其经纬度坐标。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

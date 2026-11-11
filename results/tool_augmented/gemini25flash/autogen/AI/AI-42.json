@@ -1,0 +1,38 @@
+{
+  "query_id": "AI-42",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我在欧洲自驾了一段路，排放大概多少？",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:46:12+08:00",
+  "run_timestamp_end": "2026-07-12T14:47:11+08:00",
+  "latency_seconds": 59.131,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 182787,
+    "completion_tokens": 104,
+    "total_tokens": 182891
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "climatiq-mcp-server",
+      "tool": "travel-emission",
+      "arguments": {
+        "mode": "car"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "travel-emission returned error: Error calculating travel emissions with distance: Missing distance for car travel",
+      "latency_seconds": 0.005
+    }
+  ],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

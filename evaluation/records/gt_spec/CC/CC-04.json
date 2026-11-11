@@ -1,0 +1,114 @@
+{
+  "query_id": "CC-04",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我从杭州东站下高铁，想在 步行 10 分钟范围内 找一家 用户评分 ≥ 4.3 分 的行李寄存点，请查看收费标准并规划 步行路线",
+  "checklist": [
+    {
+      "item_id": "CC-04.1",
+      "assertion": "识别出发点为杭州东站,并获取其坐标(GCJ-02坐标系)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 120.211415,
+          "lat": 30.291432
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=50m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器查询'杭州东站'主建筑/广场中心坐标",
+        "collected_on": "2026-07-10",
+        "note": "若来源为WGS-84需转GCJ-02;取车站主体建筑或站前广场代表点 | MCP2026-07-09:天地图主源+高德校验 天地图(杭州东站):(120.206867,30.29385);高德校验643.6m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=120.206867 lat=30.293850 → GCJ-02 lng=120.211415 lat=30.291432; 最终来源=wgs84转gcj02 GCJ-02 lng=120.211415 lat=30.291432"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-04.2",
+      "assertion": "找到的行李寄存点存在且位于杭州东站附近,坐标可溯源(GCJ-02坐标系)(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "安东易迷你自助仓储寄存仓库(杭州东站店)",
+          "address": "彭埠街道御居中心元宝塘店B座-1层-1",
+          "lng": 120.212575,
+          "lat": 30.29162
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=100m",
+        "collect_from": "大众点评人工选店+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-12",
+        "note": "[桶B复核 2026-07-12] 大众点评截图复核;eval↔天地图search 57m↔百度 57m;保留eval | 原note: [人工复核 2026-07-11] 大众点评人工选店:rank=4.8,tag=迷你自助仓储,24小时;距元宝塘站步行740m | 天地图geocode'杭州东..."
+      }
+    },
+    {
+      "item_id": "CC-04.3",
+      "assertion": "规划的步行路线起点坐标与本次获取的杭州东站坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-04.4",
+      "assertion": "规划的步行路线终点坐标与本次返回的行李寄存点坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-04.5",
+      "assertion": "步行距离或时间满足10分钟范围内的约束(步行时间≤10分钟或距离≤800米)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-04.6",
+      "assertion": "找到的行李寄存点用户评分≥4.3分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项'并说明已检索亦算通过;仅当系统未检索/瞎编才判错,不因'区域内确无≥阈值对象'本身判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足阈值POI时,如实报无即通过"
+    },
+    {
+      "item_id": "CC-04.7",
+      "assertion": "提供了该行李寄存点的收费标准信息",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-04.8",
+      "assertion": "输出了完整的步行路线方案(包含路径描述或导航指引)",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "商户评价"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "需先对杭州东站进行地理编码获取坐标,再以此为中心搜索行李寄存POI;获取POI后需查询评价信息验证评分约束,并规划步行路线验证时间/距离约束;收费标准信息来自POI详情或商户评价接口"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

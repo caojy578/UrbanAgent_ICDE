@@ -1,0 +1,106 @@
+{
+  "query_id": "CC-22",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我们公司计划后天团建去三亚，先查天气预报，如果连续降雨超过 2 天就改为厦门",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:41:16+08:00",
+  "run_timestamp_end": "2026-07-11T22:41:37+08:00",
+  "latency_seconds": 20.725,
+  "llm_calls": 5,
+  "usage": {
+    "prompt_tokens": 36006,
+    "completion_tokens": 311,
+    "total_tokens": 36317
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "三亚"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "海南省",
+            "city": "三亚市",
+            "citycode": "0899",
+            "district": [],
+            "street": [],
+            "number": [],
+            "adcode": "460200",
+            "location": "109.511709,18.252865",
+            "level": "市"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.062
+    },
+    {
+      "seq": 2,
+      "server": "caiyun-weather",
+      "tool": "get_weekly_forecast",
+      "arguments": {
+        "lat": 18.252865,
+        "lng": 109.511709
+      },
+      "success": true,
+      "raw_result": "3-Day Forecast:\n\nDate: 2026-07-11\nTemperature: 27.4°C ~ 32.39°C\nWeather: CLEAR_NIGHT\nRain Probability: 0%\n------------------------\nDate: 2026-07-12\nTemperature: 27.5°C ~ 31.34°C\nWeather: PARTLY_CLOUDY_DAY\nRain Probability: 0%\n------------------------\nDate: 2026-07-13\nTemperature: 27.63°C ~ 31.6°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\n------------------------",
+      "error": null,
+      "latency_seconds": 3.305
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "厦门"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "福建省",
+            "city": "厦门市",
+            "citycode": "0592",
+            "district": [],
+            "street": [],
+            "number": [],
+            "adcode": "350200",
+            "location": "118.088910,24.479627",
+            "level": "市"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.062
+    },
+    {
+      "seq": 4,
+      "server": "caiyun-weather",
+      "tool": "get_weekly_forecast",
+      "arguments": {
+        "lat": 24.479627,
+        "lng": 118.08891
+      },
+      "success": true,
+      "raw_result": "3-Day Forecast:\n\nDate: 2026-07-11\nTemperature: 27.66°C ~ 34.73°C\nWeather: PARTLY_CLOUDY_NIGHT\nRain Probability: 0%\n------------------------\nDate: 2026-07-12\nTemperature: 28.96°C ~ 33.66°C\nWeather: CLOUDY\nRain Probability: 0%\n------------------------\nDate: 2026-07-13\nTemperature: 27.83°C ~ 29.98°C\nWeather: CLOUDY\nRain Probability: 0%\n------------------------",
+      "error": null,
+      "latency_seconds": 3.546
+    }
+  ],
+  "final_answer": "三亚后天（7月13日）确实有降雨，但仅是单天降雨，未满足“连续降雨超过 2 天”的条件。\n\n以下是为您查询的天气详情：\n\n**三亚：**\n*   7月11日：晴，降水概率 0%\n*   7月12日：多云，降水概率 0%\n*   **7月13日：中雨，降水概率 70%**\n\n**厦门：**\n*   7月11日：多云，降水概率 0%\n*   7月12日：多云，降水概率 0%\n*   7月13日：多云，降水概率 0%\n\n既然三亚并未出现连续 2 天以上的降雨，按照你们之前的计划，依然可以按原定行程前往三亚。如有其他需要，请随时告诉我。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

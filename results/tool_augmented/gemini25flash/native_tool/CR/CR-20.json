@@ -1,0 +1,103 @@
+{
+  "query_id": "CR-20",
+  "query_type": "复杂检索型",
+  "level": "L1",
+  "query": "我在Manhattan Upper East Side，计划2026 年 7 月 13 日 12:30自驾中型燃油 SUV去The Met Museum，距离约 1.3 公里，查看评价、天气和碳排放。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-16T12:42:42+08:00",
+  "run_timestamp_end": "2026-07-16T12:42:59+08:00",
+  "latency_seconds": 17.27,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 2845,
+    "completion_tokens": 1294,
+    "total_tokens": 4139
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "Manhattan Upper East Side",
+        "city": "New York"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "陕西省",
+            "city": "宝鸡市",
+            "citycode": "0917",
+            "district": "渭滨区",
+            "street": [],
+            "number": [],
+            "adcode": "610302",
+            "location": "107.279744,34.346773",
+            "level": "住宅区"
+          },
+          {
+            "country": "中国",
+            "province": "陕西省",
+            "city": "西安市",
+            "citycode": "029",
+            "district": "阎良区",
+            "street": [],
+            "number": [],
+            "adcode": "610114",
+            "location": "109.253561,34.657619",
+            "level": "住宅区"
+          },
+          {
+            "country": "中国",
+            "province": "黑龙江省",
+            "city": "佳木斯市",
+            "citycode": "0454",
+            "district": "汤原县",
+            "street": [],
+            "number": [],
+            "adcode": "230828",
+            "location": "129.913547,46.726695",
+            "level": "住宅区"
+          },
+          {
+            "country": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "citycode": "010",
+            "district": "朝阳区",
+            "street": [],
+            "number": [],
+            "adcode": "110105",
+            "location": "116.482440,39.965931",
+            "level": "住宅区"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.072
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "The Met Museum",
+        "city": "New York"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "maps_geo returned error: Geocoding failed: ENGINE_RESPONSE_DATA_ERROR",
+      "latency_seconds": 0.067
+    }
+  ],
+  "final_answer": "看起来我无法找到“Manhattan Upper East Side”和“The Met Museum”这两个地点在中国的精确地理位置。请问您是在美国吗？如果是的话，我可以帮您查询这两个地方的信息。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

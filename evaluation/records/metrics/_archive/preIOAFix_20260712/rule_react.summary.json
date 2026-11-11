@@ -1,0 +1,18 @@
+{
+  "baseline": "react",
+  "n_runs": 250,
+  "n_process_evaluated": 200,
+  "n_clarified": 43,
+  "termination": {
+    "normal": 249,
+    "step_limit": 0,
+    "timeout": 1,
+    "context_overflow": 0,
+    "framework_error": 0
+  },
+  "avg_total_tokens": 21985.036,
+  "avg_latency_seconds": 38.515,
+  "avg_llm_calls": 3.032,
+  "avg_comp_rate": 0.821,
+  "avg_order_rate": 0.955
+}

@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-20",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我最近开车出差挺多的，想知道大概排多少碳。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:34:29+08:00",
+  "run_timestamp_end": "2026-07-12T14:35:34+08:00",
+  "latency_seconds": 64.524,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 183979,
+    "completion_tokens": 178,
+    "total_tokens": 184157
+  },
+  "tool_calls": [],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

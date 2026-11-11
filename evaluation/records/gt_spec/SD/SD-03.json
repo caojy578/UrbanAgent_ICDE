@@ -1,0 +1,107 @@
+{
+  "query_id": "SD-03",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我现在在北京大学，想3 公里范围内找一家评分高的川菜馆， 帮我选一家评价最好的，然后帮我规划步行路线过去。",
+  "checklist": [
+    {
+      "item_id": "SD-03.1",
+      "assertion": "北京大学的坐标(经纬度)与官方真值在容差内一致",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 116.310918,
+          "lat": 39.992873
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "采集北京大学主校门或标志性建筑坐标;若采集WGS-84需转GCJ-02 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=116.311808 lat=39.992956 → GCJ-02 lng=116.317916 lat=39.994240; 高德POI(北京大学,116.310918,39.992873) dist_orig=76.4m dist_gcj02=615.3m tol=150m; 最终来源=高德POI(超容差改用) GCJ-02 lng=116.310918 lat=39.992873"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-03.2",
+      "assertion": "推荐的川菜馆在北京大学3公里范围内",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-03.3",
+      "assertion": "推荐的川菜馆菜系标签包含川菜",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-03.4",
+      "assertion": "推荐的川菜馆在本次工具返回的3公里内川菜馆中评分最高",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-03.5",
+      "assertion": "推荐川菜馆的当前评分与本次工具查询到的评分一致",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-03.6",
+      "assertion": "规划的步行路线起点位于北京大学校园范围内；用户未指定具体校门或校内位置时，不要求与地理编码返回的单一代表点完全一致",
+      "gt_source": "computed",
+      "necessary": true,
+      "_assertion_preHumanSync": "规划的步行路线起点坐标与北京大学坐标(本次使用的起点)一致"
+    },
+    {
+      "item_id": "SD-03.7",
+      "assertion": "规划的步行路线终点坐标与推荐川菜馆坐标(本次返回的)一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-03.8",
+      "assertion": "路线规划方式为步行",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-03.9",
+      "assertion": "输出的步行路线关键信息(距离/时长/主要路段)可溯源到本次路线规划工具返回",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "商户评价"
+      ],
+      [
+        "商户评价",
+        "路线规划"
+      ]
+    ],
+    "notes": "需先获取北京大学坐标,再搜索3公里内川菜馆,获取评分后筛选最高分商户,最后以该商户为终点规划步行路线"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

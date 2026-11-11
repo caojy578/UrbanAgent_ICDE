@@ -1,0 +1,77 @@
+# CarlaBridge default configuration.
+# Override via:
+#   - config/local.toml (gitignored, optional)
+#   - env vars with CARLABRIDGE_ prefix, double-underscore for nesting
+#     example: CARLABRIDGE_CARLA__HOST=192.168.1.10
+
+[carla]
+host = "127.0.0.1"
+port = 2000
+timeout_s = 30.0
+fixed_delta_seconds = 0.05
+map = "RRD"
+
+[server]
+host = "0.0.0.0"
+port = 5000
+cors_origins = ["*"]
+
+[broadcast]
+state_hz = 1
+metrics_hz = 1
+
+[video]
+default_fps = 25
+# Fallback when a channel omits resolution (see per-channel sections below).
+default_resolution = [1280, 720]
+frame_queue_drop_log_interval_s = 5
+
+# Tuned for urban_frontend @ 1920x1080: grid 22% | 1fr | 22%, VideoSurface object-cover.
+#   city   — center column ~1050x888 px  (AR ~1.18)
+#   aerial — left stack  ~419x396 px each (AR ~1.06)
+#   ground — same slot as aerial
+# city overview (world_pose) — tune x/y/z for your CARLA map center / demo area
+[camera.city]
+x = 0
+y = 0
+z = 45.0
+pitch = -90.0
+yaw = -90.0
+roll = 0.0
+fov = 90.0
+
+[video.city]
+resolution = [848, 800]
+
+[video.aerial]
+resolution = [424, 400]
+
+[video.ground]
+resolution = [424, 400]
+
+[scenario]
+default = "s1_fire"
+
+# UGV + virtual UAV spawn poses (design_poses.py → config/design_poses.json).
+[scenario.vehicle_spawn]
+x = 5.50
+y = -19.98
+z = 0.50
+yaw = -180.00
+
+[scenario.uav_spawn]
+x = 5.50
+y = -19.98
+z = 10.50
+yaw = -180.00
+
+# Fire incident positions — POST /scenario/fire ignores request body position.
+[[scenario.fire_markers]]
+id = "fire-001"
+x = 15.88
+y = 0.00
+z = 0.50
+
+[logging]
+level = "INFO"
+event_log_buffer = 1000

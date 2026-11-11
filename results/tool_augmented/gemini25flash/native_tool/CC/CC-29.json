@@ -1,0 +1,450 @@
+{
+  "query_id": "CC-29",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我明天下午 4 点从杭州西湖出发去灵隐寺，如果未来 3 小时内有降雨就改为公共交通， 否则优先骑行",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:52:51+08:00",
+  "run_timestamp_end": "2026-07-11T22:53:07+08:00",
+  "latency_seconds": 15.597,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 39605,
+    "completion_tokens": 182,
+    "total_tokens": 39787
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "杭州西湖"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "浙江省",
+            "city": "杭州市",
+            "citycode": "0571",
+            "district": "西湖区",
+            "street": [],
+            "number": [],
+            "adcode": "330106",
+            "location": "120.130396,30.259242",
+            "level": "区县"
+          },
+          {
+            "country": "中国",
+            "province": "江西省",
+            "city": "南昌市",
+            "citycode": "0791",
+            "district": "西湖区",
+            "street": [],
+            "number": [],
+            "adcode": "360103",
+            "location": "115.876998,28.657005",
+            "level": "区县"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.048
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "灵隐寺"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "重庆市",
+            "city": "重庆市",
+            "citycode": "023",
+            "district": "合川区",
+            "street": [],
+            "number": [],
+            "adcode": "500117",
+            "location": "106.458739,30.091120",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "浙江省",
+            "city": "温州市",
+            "citycode": "0577",
+            "district": "苍南县",
+            "street": [],
+            "number": [],
+            "adcode": "330327",
+            "location": "120.387305,27.562281",
+            "level": "村庄"
+          },
+          {
+            "country": "中国",
+            "province": "香港特别行政区",
+            "city": [],
+            "district": "离岛区",
+            "street": [],
+            "number": [],
+            "adcode": "810018",
+            "location": "113.882052,22.244489",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "甘肃省",
+            "city": "张掖市",
+            "citycode": "0936",
+            "district": "甘州区",
+            "street": [],
+            "number": [],
+            "adcode": "620702",
+            "location": "100.225004,39.187704",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "云南省",
+            "city": "保山市",
+            "citycode": "0875",
+            "district": "腾冲市",
+            "street": [],
+            "number": [],
+            "adcode": "530581",
+            "location": "98.515718,25.055290",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "广西壮族自治区",
+            "city": "北海市",
+            "citycode": "0779",
+            "district": "合浦县",
+            "street": [],
+            "number": [],
+            "adcode": "450521",
+            "location": "109.606329,21.859297",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "广东省",
+            "city": "惠州市",
+            "citycode": "0752",
+            "district": "惠东县",
+            "street": [],
+            "number": [],
+            "adcode": "441323",
+            "location": "114.870558,23.198742",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "湖北省",
+            "city": "荆州市",
+            "citycode": "0716",
+            "district": "监利市",
+            "street": [],
+            "number": [],
+            "adcode": "421088",
+            "location": "112.691203,29.977751",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "湖北省",
+            "city": "荆州市",
+            "citycode": "0716",
+            "district": "松滋市",
+            "street": [],
+            "number": [],
+            "adcode": "421087",
+            "location": "111.571076,29.923936",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "福建省",
+            "city": "三明市",
+            "citycode": "0598",
+            "district": "宁化县",
+            "street": [],
+            "number": [],
+            "adcode": "350424",
+            "location": "116.858371,26.332082",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.065
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "city": "杭州市",
+        "keywords": "灵隐寺"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B023B02842",
+            "name": "灵隐寺(暂停开放)",
+            "address": "法云弄1号",
+            "typecode": "110202",
+            "photos": {
+              "provider": [],
+              "title": "夏季",
+              "url": "http://store.is.autonavi.com/showpic/4aa0a6a1b6ee72c9833441f363cbb43a"
+            }
+          },
+          {
+            "id": "B0FFK0MZY9",
+            "name": "灵隐寺飞来峰灵隐支路售票处",
+            "address": "灵隐路法云弄1号灵隐-飞来峰",
+            "typecode": "070306",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/312c4824591933860000003038490271?type=pic"
+            }
+          },
+          {
+            "id": "B0LUPZYUYV",
+            "name": "富阳灵隐寺",
+            "address": "万市镇",
+            "typecode": "110200",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/7eebc2f424cb35aa0000000861296201?type=pic"
+            }
+          },
+          {
+            "id": "B023B17XAC",
+            "name": "灵隐寺-天王殿",
+            "address": "西湖街道法云弄1号灵隐寺内(南侧)",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B023B17XAC/comment/content_media_external_file_1000172491_ss__1770509685911_64953344.jpg"
+            }
+          },
+          {
+            "id": "B023B17XB8",
+            "name": "灵隐寺-念佛堂",
+            "address": "法云弄1号",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/1EC7AAA036944648A5AD2A616230C41F"
+            }
+          },
+          {
+            "id": "B023B14CB8",
+            "name": "灵隐景区(暂停开放)",
+            "address": "灵隐路法云弄1号",
+            "typecode": "110200",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/e0ef200bdb2d7c2b468ea904f2db4525"
+            }
+          },
+          {
+            "id": "B023B05MJE",
+            "name": "飞来峰(暂停开放)",
+            "address": "灵隐街道灵隐路法云弄1号",
+            "typecode": "110200",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/439cd2ebb79899f4b2cc53e60e061515"
+            }
+          },
+          {
+            "id": "B023B17X7V",
+            "name": "灵隐寺-两石塔",
+            "address": "法云弄1号灵隐寺",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B023B17X7V/comment/content_media_external_file_37188_1767864448966_51620538.jpg"
+            }
+          },
+          {
+            "id": "B0FFGM01T6",
+            "name": "灵隐寺-方丈楼",
+            "address": "法云弄1号灵隐寺(东北角)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFGM01T6/comment/DB948A64_BCB1_493A_875E_CF60ACCB552A_L0_001_2000_150_1750161108504_52972252.jpg"
+            }
+          },
+          {
+            "id": "B0LKXBJ3A9",
+            "name": "灵隐寺-大雄宝殿",
+            "address": "法云弄1号灵隐寺",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/8083c1a4e93f19b60000002232334810?type=pic"
+            }
+          },
+          {
+            "id": "B0FFGM00FC",
+            "name": "灵隐寺-伽蓝殿",
+            "address": "法云弄1号灵隐寺",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/2ec05d60e914dc9f0000001276734078"
+            }
+          },
+          {
+            "id": "B023B0ACHT",
+            "name": "灵隐寺飞来峰停车场",
+            "address": "灵隐路36-2号附近",
+            "typecode": "150904",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B023B0ACHT/comment/BF35BDFD_93D2_4874_B4C3_C6C81D51917F_L0_001_1536_204_1750575759139_78681175.jpg"
+            }
+          },
+          {
+            "id": "B0FFGM15CB",
+            "name": "灵隐寺-禅堂",
+            "address": "法云弄1号灵隐寺(西北角)",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/7a0fba079e3618c7ffd28c45cfeebf36"
+            }
+          },
+          {
+            "id": "B0FFG05UFM",
+            "name": "杭州西湖风景名胜区-灵隐寺两经幢",
+            "address": "灵隐支路附近",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFG05UFM/comment/content_media_external_file_1000054700_ss__1765443059411_06624733.jpg"
+            }
+          },
+          {
+            "id": "B0FFHZR7AX",
+            "name": "灵隐寺-重建云林寺大殿碑",
+            "address": "法云弄1号灵隐寺内(北侧)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFHZR7AX/comment/B60B12D0_99B6_4B73_83D8_BBDEF9024C3C_L0_001_1500_200_1771676594170_47928947.jpg"
+            }
+          },
+          {
+            "id": "B0FFFXVOV5",
+            "name": "灵隐寺-钟楼",
+            "address": "灵隐路法云弄1号灵隐景区(东南角)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/8fccffd10af0edfcf02c0fa46c09a422"
+            }
+          },
+          {
+            "id": "B0FFGLZZXN",
+            "name": "灵隐寺-直指堂",
+            "address": "法云弄1号灵隐寺内(北侧)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/01128acd6be31c2b0000002878018330"
+            }
+          },
+          {
+            "id": "B0FFG05UCJ",
+            "name": "灵隐寺-东南第一山",
+            "address": "灵竺路一线天附近",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/AE0937952F514F93A60530167AC32152"
+            }
+          },
+          {
+            "id": "B0FFI00DHC",
+            "name": "灵隐寺-洗心亭",
+            "address": "法云弄1号灵隐寺内(北侧)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFI00DHC/comment/content_media_external_file_1000058611_ss__1770611173763_35714266.jpg"
+            }
+          },
+          {
+            "id": "B0FFGM01T7",
+            "name": "灵隐寺-大悲楼",
+            "address": "法云弄1号灵隐寺内(东侧)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/aec2bd024f8c1edc075cef4b5d5c7d95"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.169
+    },
+    {
+      "seq": 4,
+      "server": "caiyun-weather",
+      "tool": "get_hourly_forecast",
+      "arguments": {
+        "lat": 30.259242,
+        "lng": 120.130396
+      },
+      "success": true,
+      "raw_result": "72-Hour Forecast:\n\nTime: 2026-07-11T22:00+08:00\nTemperature: 26.48°C\nWeather: LIGHT_RAIN\nRain Probability: 98%\nWind: 26.39 km/h, 27.54°\n------------------------\nTime: 2026-07-11T23:00+08:00\nTemperature: 26.58°C\nWeather: MODERATE_RAIN\nRain Probability: 97%\nWind: 26.12 km/h, 25.29°\n------------------------\nTime: 2026-07-12T00:00+08:00\nTemperature: 26.59°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 26.79 km/h, 33.71°\n------------------------\nTime: 2026-07-12T01:00+08:00\nTemperature: 26.76°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 25.27 km/h, 41.48°\n------------------------\nTime: 2026-07-12T02:00+08:00\nTemperature: 27.07°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 26.65 km/h, 41.55°\n------------------------\nTime: 2026-07-12T03:00+08:00\nTemperature: 27.29°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 29.15 km/h, 42.6°\n------------------------\nTime: 2026-07-12T04:00+08:00\nTemperature: 27.52°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 31.08 km/h, 47.07°\n------------------------\nTime: 2026-07-12T05:00+08:00\nTemperature: 27.56°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 32.5 km/h, 54.29°\n------------------------\nTime: 2026-07-12T06:00+08:00\nTemperature: 27.5°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 31.67 km/h, 62.88°\n------------------------\nTime: 2026-07-12T07:00+08:00\nTemperature: 27.15°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 27.81 km/h, 77.06°\n------------------------\nTime: 2026-07-12T08:00+08:00\nTemperature: 27.49°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 24.29 km/h, 92.8°\n------------------------\nTime: 2026-07-12T09:00+08:00\nTemperature: 27.92°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 24.08 km/h, 107.76°\n------------------------\nTime: 2026-07-12T10:00+08:00\nTemperature: 27.78°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 23.73 km/h, 118.74°\n------------------------\nTime: 2026-07-12T11:00+08:00\nTemperature: 28.03°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 22.72 km/h, 127.47°\n------------------------\nTime: 2026-07-12T12:00+08:00\nTemperature: 27.88°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 22.08 km/h, 142.42°\n------------------------\nTime: 2026-07-12T13:00+08:00\nTemperature: 27.48°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 21.4 km/h, 145.0°\n------------------------\nTime: 2026-07-12T14:00+08:00\nTemperature: 27.98°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 21.11 km/h, 151.25°\n------------------------\nTime: 2026-07-12T15:00+08:00\nTemperature: 28.41°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 21.33 km/h, 156.42°\n------------------------\nTime: 2026-07-12T16:00+08:00\nTemperature: 28.09°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 20.27 km/h, 153.98°\n------------------------\nTime: 2026-07-12T17:00+08:00\nTemperature: 28.13°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 20.98 km/h, 153.39°\n------------------------\nTime: 2026-07-12T18:00+08:00\nTemperature: 28.49°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 19.14 km/h, 154.25°\n------------------------\nTime: 2026-07-12T19:00+08:00\nTemperature: 28.84°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 18.16 km/h, 146.15°\n------------------------\nTime: 2026-07-12T20:00+08:00\nTemperature: 28.86°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 17.7 km/h, 139.7°\n------------------------\nTime: 2026-07-12T21:00+08:00\nTemperature: 28.96°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 17.84 km/h, 129.02°\n------------------------\nTime: 2026-07-12T22:00+08:00\nTemperature: 28.46°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 18.6 km/h, 130.13°\n------------------------\nTime: 2026-07-12T23:00+08:00\nTemperature: 28.17°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 14.43 km/h, 124.84°\n------------------------\nTime: 2026-07-13T00:00+08:00\nTemperature: 28.17°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 15.78 km/h, 129.35°\n------------------------\nTime: 2026-07-13T01:00+08:00\nTemperature: 28.02°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 14.12 km/h, 130.55°\n------------------------\nTime: 2026-07-13T02:00+08:00\nTemperature: 28.01°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 13.52 km/h, 134.68°\n------------------------\nTime: 2026-07-13T03:00+08:00\nTemperature: 27.96°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 13.0 km/h, 138.37°\n------------------------\nTime: 2026-07-13T04:00+08:00\nTemperature: 27.93°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 13.15 km/h, 140.78°\n------------------------\nTime: 2026-07-13T05:00+08:00\nTemperature: 27.66°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 12.3 km/h, 132.75°\n------------------------\nTime: 2026-07-13T06:00+08:00\nTemperature: 27.34°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 11.98 km/h, 126.08°\n------------------------\nTime: 2026-07-13T07:00+08:00\nTemperature: 27.4°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 11.48 km/h, 138.56°\n------------------------\nTime: 2026-07-13T08:00+08:00\nTemperature: 28.17°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 11.69 km/h, 165.92°\n------------------------\nTime: 2026-07-13T09:00+08:00\nTemperature: 29.14°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 13.82 km/h, 190.96°\n------------------------\nTime: 2026-07-13T10:00+08:00\nTemperature: 29.97°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 13.33 km/h, 195.35°\n------------------------\nTime: 2026-07-13T11:00+08:00\nTemperature: 30.73°C\nWeather: CLOUDY\nRain Probability: 0%\nWind: 13.27 km/h, 185.45°\n------------------------\nTime: 2026-07-13T12:00+08:00\nTemperature: 31.74°C\nWeather: CLOUDY\nRain Probability: 0%\nWind: 12.35 km/h, 188.89°\n------------------------\nTime: 2026-07-13T13:00+08:00\nTemperature: 32.91°C\nWeather: CLOUDY\nRain Probability: 0%\nWind: 11.87 km/h, 187.49°\n------------------------\nTime: 2026-07-13T14:00+08:00\nTemperature: 33.83°C\nWeather: PARTLY_CLOUDY_DAY\nRain Probability: 0%\nWind: 14.33 km/h, 183.89°\n------------------------\nTime: 2026-07-13T15:00+08:00\nTemperature: 34.03°C\nWeather: PARTLY_CLOUDY_DAY\nRain Probability: 0%\nWind: 14.77 km/h, 186.02°\n------------------------\nTime: 2026-07-13T16:00+08:00\nTemperature: 33.24°C\nWeather: PARTLY_CLOUDY_DAY\nRain Probability: 0%\nWind: 14.74 km/h, 186.17°\n------------------------\nTime: 2026-07-13T17:00+08:00\nTemperature: 32.65°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 12.1 km/h, 179.49°\n------------------------\nTime: 2026-07-13T18:00+08:00\nTemperature: 32.29°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 9.07 km/h, 148.14°\n------------------------\nTime: 2026-07-13T19:00+08:00\nTemperature: 31.5°C\nWeather: LIGHT_RAIN\nRain Probability: 60%\nWind: 10.48 km/h, 143.8°\n------------------------\nTime: 2026-07-13T20:00+08:00\nTemperature: 31.12°C\nWeather: HEAVY_RAIN\nRain Probability: 80%\nWind: 8.9 km/h, 150.43°\n------------------------\nTime: 2026-07-13T21:00+08:00\nTemperature: 30.54°C\nWeather: MODERATE_RAIN\nRain Probability: 70%\nWind: 8.4 km/h, 144.95°\n------------------------",
+      "error": null,
+      "latency_seconds": 3.274
+    }
+  ],
+  "final_answer": "根据天气预报显示，明天（7月13日）下午 4 点至傍晚 7 点期间，杭州西湖区域预报显示有降雨（降雨概率在 60% 到 80% 之间），因此建议您明天下午出发前往灵隐寺时**采用公共交通方式**，以避免骑行可能带来的淋雨不便。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

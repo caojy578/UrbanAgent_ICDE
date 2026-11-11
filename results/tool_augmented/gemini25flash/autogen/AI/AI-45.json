@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-45",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我查查这个店的信息。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:47:36+08:00",
+  "run_timestamp_end": "2026-07-12T14:48:52+08:00",
+  "latency_seconds": 75.874,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 179997,
+    "completion_tokens": 26,
+    "total_tokens": 180023
+  },
+  "tool_calls": [],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

@@ -1,0 +1,247 @@
+{
+  "query_id": "AI-22",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我找一家适合约会的餐厅。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:10:09+08:00",
+  "run_timestamp_end": "2026-07-11T21:10:22+08:00",
+  "latency_seconds": 13.521,
+  "llm_calls": 3,
+  "usage": {
+    "prompt_tokens": 23277,
+    "completion_tokens": 505,
+    "total_tokens": 23782
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "yelp_agent",
+      "tool": "yelp_agent",
+      "arguments": {
+        "natural_language_query": "适合约会的餐厅"
+      },
+      "success": true,
+      "raw_result": "Unable to fetch data from Yelp.",
+      "error": null,
+      "latency_seconds": 2.633
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "约会餐厅"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B0HKUUVAAH",
+            "name": "水裹+(合生汇店)",
+            "address": "西大望路甲16号院3号楼-1至3层101二层2-1室",
+            "typecode": "050000|070000",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0HKUUVAAH/comment/01151ED1_7391_4ED5_90C0_8DC8E879B7CE_L0_001_2000_133_1764734746335_05789311.jpg"
+            }
+          },
+          {
+            "id": "B000A87JQO",
+            "name": "安妮意大利餐厅(三里屯店)",
+            "address": "工体东路丙2号中国红街3号楼1层105室",
+            "typecode": "050205",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/967f4040b5c7ba120f1054a68df8edd8"
+            }
+          },
+          {
+            "id": "B0FFME0OOQ",
+            "name": "四季民福烤鸭店(西单华威约饭街店)",
+            "address": "西单北大街130号华威大厦8层39号",
+            "typecode": "050118",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/query_pic?id=st59c23194-2049-497b-ab1e-b8f9371fcc9b&user=search&operate=original"
+            }
+          },
+          {
+            "id": "B000A8WBTJ",
+            "name": "安妮意大利餐厅(世贸天阶店)",
+            "address": "北京城区金桐西路10号1层102内12单元、103内15单元",
+            "typecode": "050205",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/b3cd91822628448140c8a2db13838e12"
+            }
+          },
+          {
+            "id": "B000A7BZPH",
+            "name": "安妮意大利餐厅(丽都店)",
+            "address": "将台商业街4号楼2层",
+            "typecode": "050205",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/c6d3857221e67182c7392fd4c9845268"
+            }
+          },
+          {
+            "id": "B0FFFHMSCX",
+            "name": "苹果树下艺术餐厅",
+            "address": "宋庄小堡西街146号",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFFHMSCX/comment/file_media_Photo_9325_IMG_1770206300_9060_IMG_20260204_195640_jpg_ss__1770377610620_70461382.jpg"
+            }
+          },
+          {
+            "id": "B000A7LE93",
+            "name": "morel莫劳龙玺西餐厅",
+            "address": "新中街5号楼一层(工人体育馆北门对面)",
+            "typecode": "050201",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/b4b08c654b846e9b85b4b2213b59dfbf"
+            }
+          },
+          {
+            "id": "B0FFIB944J",
+            "name": "俄士厨房(五棵松华熙LIVE店)",
+            "address": "复兴路69号华熙LIVE·五棵松B1层008",
+            "typecode": "050200",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/7a143f18c294625ad0646620d1752267"
+            }
+          },
+          {
+            "id": "B0FFIJXM5Z",
+            "name": "梧桐小院",
+            "address": "月坛南营房1-37宅甲4号",
+            "typecode": "050400",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFIJXM5Z/comment/5e67a5f5bd6f3a14ecc54a76d9f46f88_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0HRFA1OTW",
+            "name": "Hide & Seek",
+            "address": "丽都花园西北门丝路驿站餐厅旁边",
+            "typecode": "080000",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/e71e8d87a85d32720000002739058601?type=pic"
+            }
+          },
+          {
+            "id": "B0IAVBBL3C",
+            "name": "麦乐迪KTV(富力城店)",
+            "address": "东三环中路61号地下一层",
+            "typecode": "080302",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFIXLWT8/headerImg/bbf03b8434f4ca8962f677f430c12431_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B000A85I3G",
+            "name": "麦乐迪KTV(安定门店)",
+            "address": "安定门外大街198号一二层",
+            "typecode": "080302",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/51b4457c8955d78cdb633d19d0838285"
+            }
+          },
+          {
+            "id": "B0FFH7TOHW",
+            "name": "Blue Note Beijing",
+            "address": "前门东大街23号(前门地铁站E2北口步行260米)",
+            "typecode": "080304",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFH7TOHW/comment/content_media_external_file_1000027752_ss__1755616965570_18374953.jpg"
+            }
+          },
+          {
+            "id": "B0FFH9PXJ7",
+            "name": "荣轩(新荣记环球金融中心店)",
+            "address": "东三环中路1号环球金融中心F2层",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFH9PXJ7/comment/5B4F0052_43D7_4B0D_8877_04EC5120DF57_L0_001_1500_2000_1744885170808_62737774.jpg"
+            }
+          },
+          {
+            "id": "B0GR6HZ147",
+            "name": "ITB FLORA花园餐厅(大望路店)",
+            "address": "西大望路27号爱工场科技园摩卡艺术中心北侧",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0GR6HZ147/comment/62a4bb5fe9d2a5ee5d824ac9b7b0a108_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0HU9783AY",
+            "name": "妈妈的味道(T+MALL店)",
+            "address": "T+MALL2层2-15(团结湖地铁站H口步行380米)",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/8a2bf1cc6b6395bd0000003022592402?type=pic"
+            }
+          },
+          {
+            "id": "B0FFFCN91B",
+            "name": "绿茶餐厅(北京长楹天街店)",
+            "address": "北京城区常通路1号院龙湖长楹天街购物中心西区5层",
+            "typecode": "050105",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/query_pic?id=stdcc12055-8642-4c5c-ad45-41aa171d70c3&user=search&operate=original"
+            }
+          },
+          {
+            "id": "B0FFLI4L6K",
+            "name": "湖小龍The Long House(三里屯总店)",
+            "address": "三里屯东三街4号(团结湖地铁站A西北口步行450米)",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFLI4L6K/comment/content_media_external_images_media_932668_ss__1766378355335_31697515.jpg"
+            }
+          },
+          {
+            "id": "B0HRL51447",
+            "name": "里白海南椰子鸡火锅(回龙观店)",
+            "address": "回龙观西大街风雅园2区3号底商南端",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/9686dabf62131ef233183201c31c4d82"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.249
+    }
+  ],
+  "final_answer": "为您精选了几家北京适合约会的餐厅，涵盖了不同的风格，您可以根据喜好选择：\n\n1.  **Blue Note Beijing (前门)**：\n    *   **特点**：极具格调的爵士乐现场演出餐厅，环境优雅浪漫，适合喜欢音乐、追求氛围的约会。\n    *   **地址**：前门东大街23号\n\n2.  **morel莫劳龙玺西餐厅 (工体)**：\n    *   **特点**：氛围感很强的西餐厅，环境安静舒适，服务到位，非常适合正式或浪漫的约会。\n    *   **地址**：新中街5号楼一层（工人体育馆北门对面）\n\n3.  **ITB FLORA花园餐厅 (大望路)**：\n    *   **特点**：环境布置得像花园一样，非常清新梦幻，拍照非常好看，适合比较文艺、清新的约会风格。\n    *   **地址**：西大望路27号爱工场科技园\n\n4.  **安妮意大利餐厅 (多家分店)**：\n    *   **特点**：经典的意式连锁，环境比较温馨，菜品稳定，性价比高，适合比较轻松、随性的约会。\n    *   **推荐门店**：三里屯店、世贸天阶店等\n\n5.  **梧桐小院**：\n    *   **特点**：环境清幽，充满私密感，适合想要安静交流的约会。\n    *   **地址**：月坛南营房1-37宅甲4号\n\n**建议**：\n*   如果您想进一步了解某家店的详情（如具体菜单、价位等），或者有特定的位置要求（比如离您近一点），欢迎告诉我，我可以帮您查询！\n*   周末或节假日建议提前电话预订位子，以免排队。\n\n请问您更倾向于哪种类型的餐厅（西餐、中餐、环境浪漫还是安静的私房菜）？或者您目前在哪个区域？我可以帮您做更精准的筛选。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

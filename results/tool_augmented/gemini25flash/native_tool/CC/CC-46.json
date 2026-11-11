@@ -1,0 +1,1827 @@
+{
+  "query_id": "CC-46",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我明天要从 大同云冈石窟 去 恒山景区，考虑驾车和公共交通两种路线， 如果两者耗时的差距不超过10分钟，就选公共交通，否则选驾车",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T10:03:32+08:00",
+  "run_timestamp_end": "2026-07-12T10:03:52+08:00",
+  "latency_seconds": 19.854,
+  "llm_calls": 5,
+  "usage": {
+    "prompt_tokens": 49858,
+    "completion_tokens": 382,
+    "total_tokens": 50240
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "大同云冈石窟"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "山西省",
+            "city": "大同市",
+            "citycode": "0352",
+            "district": "云冈区",
+            "street": [],
+            "number": [],
+            "adcode": "140214",
+            "location": "113.137763,40.113157",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.052
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "恒山景区"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "黑龙江省",
+            "city": "鸡西市",
+            "citycode": "0467",
+            "district": "恒山区",
+            "street": [],
+            "number": [],
+            "adcode": "230303",
+            "location": "130.904660,45.211190",
+            "level": "区县"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.071
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "city": "大同市",
+        "keywords": "恒山风景名胜区"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B0160002CC",
+            "name": "北岳恒山",
+            "address": "恒山南路",
+            "typecode": "110202",
+            "photos": {
+              "provider": [],
+              "title": "恒山风景名胜区",
+              "url": "http://store.is.autonavi.com/showpic/cabab5e510e976331f07a46f66c3fb52"
+            }
+          },
+          {
+            "id": "B0G2UH4AJ1",
+            "name": "恒山风景名胜区-天峰岭景区",
+            "address": "203省道北岳恒山内",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0G2UH4AJ1/comment/content_media_external_file_7000_ss__1752468078276_49446574.jpg"
+            }
+          },
+          {
+            "id": "B0MAYU19XX",
+            "name": "恒山风景区停车场",
+            "address": "真武庙西侧210米",
+            "typecode": "150904"
+          },
+          {
+            "id": "B01600MILL",
+            "name": "中共恒山风景名胜区委员会",
+            "address": "恒山南路",
+            "typecode": "130000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/f7dd51b6a6c2e79d6363b692a67c31a3"
+            }
+          },
+          {
+            "id": "B0FFG0HXY3",
+            "name": "北岳恒山-观景台",
+            "address": "永安镇二零三省道北岳恒山内",
+            "typecode": "110209",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/72c932d70c0699e70000002329180003?type=pic"
+            }
+          },
+          {
+            "id": "B0K2F9U86D",
+            "name": "北岳恒山-山神庙",
+            "address": "恒山南路北岳恒山",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/comment/content_service__1768753925027_68322376_1768754014989_94035386.jpg"
+            }
+          },
+          {
+            "id": "B0FFG0IVCG",
+            "name": "北岳恒山-虎风口",
+            "address": "二O三省道北岳恒山内",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/630aaa4e950a86b7b746d2841b9d7615"
+            }
+          },
+          {
+            "id": "B0FFINCRXY",
+            "name": "北岳恒山牌坊",
+            "address": "二O三省道北岳恒山内(南侧)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFINCRXY/comment/36920316e5adfbacf4e3c26435c11245_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0KAOH3084",
+            "name": "北岳恒山游客中心",
+            "address": "肯德基(恒山游客中心店)西侧50米",
+            "typecode": "070201",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0KAOH3084/comment/4C37DEE3_95D7_4582_A8C3_627B169FF561_L0_001_2000_150_1759136122217_87500785.jpg"
+            }
+          },
+          {
+            "id": "B0LU45PBM3",
+            "name": "北岳恒山售票处",
+            "address": "恒山游客中心西南侧",
+            "typecode": "070306",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/comment/content_service__1772419567065_22786125_1772419950347_68420819.jpg"
+            }
+          },
+          {
+            "id": "B0LR1XV7HS",
+            "name": "恒山之顶",
+            "address": "恒山风景名胜区-天峰岭景区",
+            "typecode": "110200",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0LR1XV7HS/comment/content_media_external_file_100013850_1769261977392_82515076.jpg"
+            }
+          },
+          {
+            "id": "B0J2JCC6J8",
+            "name": "北岳恒山游客中心A区停车场",
+            "address": "303省道203号",
+            "typecode": "150904",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0K1LZESNO/comment/content_media_external_images_media_1000050569_ss__1730931932314_31417452.jpg"
+            }
+          },
+          {
+            "id": "B0FFFYDBZM",
+            "name": "北岳恒山-九天宫",
+            "address": "二O三省道北岳恒山内",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFFYDBZM/comment/e8b7c548a140ec95c3ab169a25cee2fe_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0MB2H0M0J",
+            "name": "北岳恒山游客中心C区停车场",
+            "address": "恒山南路北岳恒山",
+            "typecode": "150904"
+          },
+          {
+            "id": "B0FFG2I7VY",
+            "name": "北岳恒山-飞石窟",
+            "address": "二零三省道北岳恒山内(东北角)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFG2I7VY/comment/00ef4af2affbf1af3a02986b8dcc304c_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0FFFGUIEP",
+            "name": "北岳书城(御馨花城店)",
+            "address": "御河西路御馨花城西门6号",
+            "typecode": "061205",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/3ede09f5745d5d2a732c05efa0aa9eb7"
+            }
+          },
+          {
+            "id": "B0FFG2I1XM",
+            "name": "北岳恒山-还元洞",
+            "address": "二零三省道北岳恒山内(东北角)",
+            "typecode": "110000",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFG2I1XM/headerImg/427da0e48881d65eccab0d3eb32da85f_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0FFG2HH7W",
+            "name": "北岳恒山-白虚观",
+            "address": "二O三省道北岳恒山内(东北角)",
+            "typecode": "110205",
+            "photos": {
+              "provider": [],
+              "title": [],
+              "url": "http://aos-cdn-image.amap.com/sns/ugccomment/db21ed22-5f0b-4dbb-8069-bfc5ec781faa.jpg"
+            }
+          },
+          {
+            "id": "B0MANLSARH",
+            "name": "北岳恒山游客中心A11停车区",
+            "address": "恒宗大道与玄武大道交叉口东360米",
+            "typecode": "150904"
+          },
+          {
+            "id": "B0MB2H0M0I",
+            "name": "北岳恒山游客中心B区停车场",
+            "address": "恒山南路北岳恒山",
+            "typecode": "150904",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/fdc0135169f9fc780000002587346187?type=pic"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.184
+    },
+    {
+      "seq": 4,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0KAOH3084"
+      },
+      "success": true,
+      "raw_result": {
+        "id": "B0KAOH3084",
+        "name": "北岳恒山游客中心",
+        "location": "113.667069,39.699765",
+        "address": "肯德基(恒山游客中心店)西侧50米",
+        "business_area": [],
+        "city": "大同市",
+        "type": "生活服务;信息咨询中心;服务中心",
+        "alias": [],
+        "photos": {
+          "title": [],
+          "url": "https://aos-comment.amap.com/B0KAOH3084/comment/4C37DEE3_95D7_4582_A8C3_627B169FF561_L0_001_2000_150_1759136122217_87500785.jpg"
+        },
+        "cost": [],
+        "opentime2": "周一至周日 07:00-17:30",
+        "rating": [],
+        "open_time": "07:00-17:30"
+      },
+      "error": null,
+      "latency_seconds": 0.077
+    },
+    {
+      "seq": 5,
+      "server": "amap-maps",
+      "tool": "maps_direction_driving",
+      "arguments": {
+        "destination": "113.667069,39.699765",
+        "origin": "113.137763,40.113157"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "113.137763,40.113157",
+          "destination": "113.667069,39.699765",
+          "paths": [
+            {
+              "distance": "77010",
+              "duration": "6111",
+              "steps": [
+                {
+                  "instruction": "向东南行驶495米左转",
+                  "distance": "495",
+                  "orientation": "东南",
+                  "duration": "85"
+                },
+                {
+                  "instruction": "向东行驶215米右转",
+                  "distance": "215",
+                  "orientation": "东",
+                  "duration": "48"
+                },
+                {
+                  "instruction": "向东行驶51米右转",
+                  "distance": "51",
+                  "orientation": "东",
+                  "duration": "36"
+                },
+                {
+                  "instruction": "向南行驶185米向左前方行驶",
+                  "distance": "185",
+                  "orientation": "南",
+                  "duration": "34"
+                },
+                {
+                  "instruction": "沿339省道向东行驶7.3千米向右前方行驶",
+                  "road": "339省道",
+                  "distance": "7321",
+                  "orientation": "东",
+                  "duration": "577"
+                },
+                {
+                  "instruction": "沿339省道途径大塘公路、二淅线向东南行驶12.1千米靠左",
+                  "road": "339省道",
+                  "distance": "12053",
+                  "orientation": "东南",
+                  "duration": "1097"
+                },
+                {
+                  "instruction": "沿二淅线向东行驶7.7千米右转",
+                  "road": "二淅线",
+                  "distance": "7692",
+                  "orientation": "东",
+                  "duration": "586"
+                },
+                {
+                  "instruction": "沿大灵线向东南行驶18.9千米靠左",
+                  "road": "大灵线",
+                  "distance": "18930",
+                  "orientation": "东南",
+                  "duration": "1305"
+                },
+                {
+                  "instruction": "沿大灵线向东南行驶721米靠左",
+                  "road": "大灵线",
+                  "distance": "721",
+                  "orientation": "东南",
+                  "duration": "44"
+                },
+                {
+                  "instruction": "沿大灵线途径固定桥、正阳线向东南行驶26.0千米靠左",
+                  "road": "大灵线",
+                  "distance": "26048",
+                  "orientation": "东南",
+                  "duration": "1936"
+                },
+                {
+                  "instruction": "沿大灵线途径浑河一桥、浑河二桥、恒宗大道向东南行驶2.8千米左转",
+                  "road": "大灵线",
+                  "distance": "2788",
+                  "orientation": "东南",
+                  "duration": "215"
+                },
+                {
+                  "instruction": "向东北行驶91米右转",
+                  "distance": "91",
+                  "orientation": "东北",
+                  "duration": "32"
+                },
+                {
+                  "instruction": "向东行驶257米左转",
+                  "distance": "257",
+                  "orientation": "东",
+                  "duration": "77"
+                },
+                {
+                  "instruction": "向东北行驶20米右转",
+                  "distance": "20",
+                  "orientation": "东北",
+                  "duration": "12"
+                },
+                {
+                  "instruction": "向东北行驶143米到达目的地",
+                  "distance": "143",
+                  "orientation": "东北",
+                  "duration": "27"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.101
+    },
+    {
+      "seq": 6,
+      "server": "amap-maps",
+      "tool": "maps_direction_transit_integrated",
+      "arguments": {
+        "city": "大同市",
+        "cityd": "大同市",
+        "destination": "113.667069,39.699765",
+        "origin": "113.137763,40.113157"
+      },
+      "success": true,
+      "raw_result": {
+        "route": {
+          "origin": "113.137763,40.113157",
+          "destination": "113.667069,39.699765",
+          "distance": "99565",
+          "transits": [
+            {
+              "duration": "15335",
+              "walking_distance": "2224",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.137772,40.113071",
+                    "destination": "113.146523,40.108170",
+                    "distance": "1541",
+                    "duration": "1320",
+                    "steps": [
+                      {
+                        "instruction": "步行89米右转",
+                        "road": [],
+                        "distance": "89",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行390米左转",
+                        "road": [],
+                        "distance": "390",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行31米右转",
+                        "road": [],
+                        "distance": "31",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行445米左转",
+                        "road": [],
+                        "distance": "445",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行215米右转",
+                        "road": [],
+                        "distance": "215",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行81米右转",
+                        "road": [],
+                        "distance": "81",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行138米靠左",
+                        "road": [],
+                        "distance": "138",
+                        "action": "靠左",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行133米右转",
+                        "road": [],
+                        "distance": "133",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行19米到达云冈",
+                        "road": [],
+                        "distance": "19",
+                        "action": [],
+                        "assistant_action": "到达云冈"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "3路(云冈--公交四公司)",
+                        "departure_stop": {
+                          "name": "云冈"
+                        },
+                        "arrival_stop": {
+                          "name": "公交四公司"
+                        },
+                        "distance": "12494",
+                        "duration": "1888",
+                        "via_stops": [
+                          {
+                            "name": "晋华宫煤矿"
+                          },
+                          {
+                            "name": "青磁窑煤矿"
+                          },
+                          {
+                            "name": "青磁窑村"
+                          },
+                          {
+                            "name": "观音堂"
+                          },
+                          {
+                            "name": "小站"
+                          },
+                          {
+                            "name": "云佛小区"
+                          },
+                          {
+                            "name": "营房"
+                          },
+                          {
+                            "name": "绿园三号院"
+                          },
+                          {
+                            "name": "马军营"
+                          },
+                          {
+                            "name": "五里店机电城"
+                          },
+                          {
+                            "name": "云冈路同泉路口"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.273392,40.087364",
+                    "destination": "113.273392,40.087543",
+                    "distance": "19",
+                    "duration": "16",
+                    "steps": [
+                      {
+                        "instruction": "沿振华路步行19米到达公交四公司",
+                        "road": "振华路",
+                        "distance": "19",
+                        "action": [],
+                        "assistant_action": "到达公交四公司"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "28路(恒圆魏都小区--七里村)",
+                        "departure_stop": {
+                          "name": "公交四公司"
+                        },
+                        "arrival_stop": {
+                          "name": "魏都大道源茂街口"
+                        },
+                        "distance": "6555",
+                        "duration": "1954",
+                        "via_stops": [
+                          {
+                            "name": "公交大修厂"
+                          },
+                          {
+                            "name": "大西街商城"
+                          },
+                          {
+                            "name": "清远街西"
+                          },
+                          {
+                            "name": "清远西街"
+                          },
+                          {
+                            "name": "魏都大道迎泽街口"
+                          },
+                          {
+                            "name": "清远南门"
+                          },
+                          {
+                            "name": "大同新健康医院"
+                          },
+                          {
+                            "name": "大同新和医院"
+                          },
+                          {
+                            "name": "三医院"
+                          },
+                          {
+                            "name": "魏都大道振兴街口"
+                          },
+                          {
+                            "name": "大同总工会"
+                          },
+                          {
+                            "name": "云城装饰大世界"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "浑源线901-2路(公交六公司--恒山游客中心)",
+                        "departure_stop": {
+                          "name": "魏都大道源茂街口"
+                        },
+                        "arrival_stop": {
+                          "name": "恒山游客中心"
+                        },
+                        "distance": "70418",
+                        "duration": "9589",
+                        "via_stops": [
+                          {
+                            "name": "同煤快线永泰南路口"
+                          },
+                          {
+                            "name": "茉莉公馆"
+                          },
+                          {
+                            "name": "万昌物流中心"
+                          },
+                          {
+                            "name": "马连庄"
+                          },
+                          {
+                            "name": "侯大庄"
+                          },
+                          {
+                            "name": "党留庄"
+                          },
+                          {
+                            "name": "兼埔村"
+                          },
+                          {
+                            "name": "世家小镇"
+                          },
+                          {
+                            "name": "杜庄"
+                          },
+                          {
+                            "name": "马家会(浑源线)"
+                          },
+                          {
+                            "name": "常家堡"
+                          },
+                          {
+                            "name": "固定桥"
+                          },
+                          {
+                            "name": "西浮头"
+                          },
+                          {
+                            "name": "下韩村"
+                          },
+                          {
+                            "name": "菜市场"
+                          },
+                          {
+                            "name": "邮电局"
+                          },
+                          {
+                            "name": "大转盘"
+                          },
+                          {
+                            "name": "浑源汽车站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.663177,39.698895",
+                    "destination": "113.667198,39.699757",
+                    "distance": "663",
+                    "duration": "568",
+                    "steps": [
+                      {
+                        "instruction": "沿恒宗大道步行288米左转",
+                        "road": "恒宗大道",
+                        "distance": "288",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行46米左转",
+                        "road": [],
+                        "distance": "46",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行58米右转",
+                        "road": [],
+                        "distance": "58",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行129米右转",
+                        "road": [],
+                        "distance": "129",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行142米",
+                        "road": [],
+                        "distance": "142",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "15063",
+              "walking_distance": "2531",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.137772,40.113071",
+                    "destination": "113.146523,40.108170",
+                    "distance": "1541",
+                    "duration": "1320",
+                    "steps": [
+                      {
+                        "instruction": "步行89米右转",
+                        "road": [],
+                        "distance": "89",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行390米左转",
+                        "road": [],
+                        "distance": "390",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行31米右转",
+                        "road": [],
+                        "distance": "31",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行445米左转",
+                        "road": [],
+                        "distance": "445",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行215米右转",
+                        "road": [],
+                        "distance": "215",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行81米右转",
+                        "road": [],
+                        "distance": "81",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行138米靠左",
+                        "road": [],
+                        "distance": "138",
+                        "action": "靠左",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行133米右转",
+                        "road": [],
+                        "distance": "133",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行19米到达云冈",
+                        "road": [],
+                        "distance": "19",
+                        "action": [],
+                        "assistant_action": "到达云冈"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "3路(云冈--公交四公司)",
+                        "departure_stop": {
+                          "name": "云冈"
+                        },
+                        "arrival_stop": {
+                          "name": "云冈路同泉路口"
+                        },
+                        "distance": "11534",
+                        "duration": "1651",
+                        "via_stops": [
+                          {
+                            "name": "晋华宫煤矿"
+                          },
+                          {
+                            "name": "青磁窑煤矿"
+                          },
+                          {
+                            "name": "青磁窑村"
+                          },
+                          {
+                            "name": "观音堂"
+                          },
+                          {
+                            "name": "小站"
+                          },
+                          {
+                            "name": "云佛小区"
+                          },
+                          {
+                            "name": "营房"
+                          },
+                          {
+                            "name": "绿园三号院"
+                          },
+                          {
+                            "name": "马军营"
+                          },
+                          {
+                            "name": "五里店机电城"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "20路(五州帝景--源茂街红旗街口)",
+                        "departure_stop": {
+                          "name": "云冈路同泉路口"
+                        },
+                        "arrival_stop": {
+                          "name": "永泰南路同煤快线口"
+                        },
+                        "distance": "6618",
+                        "duration": "1964",
+                        "via_stops": [
+                          {
+                            "name": "西环路永宁街口"
+                          },
+                          {
+                            "name": "西环路北都街口"
+                          },
+                          {
+                            "name": "惠民里"
+                          },
+                          {
+                            "name": "西环路前进街口"
+                          },
+                          {
+                            "name": "西环路大庆路口"
+                          },
+                          {
+                            "name": "临时站"
+                          },
+                          {
+                            "name": "周家店村口"
+                          },
+                          {
+                            "name": "正德建材广场"
+                          },
+                          {
+                            "name": "金牛装饰城"
+                          },
+                          {
+                            "name": "南环路魏都大道口"
+                          },
+                          {
+                            "name": "新旺花园小区"
+                          },
+                          {
+                            "name": "永泰南路南环路口"
+                          },
+                          {
+                            "name": "银豪嘉园小区"
+                          },
+                          {
+                            "name": "凯霖耳鼻喉医院"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.302475,40.051056",
+                    "destination": "113.303200,40.048847",
+                    "distance": "326",
+                    "duration": "279",
+                    "steps": [
+                      {
+                        "instruction": "步行245米左转",
+                        "road": [],
+                        "distance": "245",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿开源街步行81米到达同煤快线永泰南路口",
+                        "road": "开源街",
+                        "distance": "81",
+                        "action": [],
+                        "assistant_action": "到达同煤快线永泰南路口"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "浑源线901-2路(公交六公司--恒山游客中心)",
+                        "departure_stop": {
+                          "name": "同煤快线永泰南路口"
+                        },
+                        "arrival_stop": {
+                          "name": "恒山游客中心"
+                        },
+                        "distance": "68713",
+                        "duration": "9281",
+                        "via_stops": [
+                          {
+                            "name": "茉莉公馆"
+                          },
+                          {
+                            "name": "万昌物流中心"
+                          },
+                          {
+                            "name": "马连庄"
+                          },
+                          {
+                            "name": "侯大庄"
+                          },
+                          {
+                            "name": "党留庄"
+                          },
+                          {
+                            "name": "兼埔村"
+                          },
+                          {
+                            "name": "世家小镇"
+                          },
+                          {
+                            "name": "杜庄"
+                          },
+                          {
+                            "name": "马家会(浑源线)"
+                          },
+                          {
+                            "name": "常家堡"
+                          },
+                          {
+                            "name": "固定桥"
+                          },
+                          {
+                            "name": "西浮头"
+                          },
+                          {
+                            "name": "下韩村"
+                          },
+                          {
+                            "name": "菜市场"
+                          },
+                          {
+                            "name": "邮电局"
+                          },
+                          {
+                            "name": "大转盘"
+                          },
+                          {
+                            "name": "浑源汽车站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.663177,39.698895",
+                    "destination": "113.667198,39.699757",
+                    "distance": "663",
+                    "duration": "568",
+                    "steps": [
+                      {
+                        "instruction": "沿恒宗大道步行288米左转",
+                        "road": "恒宗大道",
+                        "distance": "288",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行46米左转",
+                        "road": [],
+                        "distance": "46",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行58米右转",
+                        "road": [],
+                        "distance": "58",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行129米右转",
+                        "road": [],
+                        "distance": "129",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行142米",
+                        "road": [],
+                        "distance": "142",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "14282",
+              "walking_distance": "3100",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.137772,40.113071",
+                    "destination": "113.146523,40.108170",
+                    "distance": "1541",
+                    "duration": "1320",
+                    "steps": [
+                      {
+                        "instruction": "步行89米右转",
+                        "road": [],
+                        "distance": "89",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行390米左转",
+                        "road": [],
+                        "distance": "390",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行31米右转",
+                        "road": [],
+                        "distance": "31",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行445米左转",
+                        "road": [],
+                        "distance": "445",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行215米右转",
+                        "road": [],
+                        "distance": "215",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行81米右转",
+                        "road": [],
+                        "distance": "81",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行138米靠左",
+                        "road": [],
+                        "distance": "138",
+                        "action": "靠左",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行133米右转",
+                        "road": [],
+                        "distance": "133",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行19米到达云冈",
+                        "road": [],
+                        "distance": "19",
+                        "action": [],
+                        "assistant_action": "到达云冈"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "3路(云冈--公交四公司)",
+                        "departure_stop": {
+                          "name": "云冈"
+                        },
+                        "arrival_stop": {
+                          "name": "云冈路同泉路口"
+                        },
+                        "distance": "11534",
+                        "duration": "1651",
+                        "via_stops": [
+                          {
+                            "name": "晋华宫煤矿"
+                          },
+                          {
+                            "name": "青磁窑煤矿"
+                          },
+                          {
+                            "name": "青磁窑村"
+                          },
+                          {
+                            "name": "观音堂"
+                          },
+                          {
+                            "name": "小站"
+                          },
+                          {
+                            "name": "云佛小区"
+                          },
+                          {
+                            "name": "营房"
+                          },
+                          {
+                            "name": "绿园三号院"
+                          },
+                          {
+                            "name": "马军营"
+                          },
+                          {
+                            "name": "五里店机电城"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "65路(五州帝景--大同市信访局)",
+                        "departure_stop": {
+                          "name": "云冈路同泉路口(临时站)"
+                        },
+                        "arrival_stop": {
+                          "name": "永泰西门"
+                        },
+                        "distance": "3503",
+                        "duration": "1259",
+                        "via_stops": [
+                          {
+                            "name": "同泉路西环路口"
+                          },
+                          {
+                            "name": "公交四公司"
+                          },
+                          {
+                            "name": "北都街振华路口"
+                          },
+                          {
+                            "name": "北都街育才路口"
+                          },
+                          {
+                            "name": "儿童公园北门"
+                          },
+                          {
+                            "name": "北都街魏都大道口"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "浑源线901-1路(魏都大道振兴街口--浑源汽车站)",
+                        "departure_stop": {
+                          "name": "永泰西门"
+                        },
+                        "arrival_stop": {
+                          "name": "小转盘"
+                        },
+                        "distance": "73489",
+                        "duration": "8718",
+                        "via_stops": [
+                          {
+                            "name": "御河西路北都街口"
+                          },
+                          {
+                            "name": "兴云南街"
+                          },
+                          {
+                            "name": "文兴路兴云街口"
+                          },
+                          {
+                            "name": "五医院"
+                          },
+                          {
+                            "name": "市妇幼医院"
+                          },
+                          {
+                            "name": "大同二中"
+                          },
+                          {
+                            "name": "万达广场东"
+                          },
+                          {
+                            "name": "大同卫校"
+                          },
+                          {
+                            "name": "沙岭社区东"
+                          },
+                          {
+                            "name": "方特欢乐世界西"
+                          },
+                          {
+                            "name": "大同综合客运中心(大同南站)"
+                          },
+                          {
+                            "name": "茉莉公馆(招呼站)"
+                          },
+                          {
+                            "name": "万昌物流中心(招呼站)"
+                          },
+                          {
+                            "name": "马连庄(招呼站)"
+                          },
+                          {
+                            "name": "候大庄(招呼站)"
+                          },
+                          {
+                            "name": "党留庄(招呼站)"
+                          },
+                          {
+                            "name": "兼铺村(招呼站)"
+                          },
+                          {
+                            "name": "世家小镇(招呼站)"
+                          },
+                          {
+                            "name": "杜庄(招呼站)"
+                          },
+                          {
+                            "name": "马家会(招呼站)"
+                          },
+                          {
+                            "name": "常家堡(招呼站)"
+                          },
+                          {
+                            "name": "固定桥(招呼站)"
+                          },
+                          {
+                            "name": "西浮头(招呼站)"
+                          },
+                          {
+                            "name": "下韩村"
+                          },
+                          {
+                            "name": "菜市场(招呼站)"
+                          },
+                          {
+                            "name": "邮电局"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.678970,39.697350",
+                    "destination": "113.667198,39.699760",
+                    "distance": "1557",
+                    "duration": "1334",
+                    "steps": [
+                      {
+                        "instruction": "沿霞客街步行12米左转",
+                        "road": "霞客街",
+                        "distance": "12",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "沿神溪路步行916米左转",
+                        "road": "神溪路",
+                        "distance": "916",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行59米左转",
+                        "road": [],
+                        "distance": "59",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行31米右转",
+                        "road": [],
+                        "distance": "31",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行296米左转",
+                        "road": [],
+                        "distance": "296",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行42米左转",
+                        "road": [],
+                        "distance": "42",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行201米",
+                        "road": [],
+                        "distance": "201",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            },
+            {
+              "duration": "14912",
+              "walking_distance": "2207",
+              "segments": [
+                {
+                  "walking": {
+                    "origin": "113.137772,40.113071",
+                    "destination": "113.146523,40.108170",
+                    "distance": "1541",
+                    "duration": "1320",
+                    "steps": [
+                      {
+                        "instruction": "步行89米右转",
+                        "road": [],
+                        "distance": "89",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行390米左转",
+                        "road": [],
+                        "distance": "390",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行31米右转",
+                        "road": [],
+                        "distance": "31",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行445米左转",
+                        "road": [],
+                        "distance": "445",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行215米右转",
+                        "road": [],
+                        "distance": "215",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行81米右转",
+                        "road": [],
+                        "distance": "81",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行138米靠左",
+                        "road": [],
+                        "distance": "138",
+                        "action": "靠左",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行133米右转",
+                        "road": [],
+                        "distance": "133",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行19米到达云冈",
+                        "road": [],
+                        "distance": "19",
+                        "action": [],
+                        "assistant_action": "到达云冈"
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "3路(云冈--公交四公司)",
+                        "departure_stop": {
+                          "name": "云冈"
+                        },
+                        "arrival_stop": {
+                          "name": "云冈路同泉路口"
+                        },
+                        "distance": "11534",
+                        "duration": "1651",
+                        "via_stops": [
+                          {
+                            "name": "晋华宫煤矿"
+                          },
+                          {
+                            "name": "青磁窑煤矿"
+                          },
+                          {
+                            "name": "青磁窑村"
+                          },
+                          {
+                            "name": "观音堂"
+                          },
+                          {
+                            "name": "小站"
+                          },
+                          {
+                            "name": "云佛小区"
+                          },
+                          {
+                            "name": "营房"
+                          },
+                          {
+                            "name": "绿园三号院"
+                          },
+                          {
+                            "name": "马军营"
+                          },
+                          {
+                            "name": "五里店机电城"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "20路(五州帝景--源茂街红旗街口)",
+                        "departure_stop": {
+                          "name": "云冈路同泉路口"
+                        },
+                        "arrival_stop": {
+                          "name": "金牛装饰城"
+                        },
+                        "distance": "3694",
+                        "duration": "1163",
+                        "via_stops": [
+                          {
+                            "name": "西环路永宁街口"
+                          },
+                          {
+                            "name": "西环路北都街口"
+                          },
+                          {
+                            "name": "惠民里"
+                          },
+                          {
+                            "name": "西环路前进街口"
+                          },
+                          {
+                            "name": "西环路大庆路口"
+                          },
+                          {
+                            "name": "临时站"
+                          },
+                          {
+                            "name": "周家店村口"
+                          },
+                          {
+                            "name": "正德建材广场"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "30路(大同站--公交平安车场)",
+                        "departure_stop": {
+                          "name": "金牛装饰城"
+                        },
+                        "arrival_stop": {
+                          "name": "魏都大道源茂街口"
+                        },
+                        "distance": "1512",
+                        "duration": "605",
+                        "via_stops": [
+                          {
+                            "name": "云城装饰大世界"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "steps": []
+                  },
+                  "bus": {
+                    "buslines": [
+                      {
+                        "name": "浑源线901-2路(公交六公司--恒山游客中心)",
+                        "departure_stop": {
+                          "name": "魏都大道源茂街口"
+                        },
+                        "arrival_stop": {
+                          "name": "恒山游客中心"
+                        },
+                        "distance": "70418",
+                        "duration": "9605",
+                        "via_stops": [
+                          {
+                            "name": "同煤快线永泰南路口"
+                          },
+                          {
+                            "name": "茉莉公馆"
+                          },
+                          {
+                            "name": "万昌物流中心"
+                          },
+                          {
+                            "name": "马连庄"
+                          },
+                          {
+                            "name": "侯大庄"
+                          },
+                          {
+                            "name": "党留庄"
+                          },
+                          {
+                            "name": "兼埔村"
+                          },
+                          {
+                            "name": "世家小镇"
+                          },
+                          {
+                            "name": "杜庄"
+                          },
+                          {
+                            "name": "马家会(浑源线)"
+                          },
+                          {
+                            "name": "常家堡"
+                          },
+                          {
+                            "name": "固定桥"
+                          },
+                          {
+                            "name": "西浮头"
+                          },
+                          {
+                            "name": "下韩村"
+                          },
+                          {
+                            "name": "菜市场"
+                          },
+                          {
+                            "name": "邮电局"
+                          },
+                          {
+                            "name": "大转盘"
+                          },
+                          {
+                            "name": "浑源汽车站"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                },
+                {
+                  "walking": {
+                    "origin": "113.663177,39.698895",
+                    "destination": "113.667198,39.699757",
+                    "distance": "663",
+                    "duration": "568",
+                    "steps": [
+                      {
+                        "instruction": "沿恒宗大道步行288米左转",
+                        "road": "恒宗大道",
+                        "distance": "288",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行46米左转",
+                        "road": [],
+                        "distance": "46",
+                        "action": "左转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行58米右转",
+                        "road": [],
+                        "distance": "58",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行129米右转",
+                        "road": [],
+                        "distance": "129",
+                        "action": "右转",
+                        "assistant_action": []
+                      },
+                      {
+                        "instruction": "步行142米",
+                        "road": [],
+                        "distance": "142",
+                        "action": [],
+                        "assistant_action": []
+                      }
+                    ]
+                  },
+                  "bus": {
+                    "buslines": []
+                  },
+                  "entrance": {},
+                  "exit": {},
+                  "railway": {}
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "error": null,
+      "latency_seconds": 0.15
+    }
+  ],
+  "final_answer": "经过对您明天的行程规划分析：\n\n*   **驾车路线**：从云冈石窟前往恒山景区，耗时约 **102分钟**（约1小时42分钟）。\n*   **公共交通路线**：目前查询到的最优公共交通方案（如换乘浑源线901-2路等）耗时约 **238分钟**（约3小时58分钟）。\n\n**分析结论**：\n公共交通与驾车的耗时差距约为136分钟，远超过您设定的10分钟阈值。因此，建议您选择**驾车**方式前往，这样可以为您节省大量的时间。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

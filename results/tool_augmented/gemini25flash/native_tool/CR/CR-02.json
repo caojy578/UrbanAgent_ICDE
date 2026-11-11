@@ -1,0 +1,51 @@
+{
+  "query_id": "CR-02",
+  "query_type": "复杂检索型",
+  "level": "L1",
+  "query": "我在San Jose Downtown，打算2026 年 7 月 13 日 10:00开混动轿车去Philz Coffee（Market St 店），距离约 0.8 公里，查询评价、天气和碳排放。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-16T12:31:19+08:00",
+  "run_timestamp_end": "2026-07-16T12:31:56+08:00",
+  "latency_seconds": 36.792,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 2714,
+    "completion_tokens": 1942,
+    "total_tokens": 4656
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "yelp_agent",
+      "tool": "yelp_agent",
+      "arguments": {
+        "natural_language_query": "Philz Coffee Market St San Jose"
+      },
+      "success": true,
+      "raw_result": "# Formatted Business Data for LLM Processing\n\n## Introduction\nCould you please confirm which city you'd like me to search in for Philz Coffee on Market St? This will help me find the exact location you're looking for.\n \n## Chat ID\nWBu6hV9Yh8SfNtofvrnBtw\n\n",
+      "error": null,
+      "latency_seconds": 5.956
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "San Jose Downtown",
+        "city": "San Jose"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "maps_geo returned error: Geocoding failed: ENGINE_RESPONSE_DATA_ERROR",
+      "latency_seconds": 0.143
+    }
+  ],
+  "final_answer": "抱歉，我无法直接找到 San Jose Downtown 的精确坐标，并且我需要 Philz Coffee (Market St 店) 的具体位置信息（经纬度）才能查询天气和计算碳排放。\n\n请问您能提供 Philz Coffee (Market St 店) 在 San Jose 的具体地址或者经纬度吗？这样我就可以为您查询详细信息了。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

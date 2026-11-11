@@ -1,0 +1,61 @@
+{
+  "query_id": "FR-50",
+  "type": "事实检索型查询",
+  "level": "L1",
+  "query": "查询新疆乌鲁木齐市天山区国际大巴扎游客接待中心的经纬度",
+  "checklist": [
+    {
+      "item_id": "FR-50.1",
+      "assertion": "返回至少一个可溯源到新疆国际大巴扎相关POI的经纬度，且与游客接待中心参考坐标(87.618013,43.779983)的直线距离不超过150米；先按距离判定，不强制工具中存在名称完全一致的独立子POI",
+      "gt_source": "trace",
+      "necessary": true,
+      "_assertion_preHumanSync": "返回的经纬度坐标可溯源到本次工具返回的新疆乌鲁木齐市天山区国际大巴扎游客接待中心位置数据"
+    },
+    {
+      "item_id": "FR-50.2",
+      "assertion": "国际大巴扎游客接待中心的经度坐标与官方参考值一致",
+      "gt_source": "static_ref",
+      "necessary": true,
+      "static_gt": {
+        "ref_value": 87.618013,
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m(对应坐标偏差约0.0015度)",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器,搜索'新疆国际大巴扎游客接待中心'或'乌鲁木齐国际大巴扎',确认为游客接待中心具体位置",
+        "collected_on": "2026-07-12",
+        "note": "[桶B复核 2026-07-12] 三方交叉:百度→GCJ02↔高德4m;更新lng=87.618013"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "FR-50.3",
+      "assertion": "国际大巴扎游客接待中心的纬度坐标与官方参考值一致",
+      "gt_source": "static_ref",
+      "necessary": true,
+      "static_gt": {
+        "ref_value": 43.779983,
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m(对应坐标偏差约0.0015度)",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器,搜索'新疆国际大巴扎游客接待中心'或'乌鲁木齐国际大巴扎',确认为游客接待中心具体位置",
+        "collected_on": "2026-07-12",
+        "note": "[桶B复核 2026-07-12] 与FR-50.2同点;eval↔高德282m→更新后≈4m"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "POI搜索"
+    ],
+    "dependency_pairs": [],
+    "notes": "查询明确指定POI名称和行政区划,使用POI搜索工具即可获取坐标;地理编码工具虽也可达成目标但POI搜索更直接"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

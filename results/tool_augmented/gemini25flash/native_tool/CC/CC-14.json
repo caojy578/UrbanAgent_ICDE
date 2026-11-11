@@ -1,0 +1,111 @@
+{
+  "query_id": "CC-14",
+  "query_type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我在 San Francisco Mission District 想安排一次约会晚餐， 要求评分 4.5 以上，人均不超过 80 美元，并可在线预订。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T22:33:43+08:00",
+  "run_timestamp_end": "2026-07-11T22:34:02+08:00",
+  "latency_seconds": 19.166,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 28592,
+    "completion_tokens": 502,
+    "total_tokens": 29094
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "yelp_agent",
+      "tool": "yelp_agent",
+      "arguments": {
+        "natural_language_query": "romantic dinner in San Francisco Mission District, rating over 4.5, price under $80, with online reservation availability"
+      },
+      "success": true,
+      "raw_result": "Unable to fetch data from Yelp.",
+      "error": null,
+      "latency_seconds": 2.808
+    },
+    {
+      "seq": 2,
+      "server": "yelp_agent",
+      "tool": "yelp_agent",
+      "arguments": {
+        "natural_language_query": "best dinner restaurants in Mission District San Francisco with high ratings and price under $80"
+      },
+      "success": true,
+      "raw_result": "Unable to fetch data from Yelp.",
+      "error": null,
+      "latency_seconds": 2.751
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "city": "San Francisco",
+        "keywords": "restaurant Mission District",
+        "types": "restaurant"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B0FFI00THN",
+            "name": "Wiggly Jiggly's欧也(北京簋街店)",
+            "address": "东直门内大街6-8号(东直门地铁站D西南口步行340米)",
+            "typecode": "061100|050500|050400",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFI00THN/comment/content_media_external_file_100002892_1767584877356_77592306.jpg"
+            }
+          },
+          {
+            "id": "B0H6L7E3V7",
+            "name": "Tomacado花厨(王府中環旗舰店)",
+            "address": "王府井大街269号王府中环四楼",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0H6L7E3V7/comment/20260316-a7cce22a5fdfdaac2a8159f1-AlCEhFrNXMj916uAUvSLTj.jpg"
+            }
+          },
+          {
+            "id": "B0KKBUADKV",
+            "name": "皇家咖喱印度餐厅Indian Restaurant(五道口店)",
+            "address": "北京城区五道口东王庄韩国美食城二楼",
+            "typecode": "050217",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0KKBUADKV/comment/5E6AF0FA_572C_41B7_BB2D_28749F2D5215_L0_001_783_92_1773060057753_03618794.jpg"
+            }
+          },
+          {
+            "id": "B0K60S3P3Z",
+            "name": "Fusion Restaurant&Bar餐吧",
+            "address": "神路街与朝外南街交叉口东北20米5层",
+            "typecode": "080304",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0K60S3P3Z/comment/cf6c56f6ca88133cdb7ffd76296e24e9_2048_2048_80.jpg"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.212
+    }
+  ],
+  "final_answer": "很抱歉，由于目前的搜索服务出现了一些技术问题，无法为您直接获取到旧金山 Mission District 符合要求的实时餐厅列表及预订状态。\n\n不过，根据通常的口碑及性价比，以下是 Mission District 几家非常适合约会的餐厅，您可以尝试通过 **OpenTable** 或 **Resy** 等平台查询它们是否满足您的预订需求：\n\n1.  **Foreign Cinema**：\n    *   **特点**：经典的约会圣地，在露天庭院播放艺术电影，氛围极佳。\n    *   **预算**：虽然如果点较多菜品可能超过 80 美元，但通过精选点餐完全可以控制在范围内。\n2.  **Beretta**：\n    *   **特点**：非常受欢迎的意大利餐厅，以美味的披萨和鸡尾酒闻名，环境轻松而优雅，性价比很高。\n3.  **Lolinda**：\n    *   **特点**：阿根廷风味的牛排馆，装修时尚，氛围热闹，非常适合晚餐约会。\n4.  **Delfina**：\n    *   **特点**：Mission District 最负盛名的意大利餐厅之一，虽然预订较难，但它是高评分的品质之选。\n\n**建议步骤**：\n*   打开 [OpenTable](https://www.opentable.com) 或 [Resy](https://resy.com) 官网/App。\n*   将地点设置为 \"Mission District, San Francisco\"。\n*   利用平台自带的筛选器，选择“评分 4.5+”和“价格区间 $$”即可筛选出符合您预算且支持在线预订的实时空位。\n\n希望您能成功预订到理想的餐厅，祝您晚餐约会愉快！",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

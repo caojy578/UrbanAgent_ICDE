@@ -1,0 +1,38 @@
+{
+  "query_id": "AI-10",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想计算一下这次飞行的碳排放",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:29:30+08:00",
+  "run_timestamp_end": "2026-07-12T14:29:49+08:00",
+  "latency_seconds": 18.621,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 29267,
+    "completion_tokens": 173,
+    "total_tokens": 29440
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "climatiq-mcp-server",
+      "tool": "search-emission-factors",
+      "arguments": {
+        "query": "flight"
+      },
+      "success": true,
+      "raw_result": "Found 20 emission factors matching 'flight'.\n\nHere are the first 5 results:\n\n1. Flight training\n   Activity ID: education-type_flight_training\n   Region: United States of America (the)\n   Year: 2019\n   Source: EPA\n   Unit: kg/usd\n\n2. International Flights and Accommodation\n   Activity ID: passenger_flight-route_type_international_flights_and_accommodation-aircraft_type_na-distance_na-class_na-rf_na-distance_uplift_na\n   Region: New Zealand\n   Year: 2019\n   Source: Market Economics Limited\n   Unit: kg/nzd\n\n3. Domestic Flights and Accommodation\n   Activity ID: passenger_flight-route_type_domestic_flights_and_accommodation-aircraft_type_na-distance_na-class_na-rf_na-distance_uplift_na\n   Region: New Zealand\n   Year: 2019\n   Source: Market Economics Limited\n   Unit: kg/nzd\n\n4. Flight - average\n   Activity ID: passenger_flight-route_type_na-aircraft_type_na-distance_na-class_na-rf_na-distance_uplift_na\n   Region: Netherlands\n   Year: 2025\n   Source: CO2 Emissiefactoren\n   Unit: kg/passenger-km\n\n5. Flight - average\n   Activity ID: passenger_flight-route_type_na-aircraft_type_na-distance_na-class_na-rf_na-distance_uplift_na\n   Region: Netherlands\n   Year: 2026\n   Source: CO2 Emissiefactoren\n   Unit: kg/passenger-km\n\n\n... and 15 more results.\n\nTo use one of these emission factors, copy its Activity ID and use it with the custom-emission-calculation tool.",
+      "error": null,
+      "latency_seconds": 3.105
+    }
+  ],
+  "final_answer": "",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

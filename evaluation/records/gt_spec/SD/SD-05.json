@@ -1,0 +1,119 @@
+{
+  "query_id": "SD-05",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我现在在“深圳市南山区科技园”，想找一个 3 公里以内的公园， 如果现在不下雨就帮我规划骑行路线，如果下雨就帮我规划驾车路线。",
+  "checklist": [
+    {
+      "item_id": "SD-05.1",
+      "assertion": "起点地理编码为'深圳市南山区科技园'对应的标准坐标(GCJ-02)",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 113.94631,
+          "lat": 22.543723
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "科技园为区域型地名,建议取其几何中心或主入口坐标;若数据源为 WGS-84 需转换为 GCJ-02 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=113.946790 lat=22.543920 → GCJ-02 lng=113.951671 lat=22.540911; 高德POI(深圳科技园,113.946310,22.543723) dist_orig=53.9m dist_gcj02=633.2m tol=150m; 最终来源=高德POI(超容差改用) GCJ-02 lng=113.946310 lat=22.543723"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-05.2",
+      "assertion": "找到的公园位于起点 3 公里半径范围内",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-05.3",
+      "assertion": "找到的公园 POI 类型属于公园/绿地类别且在深圳市范围",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "exists": true,
+          "name": "大沙河公园",
+          "category": "公园",
+          "lng": 113.966233,
+          "lat": 22.553846
+        },
+        "datum": "GCJ-02",
+        "tolerance": "POI 类别为公园/广场/绿地,名称含'公园'或官方认定的公园;坐标与官方标注 distance<=200m",
+        "collect_from": "天地图或百度地图 POI 检索,筛选公园类别",
+        "collected_on": "2026-07-10",
+        "note": "需验证 POI 确实存在且属于公园类,记录其官方坐标(GCJ-02) | 2026-07-09: 高德POI距科技园3km内,大沙河公园 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=113.961327 lat=22.556822 → GCJ-02 lng=113.966233 lat=22.553846; 最终来源=wgs84转gcj02 GCJ-02 lng=113.966233 lat=22.553846"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-05.4",
+      "assertion": "查询时刻深圳市南山区的实时天气降水状态(是否下雨)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-05.5",
+      "assertion": "根据实时天气降水状态选择正确的出行方式:不下雨则骑行,下雨则驾车",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-05.6",
+      "assertion": "规划的路线起点坐标与 SD-05.1 的地理编码结果一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-05.7",
+      "assertion": "规划的路线终点坐标与 SD-05.3 找到的公园坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-05.8",
+      "assertion": "规划的路线交通方式(骑行或驾车)与 SD-05.5 的条件分支判断结果一致",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "天气",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "地理编码",
+        "天气"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ],
+      [
+        "天气",
+        "路线规划"
+      ]
+    ],
+    "notes": "天气需实时查询判断是否降雨;路线规划的交通方式需依据天气条件动态选择(不下雨用 bicycling,下雨用 driving)"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

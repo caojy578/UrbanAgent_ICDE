@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-36",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想把这个地址转换成地图坐标。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:12:43+08:00",
+  "run_timestamp_end": "2026-07-11T21:12:47+08:00",
+  "latency_seconds": 4.348,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6879,
+    "completion_tokens": 18,
+    "total_tokens": 6897
+  },
+  "tool_calls": [],
+  "final_answer": "请提供您想要转换的具体地址。我会为您查询其对应的经纬度坐标。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

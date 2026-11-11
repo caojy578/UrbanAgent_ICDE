@@ -1,0 +1,274 @@
+{
+  "query_id": "AI-14",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想找个地方吃晚饭。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:31:48+08:00",
+  "run_timestamp_end": "2026-07-12T14:32:03+08:00",
+  "latency_seconds": 15.587,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 30536,
+    "completion_tokens": 292,
+    "total_tokens": 30828
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_ip_location",
+      "arguments": {
+        "ip": "1.1.1.1"
+      },
+      "success": true,
+      "raw_result": {
+        "province": [],
+        "city": [],
+        "adcode": [],
+        "rectangle": []
+      },
+      "error": null,
+      "latency_seconds": 0.057
+    },
+    {
+      "seq": 2,
+      "server": "amap-maps",
+      "tool": "maps_search_detail",
+      "arguments": {
+        "id": "B0FFF99LGH"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "maps_search_detail returned error: Error: Cannot read properties of undefined (reading 'id')",
+      "latency_seconds": 0.074
+    },
+    {
+      "seq": 3,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "餐厅"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B000A7RYT6",
+            "name": "海底捞火锅(西单店)",
+            "address": "西单北大街109珠宝婚庆大楼7层(老佛爷百货正对面)",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/bcb84a02dd0ebb388d01c309af554414?operate=original"
+            }
+          },
+          {
+            "id": "B0L0L5A3CD",
+            "name": "翰林宴(北京西单店)",
+            "address": "大木仓胡同一巷一号(灵境胡同地铁站D西南口步行420米)",
+            "typecode": "050101",
+            "photos": {
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/81ac50c18b417f51b97eea17c3d90187"
+            }
+          },
+          {
+            "id": "B0GR4YIHMO",
+            "name": "小吊梨汤(西单店)",
+            "address": "北京城区西单北大街109号婚庆大楼南门上电梯7层小吊梨汤",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/query_pic?id=st848eaa2f-b070-4012-8476-0bde7b0a0d11&user=search&operate=original"
+            }
+          },
+          {
+            "id": "B0KRO7YQ1W",
+            "name": "寿司郎(西单大悦城店)",
+            "address": "西单北大街131号西单大悦城7F层7F-17(北门进入直行10m,扶梯上到7F可见)",
+            "typecode": "050202",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0KRO7YQ1W/comment/content_media_external_file_151222_ss__1769402227090_78513307.jpg"
+            }
+          },
+          {
+            "id": "B0L3AHUEAI",
+            "name": "烤匠麻辣烤鱼(西单大悦城店)",
+            "address": "西单北大街131号西单大悦城F7层",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0L3AHUEAI/comment/176906924801_1769069266444_52835654.jpg"
+            }
+          },
+          {
+            "id": "B0FFME0OOQ",
+            "name": "四季民福烤鸭店(西单华威约饭街店)",
+            "address": "西单北大街130号华威大厦8层39号",
+            "typecode": "050118",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/query_pic?id=st59c23194-2049-497b-ab1e-b8f9371fcc9b&user=search&operate=original"
+            }
+          },
+          {
+            "id": "B0LAJRUGCM",
+            "name": "柳州肥姨妈大骨螺蛳粉(西单店)",
+            "address": "北京城区西四南大街82号1幢1层",
+            "typecode": "050000",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0LAJRUGCM/comment/content_media_external_file_100000094_1769708845924_25077801.jpg"
+            }
+          },
+          {
+            "id": "B0L69STSWE",
+            "name": "滨寿司(北京君太百货店)",
+            "address": "西单北大街133号君太百货B1层",
+            "typecode": "050000",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0L69STSWE/comment/content_media_external_file_1000053817_ss__1768203489747_81701206.jpg"
+            }
+          },
+          {
+            "id": "B000A84E92",
+            "name": "唐宫·粤菜海鲜(民族店)",
+            "address": "复兴门内大街51号民族饭店首层101号",
+            "typecode": "050119",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/a2a4f7b480865cdd0761e563d6224299"
+            }
+          },
+          {
+            "id": "B0FFGI8XLD",
+            "name": "广州酒家(北京广州大厦店)",
+            "address": "西单横二条甲3号广州大厦酒店南门1-3层(西单地铁站B北口步行380米)",
+            "typecode": "050103",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFGI8XLD/comment/c9253a844e25dba2abb79ea5eab49f3b_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0FFHQSQOF",
+            "name": "湘容和(金融街店)",
+            "address": "北京城区金融街23号平安大厦F1层",
+            "typecode": "050100",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0FFHQSQOF/comment/content_media_external_file_100001045_1773577937652_86857048.jpg"
+            }
+          },
+          {
+            "id": "B0FFLQE35D",
+            "name": "四季民福烤鸭店(西单汉光店)",
+            "address": "西单北大街176号汉光百货9层923号",
+            "typecode": "050111|050118",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/query_pic?id=st59c23194-2049-497b-ab1e-b8f9371fcc9b&user=search&operate=original"
+            }
+          },
+          {
+            "id": "B0FFH1DQ9U",
+            "name": "新荣记(金融街店)",
+            "address": "金融大街11号B1层",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/dd50f386b7c64889a36bb9fb07336cc6"
+            }
+          },
+          {
+            "id": "B0GKLSGX84",
+            "name": "紫光园·烤鸭(西四店)",
+            "address": "西安门大街114号(西四地铁站D西南口步行280米)",
+            "typecode": "050121",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/4e65939d3edf6774fd513868b3370c81"
+            }
+          },
+          {
+            "id": "B0I0HUQ573",
+            "name": "悠航SLOWBOAT(白塔寺店)",
+            "address": "宫门口西岔73号-2",
+            "typecode": "080000|050000",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0I0HUQ573/comment/6F831DF8_188F_47E3_B3C9_EAB3BAFFEA01_L0_001_1024_76_1773295751567_45952081.jpg"
+            }
+          },
+          {
+            "id": "B0KBUSLVGY",
+            "name": "新京熹·北京涮肉(白塔寺店)",
+            "address": "白塔寺东夹道胡同60号",
+            "typecode": "050117",
+            "photos": {
+              "title": [],
+              "url": "https://store.is.autonavi.com/showpic/0787c687915e80290000000702002630?type=pic"
+            }
+          },
+          {
+            "id": "B000A7HT8I",
+            "name": "华天延吉餐厅(总店)",
+            "address": "西四北大街181号",
+            "typecode": "050113",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/133e6a6477b65f230053864f800d2dce"
+            }
+          },
+          {
+            "id": "B0J3UR2T1W",
+            "name": "四季民福烤鸭店(金融街店)",
+            "address": "金融大街11号北京国际金融中心B1层",
+            "typecode": "050000",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/query_pic?id=st59c23194-2049-497b-ab1e-b8f9371fcc9b&user=search&operate=original"
+            }
+          },
+          {
+            "id": "B0JGL4E134",
+            "name": "潮上潮(英蓝店)",
+            "address": "金融大街7号英蓝大厦B1-4至19层101内地下层B112-116",
+            "typecode": "050123",
+            "photos": {
+              "title": [],
+              "url": "https://aos-comment.amap.com/B0JGL4E134/comment/7a611a68397e55049ae8b09f43c066f9_2048_2048_80.jpg"
+            }
+          },
+          {
+            "id": "B0FFHSRG4W",
+            "name": "渔芙南·湘食本味(白塔寺店)",
+            "address": "阜成门内大街313号南城香北侧二层",
+            "typecode": "050100",
+            "photos": {
+              "title": "菜品",
+              "url": "http://store.is.autonavi.com/showpic/e00e706acffe5fc0941b795a3bf4d02d"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.257
+    }
+  ],
+  "final_answer": "为您推荐几家在北京西单附近评价不错的餐厅，您可以根据口味进行选择：\n\n1.  **四季民福烤鸭店 (西单华威约饭街店/西单汉光店/金融街店)**：北京地道的烤鸭店，口碑非常好。\n2.  **小吊梨汤 (西单店)**：非常有特色的京味菜，环境温馨，梨汤很好喝。\n3.  **海底捞火锅 (西单店)**：服务周到，适合喜欢吃火锅的朋友。\n4.  **唐宫·粤菜海鲜 (民族店)**：如果您喜欢粤菜或海鲜，这是一个很好的选择。\n5.  **新荣记 (金融街店)**：精致的粤菜，品质很高，适合稍微正式一点的用餐。\n6.  **广州酒家 (北京广州大厦店)**：老字号粤菜，口味地道。\n\n请问您更倾向于哪种菜系或者有特别想吃的类型吗？我可以为您做进一步推荐。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

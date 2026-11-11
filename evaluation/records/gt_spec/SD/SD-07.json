@@ -1,0 +1,74 @@
+{
+  "query_id": "SD-07",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我打算 7 月 12 号到 7 月 16 号去深圳和厦门玩，帮我规划选性价比高的酒店路线， 但我第 2 天的酒店想升级一下。 帮我查一下升级后那家酒店 7 月 13 号到 7 月 14 号有没有大床房。",
+  "checklist": [
+    {
+      "item_id": "SD-07.1",
+      "assertion": "给出的性价比路线方案中,第2天(7月13日)入住的酒店在第2天升级版路线中被更高档酒店替换",
+      "gt_source": "trace",
+      "necessary": true,
+      "_datesync_fix_20260718": "断言日期同步到运行查询(2026-07-12~16,第2天7/13)"
+    },
+    {
+      "item_id": "SD-07.2",
+      "assertion": "升级后第2天酒店的2026-07-13至2026-07-14期间大床房房态查询结果可溯源到本次酒店搜索工具返回",
+      "gt_source": "trace",
+      "necessary": true,
+      "_datesync_fix_20260718": "断言日期同步到运行查询(2026-07-12~16,第2天7/13)"
+    },
+    {
+      "item_id": "SD-07.3",
+      "assertion": "性价比路线方案覆盖深圳和厦门两个城市",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-07.4",
+      "assertion": "性价比路线的酒店入住时间跨度为2026-07-12至2026-07-16",
+      "gt_source": "computed",
+      "necessary": true,
+      "_datesync_fix_20260718": "断言日期同步到运行查询(2026-07-12~16,第2天7/13)"
+    },
+    {
+      "item_id": "SD-07.5",
+      "assertion": "升级路线中第2天酒店的档次/价格/星级高于性价比路线中对应酒店",
+      "gt_source": "computed",
+      "necessary": false
+    },
+    {
+      "item_id": "SD-07.6",
+      "assertion": "给出的性价比路线中各酒店间存在路线规划连接",
+      "gt_source": "trace",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "酒店路线",
+      "酒店搜索"
+    ],
+    "dependency_pairs": [
+      [
+        "酒店路线",
+        "酒店搜索"
+      ]
+    ],
+    "notes": "需先搜索深圳和厦门的性价比酒店,规划跨城路线;然后基于第2天酒店位置再次搜索升级版酒店,最后查询升级酒店的大床房房态。第二次酒店搜索依赖第一次结果(地理位置/档次参考)"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  },
+  "_date_sync": {
+    "from": "我打算 10 月 1 号到 10 月 5 号去深圳和厦门玩，帮我规划选性价比高的酒店路线， 但我第 2 天的酒店想升级一下。 帮我查一下升级后那家酒店 10 月 2 号到 10 月 3 号有没有大床房。",
+    "to": "我打算 7 月 12 号到 7 月 16 号去深圳和厦门玩，帮我规划选性价比高的酒店路线， 但我第 2 天的酒店想升级一下。 帮我查一下升级后那家酒店 7 月 13 号到 7 月 14 号有没有大床房。",
+    "synced": "2026-07-11 base"
+  }
+}

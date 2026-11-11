@@ -1,0 +1,77 @@
+{
+  "query_id": "AI-04",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我打算去成都旅游，帮我看看住哪里合适。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:27:57+08:00",
+  "run_timestamp_end": "2026-07-12T14:28:11+08:00",
+  "latency_seconds": 14.553,
+  "llm_calls": 4,
+  "usage": {
+    "prompt_tokens": 30028,
+    "completion_tokens": 619,
+    "total_tokens": 30647
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_text_search",
+      "arguments": {
+        "keywords": "成都住宿推荐"
+      },
+      "success": true,
+      "raw_result": {
+        "suggestion": {
+          "keywords": [],
+          "ciytes": []
+        },
+        "pois": [
+          {
+            "id": "B001C8MXRC",
+            "name": "印象泰和园(望丛西路店)",
+            "address": "郫筒镇望丛西路266号",
+            "typecode": "100103|120302|050000",
+            "photos": {
+              "provider": [],
+              "title": "Logo",
+              "url": "https://store.is.autonavi.com/showpic/8a42e507e6b17d1952963935bafc95fc"
+            }
+          },
+          {
+            "id": "B001C93577",
+            "name": "老房子华粹元年食府",
+            "address": "成都高新区天府三街大源中央公园",
+            "typecode": "050102",
+            "photos": {
+              "title": [],
+              "url": "http://store.is.autonavi.com/showpic/84208d5f23ea629eda2e091cc144543e"
+            }
+          },
+          {
+            "id": "B001C8MTP5",
+            "name": "蒲江丁家花园饭店",
+            "address": "利民路南段与青蒲路交叉口东140米",
+            "typecode": "050100|100000",
+            "photos": {
+              "provider": [],
+              "title": "客房",
+              "url": "https://store.is.autonavi.com/showpic/f1c716a2ce4abdec48cda2473049e0b1"
+            }
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.177
+    }
+  ],
+  "final_answer": "",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

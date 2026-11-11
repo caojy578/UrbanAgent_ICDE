@@ -1,0 +1,107 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # ─── Static asset caching ───────────────────────────────
+    # Vite emits hashed filenames in /assets, so we can cache them aggressively.
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    location ~* \.(js|css|woff2?|ttf|otf|eot|svg|png|jpg|jpeg|gif|webp|ico)$ {
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800";
+        try_files $uri =404;
+    }
+
+    # ─── HTML — never cache ─────────────────────────────────
+    location = /index.html {
+        add_header Cache-Control "no-store, no-cache, must-revalidate";
+        try_files $uri =404;
+    }
+
+    # ─── Backend proxies ────────────────────────────────────
+    # The CARLA Python bridge is reachable at $BACKEND_HOST.
+    # Set via `docker run -e BACKEND_HOST=...`.
+
+    location /api/ {
+        proxy_pass http://${BACKEND_HOST};
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 30s;
+    }
+
+    # MJPEG: long-lived multipart stream — disable buffering.
+    location /video_feed {
+        proxy_pass http://${BACKEND_HOST};
+        proxy_set_header Host $host;
+        proxy_buffering off;
+        proxy_cache off;
+        proxy_read_timeout 1h;
+        proxy_send_timeout 1h;
+    }
+
+    # WebRTC signaling (one-shot POST).
+    location /webrtc/ {
+        proxy_pass http://${BACKEND_HOST};
+        proxy_set_header Host $host;
+        proxy_read_timeout 30s;
+    }
+
+    # Demo media — reverse-proxy to vjs.zencdn.net so the same-origin
+    # HTTP page can pull HTTPS sample videos without tripping the
+    # browser's mixed-content guard. Range support is critical for
+    # <video> progressive playback / seeking, so buffering must be off
+    # and the Range header must reach upstream.
+    location /media/ {
+        resolver 223.5.5.5 1.1.1.1 valid=300s;
+        resolver_timeout 5s;
+        proxy_pass https://vjs.zencdn.net/v/;
+        proxy_http_version 1.1;
+        proxy_set_header Host vjs.zencdn.net;
+        proxy_set_header Range $http_range;
+        proxy_set_header If-Range $http_if_range;
+        proxy_ssl_server_name on;
+        proxy_ssl_name vjs.zencdn.net;
+        proxy_buffering off;
+        proxy_request_buffering off;
+        proxy_pass_request_headers on;
+        proxy_read_timeout 300s;
+        proxy_send_timeout 300s;
+        add_header X-Proxied-Source vjs.zencdn.net always;
+    }
+
+    # Socket.IO with WebSocket upgrade.
+    location /socket.io/ {
+        proxy_pass http://${BACKEND_HOST};
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade           $http_upgrade;
+        proxy_set_header Connection        "upgrade";
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_buffering off;
+        proxy_read_timeout 1h;
+        proxy_send_timeout 1h;
+    }
+
+    # ─── SPA fallback ───────────────────────────────────────
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # ─── Health probe ───────────────────────────────────────
+    location = /healthz {
+        access_log off;
+        return 200 "ok\n";
+        add_header Content-Type text/plain;
+    }
+}

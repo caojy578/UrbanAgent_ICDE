@@ -1,0 +1,127 @@
+{
+  "query_id": "CC-11",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我明天早上 8 点要从上海万达广场五角场店去陆家嘴中心， 如果下雨就帮我规划地铁路线，否则优先骑行路线，并比较两种方式的耗时。",
+  "checklist": [
+    {
+      "item_id": "CC-11.1",
+      "assertion": "正确获取上海万达广场五角场店的坐标",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 121.513256,
+          "lat": 31.302386
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图或腾讯地图",
+        "collected_on": "2026-07-12",
+        "note": "[桶A修正 2026-07-12]  来源=tianditu_search;天地图↔高德=127m;百度→GCJ02↔高德=2m | GCJ-02 lng=121.513256 lat=31.302386",
+        "_needs_review": true,
+        "_review_reason": "note无「天地图(地址)」可提取地标,无法自动geocode核验"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-11.2",
+      "assertion": "正确获取陆家嘴中心的坐标",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 121.516059,
+          "lat": 31.230447
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图或腾讯地图",
+        "collected_on": "2026-07-10",
+        "note": "POI 全称为'陆家嘴中心'或'陆家嘴中心大厦',位于浦东新区;采集时如遇 WGS-84 坐标需转换为 GCJ-02 | MCP2026-07-09:天地图主源+高德校验 天地图(陆家嘴中心浦东南路899号(商城路地铁站4号口步行110米)):(121.51167,31.2325);高德校验449.1m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=121.511670 lat=31.232500 → GCJ-02 lng=121.516059 lat=31.230447; 最终来源=wgs84转gcj02 GCJ-02 lng=121.516059 lat=31.230447"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-11.3",
+      "assertion": "查询明天上海的天气预报以判断是否下雨",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-11.4",
+      "assertion": "根据天气预报正确判断下雨条件并选择对应交通方式:下雨选地铁,不下雨选骑行",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-11.5",
+      "assertion": "规划地铁路线(起点为上海万达广场五角场店坐标,终点为陆家嘴中心坐标),并获取耗时",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-11.6",
+      "assertion": "规划骑行路线(起点为上海万达广场五角场店坐标,终点为陆家嘴中心坐标),并获取耗时",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-11.7",
+      "assertion": "比较地铁与骑行两种方式的耗时差异",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-11.8",
+      "assertion": "地铁路线的起点坐标与工具返回的上海万达广场五角场店坐标一致",
+      "gt_source": "computed",
+      "necessary": false
+    },
+    {
+      "item_id": "CC-11.9",
+      "assertion": "地铁路线的终点坐标与工具返回的陆家嘴中心坐标一致",
+      "gt_source": "computed",
+      "necessary": false
+    },
+    {
+      "item_id": "CC-11.10",
+      "assertion": "骑行路线的起点坐标与工具返回的上海万达广场五角场店坐标一致",
+      "gt_source": "computed",
+      "necessary": false
+    },
+    {
+      "item_id": "CC-11.11",
+      "assertion": "骑行路线的终点坐标与工具返回的陆家嘴中心坐标一致",
+      "gt_source": "computed",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "POI搜索",
+      "天气",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "POI搜索",
+        "路线规划"
+      ],
+      [
+        "天气",
+        "路线规划"
+      ]
+    ],
+    "notes": "需要 caiyun 天气工具提供明天的降水预报;路线规划需调用两次(地铁+骑行);天气查询需在路线规划前完成以支持条件判断"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

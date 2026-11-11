@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-17",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想找个地方散步。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:09:27+08:00",
+  "run_timestamp_end": "2026-07-11T21:09:32+08:00",
+  "latency_seconds": 5.486,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6877,
+    "completion_tokens": 141,
+    "total_tokens": 7018
+  },
+  "tool_calls": [],
+  "final_answer": "您好！很高兴为您推荐散步的地方。为了能为您提供更精准的建议，您可以告诉我：\n\n1.  **您目前所在的城市或区域是哪里？**（或者告诉我您想在哪个片区散步）\n2.  **您偏好什么样的环境？**（例如：安静的公园、有湖水的绿道、可以看海/河边的步道、或者是富有历史感的文化街区？）\n3.  **您大概想走多长时间？**（轻松的短途散步，还是想进行长距离的健步走？）\n\n您可以直接告诉我地点，我为您搜索一下周边的公园或步行胜地。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

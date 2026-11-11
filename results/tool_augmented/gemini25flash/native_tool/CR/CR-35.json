@@ -1,0 +1,58 @@
+{
+  "query_id": "CR-35",
+  "query_type": "复杂检索型",
+  "level": "L1",
+  "query": "获取美国佛罗里达州（当前时间2026年7月11日）近 21 天 ≥2.6 级地震，并估算 家庭夜间基础负载用电 210 kWh 的排放。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-16T12:53:36+08:00",
+  "run_timestamp_end": "2026-07-16T12:53:55+08:00",
+  "latency_seconds": 19.62,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 2738,
+    "completion_tokens": 883,
+    "total_tokens": 3621
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "usgs-quakes-mcp",
+      "tool": "find-earthquakes",
+      "arguments": {
+        "endTime": "2026-07-11T00:00:00",
+        "maxLatitude": 31,
+        "maxLongitude": -79.97,
+        "minLatitude": 24.52,
+        "minLongitude": -87.66,
+        "minmagnitude": 2.6,
+        "startTime": "2026-06-20T00:00:00"
+      },
+      "success": true,
+      "raw_result": [],
+      "error": null,
+      "latency_seconds": 1.022
+    },
+    {
+      "seq": 2,
+      "server": "climatiq-mcp-server",
+      "tool": "electricity-emission",
+      "arguments": {
+        "energy": 210,
+        "energy_unit": "kWh",
+        "region": "US"
+      },
+      "success": true,
+      "raw_result": "Electricity consumption of 210 kWh in US results in 96.67657062 kg of CO2e emissions.\nEmission factor used: Electricity supplied from grid - residual mix\n\nDetailed results are available as a resource with ID: electricity_210_kWh_US_140291090288896",
+      "error": null,
+      "latency_seconds": 3.138
+    }
+  ],
+  "final_answer": "在 2026 年 6 月 20 日到 2026 年 7 月 11 日期间，美国佛罗里达州没有发生 2.6 级及以上的地震。\n\n家庭夜间基础负载用电 210 kWh 预估产生 96.67657062 kg 的二氧化碳当量排放。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

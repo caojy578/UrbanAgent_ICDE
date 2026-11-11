@@ -1,0 +1,107 @@
+{
+  "query_id": "SD-49",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我明天下午三点从海口骑楼老街北门走去假日海滩， 帮我规划路线，并且看看天气怎么样。",
+  "checklist": [
+    {
+      "item_id": "SD-49.1",
+      "assertion": "路线规划的起点坐标与海口骑楼老街北门的官方坐标一致",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 110.344604,
+          "lat": 20.039708
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "海口骑楼老街北门为海口市龙华区长堤路区域的具体出入口,需确认北门具体位置;若官方无明确北门标识,可采集骑楼老街主要北侧入口坐标 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=110.341763 lat=20.046183 → GCJ-02 lng=110.346158 lat=20.044144; 高德POI(海口骑楼老街历史文化街区,110.344604,20.039708) dist_orig=778.8m dist_gcj02=519.3m tol=150m; 最终来源=高德POI(超容差改用) GCJ-02 lng=110.344604 lat=20.039708"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-49.2",
+      "assertion": "路线规划的终点坐标与假日海滩的官方坐标一致",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 110.237894,
+          "lat": 20.036713
+        },
+        "datum": "GCJ-02",
+        "tolerance": "distance<=150m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图坐标拾取器",
+        "collected_on": "2026-07-10",
+        "note": "假日海滩为海口市秀英区滨海大道,采集景区主入口或标志性位置坐标 | [坐标系修正 2026-07-10] 原天地图WGS84 lng=110.233640 lat=20.038861 → GCJ-02 lng=110.237894 lat=20.036713; 高德POI(假日海滩旅游区,110.237188,20.036599) dist_orig=447.9m dist_gcj02=74.9m tol=150m; 最终来源=wgs84转gcj02 GCJ-02 lng=110.237894 lat=20.036713"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "SD-49.3",
+      "assertion": "路线规划采用步行出行方式",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-49.4",
+      "assertion": "步行路线方案包含完整的路径信息(距离、预计耗时、途经道路)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-49.5",
+      "assertion": "天气查询的目标地点为假日海滩所在位置(海口市秀英区)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-49.6",
+      "assertion": "天气查询时间为明天下午三点对应的时段",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-49.7",
+      "assertion": "天气信息包含明天下午的天气状况、温度、降水概率等关键要素",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-49.8",
+      "assertion": "路线规划的起点坐标与天气查询的地点坐标在语义上对应同一地理区域(海口市)",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "路线规划",
+      "天气"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "路线规划"
+      ],
+      [
+        "地理编码",
+        "天气"
+      ]
+    ],
+    "notes": "需先通过地理编码获取起点(海口骑楼老街北门)和终点(假日海滩)坐标,再进行路线规划;天气查询依赖于目的地位置的确定;天气需查询明天下午时段的预报数据"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

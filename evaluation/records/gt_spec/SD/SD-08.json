@@ -1,0 +1,70 @@
+{
+  "query_id": "SD-08",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我 7 月 12 到 14 号想在北京住一家香格里拉，预算 800 到 2000 之间。 列出来我看看。 我选第一家，帮我查一下这两天有什么房型，我想订豪华大床房。",
+  "checklist": [
+    {
+      "item_id": "SD-08.1",
+      "assertion": "搜索到北京地区名称包含'香格里拉'且价格在800-2000元范围内的酒店列表",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-08.2",
+      "assertion": "价格区间约束:所有返回酒店的价格下限>=800元且上限<=2000元",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-08.3",
+      "assertion": "查询到列表中第一家酒店在11月15-17日的可用房型列表",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-08.4",
+      "assertion": "房型列表中包含'豪华大床房'或语义等价房型(如豪华特大床房/豪华双人大床房)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-08.5",
+      "assertion": "第一家酒店的坐标/地址与本次酒店搜索工具返回的该酒店信息一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-08.6",
+      "assertion": "房型查询的日期参数为11月15日入住、17日离店(2晚)",
+      "gt_source": "computed",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "酒店搜索"
+    ],
+    "dependency_pairs": [
+      [
+        "酒店搜索",
+        "酒店路线"
+      ]
+    ],
+    "notes": "酒店搜索必须先于后续可能的房型查询或路线查询;房型查询属于酒店搜索类别的子功能,不单列工具类别"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  },
+  "_date_sync": {
+    "from": "我 11 月 15 到 17 号想在北京住一家香格里拉，预算 800 到 2000 之间。 列出来我看看。 我选第一家，帮我查一下这两天有什么房型，我想订豪华大床房。",
+    "to": "我 7 月 12 到 14 号想在北京住一家香格里拉，预算 800 到 2000 之间。 列出来我看看。 我选第一家，帮我查一下这两天有什么房型，我想订豪华大床房。",
+    "synced": "2026-07-11 base"
+  }
+}

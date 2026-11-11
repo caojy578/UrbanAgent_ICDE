@@ -1,0 +1,114 @@
+{
+  "query_id": "CR-06",
+  "query_type": "复杂检索型",
+  "level": "L1",
+  "query": "我在Seattle Capitol Hill，计划2026 年 7 月 13 日 14:00开混动 SUV去Starbucks Reserve Roastery，距离约 2.4 公里，查看评价、天气和碳排放。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-16T12:34:45+08:00",
+  "run_timestamp_end": "2026-07-16T12:34:58+08:00",
+  "latency_seconds": 12.693,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 8525,
+    "completion_tokens": 302,
+    "total_tokens": 8827
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "amap-maps",
+      "tool": "maps_geo",
+      "arguments": {
+        "address": "Starbucks Reserve Roastery, Seattle",
+        "city": "Seattle"
+      },
+      "success": true,
+      "raw_result": {
+        "return": [
+          {
+            "country": "中国",
+            "province": "福建省",
+            "city": "厦门市",
+            "citycode": "0592",
+            "district": "思明区",
+            "street": [],
+            "number": [],
+            "adcode": "350203",
+            "location": "118.125009,24.501530",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "citycode": "010",
+            "district": "石景山区",
+            "street": [],
+            "number": [],
+            "adcode": "110107",
+            "location": "116.181232,39.925224",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "citycode": "010",
+            "district": "海淀区",
+            "street": [],
+            "number": [],
+            "adcode": "110108",
+            "location": "116.229109,40.091159",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "citycode": "010",
+            "district": "海淀区",
+            "street": [],
+            "number": [],
+            "adcode": "110108",
+            "location": "116.333305,40.030356",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "citycode": "010",
+            "district": "西城区",
+            "street": [],
+            "number": [],
+            "adcode": "110102",
+            "location": "116.396899,39.897945",
+            "level": "兴趣点"
+          },
+          {
+            "country": "中国",
+            "province": "北京市",
+            "city": "北京市",
+            "citycode": "010",
+            "district": "朝阳区",
+            "street": [],
+            "number": [],
+            "adcode": "110105",
+            "location": "116.468241,39.912955",
+            "level": "兴趣点"
+          }
+        ]
+      },
+      "error": null,
+      "latency_seconds": 0.053
+    }
+  ],
+  "final_answer": "我无法找到西雅图的Starbucks Reserve Roastery。您能提供更多信息，例如完整的地址，或者它在西雅图的具体位置吗？",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

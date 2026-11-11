@@ -1,0 +1,76 @@
+{
+  "query_id": "CR-30",
+  "query_type": "复杂检索型",
+  "level": "L1",
+  "query": "查询美国俄亥俄州（当前时间2026年7月11日）近 60 小时 ≥2.9 级地震，并计算 工业生产线设备用电 1 350 kWh（燃煤+天然气） 的排放。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-16T12:48:54+08:00",
+  "run_timestamp_end": "2026-07-16T12:49:19+08:00",
+  "latency_seconds": 24.13,
+  "llm_calls": 3,
+  "usage": {
+    "prompt_tokens": 10209,
+    "completion_tokens": 938,
+    "total_tokens": 11147
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "usgs-quakes-mcp",
+      "tool": "find-earthquakes",
+      "arguments": {
+        "endTime": "2026-07-11T00:00:00Z",
+        "maxLatitude": 42,
+        "maxLongitude": -80.5,
+        "minLatitude": 38.4,
+        "minLongitude": -84.8,
+        "minmagnitude": 2.9,
+        "startTime": "2026-07-08T16:00:00Z"
+      },
+      "success": false,
+      "raw_result": null,
+      "error": "McpError: request to https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&endtime=2026-07-11T00%3A00%3A00Z&starttime=2026-07-08T16%3A00%3A00Z&minlatitude=38.4&maxlatitude=42&minlongitude=-84.8&maxlon",
+      "latency_seconds": 1.011
+    },
+    {
+      "seq": 2,
+      "server": "climatiq-mcp-server",
+      "tool": "electricity-emission",
+      "arguments": {
+        "energy": 1350,
+        "energy_unit": "kWh",
+        "region": "US"
+      },
+      "success": true,
+      "raw_result": "Electricity consumption of 1350 kWh in US results in 621.4922397 kg of CO2e emissions.\nEmission factor used: Electricity supplied from grid - residual mix\n\nDetailed results are available as a resource with ID: electricity_1350_kWh_US_140291092100672",
+      "error": null,
+      "latency_seconds": 3.041
+    },
+    {
+      "seq": 3,
+      "server": "usgs-quakes-mcp",
+      "tool": "find-earthquakes",
+      "arguments": {
+        "endTime": "2026-07-11T00:00:00Z",
+        "maxLatitude": 42,
+        "maxLongitude": -80.5,
+        "minLatitude": 38.4,
+        "minLongitude": -84.8,
+        "minmagnitude": 2.9,
+        "startTime": "2026-07-08T16:00:00Z"
+      },
+      "success": true,
+      "raw_result": [],
+      "error": null,
+      "latency_seconds": 1.711
+    }
+  ],
+  "final_answer": "好的，我为您查询了美国俄亥俄州（北纬38.4-42，西经-84.8--80.5）在2026年7月8日16时至2026年7月11日0时之间，没有探测到2.9级及以上的地震。\n\n工业生产线设备用电 1350 kWh 在美国产生的碳排放量为 621.4922397 千克二氧化碳当量。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

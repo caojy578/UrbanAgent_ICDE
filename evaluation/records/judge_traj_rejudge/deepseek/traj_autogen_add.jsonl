@@ -1,0 +1,1 @@
+{"query_id": "CC-18", "type": "条件与组合决策型", "baseline": "autogen", "judge_model": "qwen3-max", "verdict": {"enhancement": {"error_recovery": true, "precision_refine": false, "cross_validation": false, "expanded_retrieval": false}, "any_enhancement": true, "evidence": "多次重试不同参数调用酒店推荐和查询工具"}}

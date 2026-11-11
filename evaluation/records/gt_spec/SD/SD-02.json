@@ -1,0 +1,62 @@
+{
+  "query_id": "SD-02",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "帮我查一下“上海市浦东新区陆家嘴中心”现在的实时天气。",
+  "checklist": [
+    {
+      "item_id": "SD-02.1",
+      "assertion": "返回的天气信息对应的地理位置为上海市浦东新区陆家嘴中心或其所在区域",
+      "gt_source": "static_ref",
+      "necessary": true,
+      "static_gt": {
+        "ref_value": "上海市浦东新区",
+        "datum": "GCJ-02",
+        "tolerance": "行政区划精确匹配(上海市浦东新区),且地点名称包含'陆家嘴'或为陆家嘴商圈范围内",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图、腾讯地图,查询'上海市浦东新区陆家嘴中心'的行政区划和区域范围",
+        "collected_on": "2026-07-09",
+        "note": "陆家嘴中心可能对应商圈或地标建筑,需确认其位于浦东新区陆家嘴区域;采集时记录坐标系为GCJ-02 | 2026-07-09 MCP采集;天地图MCP直出GCJ-02; 天地图(121.51178,31.23311);区域陆家嘴商圈; 高德校验距离463.6m"
+      }
+    },
+    {
+      "item_id": "SD-02.2",
+      "assertion": "返回的天气数据为查询时刻的实时天气(非历史或预报)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-02.3",
+      "assertion": "天气信息包含关键要素:温度、天气状况(晴/雨/云等),符合实时天气的数据结构",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-02.4",
+      "assertion": "工具调用中地理编码(或POI搜索)返回的坐标与天气查询使用的坐标保持一致",
+      "gt_source": "computed",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "天气"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "天气"
+      ]
+    ],
+    "notes": "需先通过地理编码将'上海市浦东新区陆家嘴中心'转换为坐标,再查询该坐标的实时天气;天气类型需为实时天气(非预报)"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

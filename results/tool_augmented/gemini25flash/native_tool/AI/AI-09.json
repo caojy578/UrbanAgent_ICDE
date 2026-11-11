@@ -1,0 +1,38 @@
+{
+  "query_id": "AI-09",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想找一家评价不错的餐厅。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:07:50+08:00",
+  "run_timestamp_end": "2026-07-11T21:08:01+08:00",
+  "latency_seconds": 11.526,
+  "llm_calls": 2,
+  "usage": {
+    "prompt_tokens": 13800,
+    "completion_tokens": 95,
+    "total_tokens": 13895
+  },
+  "tool_calls": [
+    {
+      "seq": 1,
+      "server": "yelp_agent",
+      "tool": "yelp_agent",
+      "arguments": {
+        "natural_language_query": "Find highly rated restaurants nearby"
+      },
+      "success": true,
+      "raw_result": "Unable to fetch data from Yelp.",
+      "error": null,
+      "latency_seconds": 3.888
+    }
+  ],
+  "final_answer": "抱歉，我暂时无法获取餐厅的详细评价数据。为了能更好地为您推荐，您能否告知一下您所在的**城市**以及**偏好的口味/菜系**（例如：川菜、西餐、火锅等）？\n\n或者，如果您有具体的餐厅名称，也可以告诉我，我可以尝试为您查询相关信息。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

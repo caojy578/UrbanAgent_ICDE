@@ -1,0 +1,35 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Leave VITE_SOCKET_URL blank to use the same-origin nginx proxy.
+        VITE_SOCKET_URL: ""
+    image: urban-frontend:latest
+    container_name: urban-frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      # Where the Python bridge lives — nginx proxies /api, /video_feed, /socket.io to here.
+      BACKEND_HOST: bridge:5000
+    depends_on:
+      - bridge
+    networks:
+      - urban
+
+  # Stand-in for the CARLA Python bridge. Replace with the real service when ready.
+  # The frontend talks to it at http://bridge:5000 inside the compose network.
+  bridge:
+    image: nginx:1.27-alpine
+    container_name: urban-bridge-stub
+    restart: unless-stopped
+    ports:
+      - "5000:80"
+    networks:
+      - urban
+
+networks:
+  urban:
+    driver: bridge

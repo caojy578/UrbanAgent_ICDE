@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-36",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "我想把这个地址转换成地图坐标。",
+  "baseline": "autogen",
+  "model": "gemini-2.5-flash",
+  "framework_version": "pyautogen 0.2 AssistantAgent+UserProxyAgent",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-12T14:41:46+08:00",
+  "run_timestamp_end": "2026-07-12T14:42:45+08:00",
+  "latency_seconds": 58.784,
+  "llm_calls": 26,
+  "usage": {
+    "prompt_tokens": 179748,
+    "completion_tokens": 15,
+    "total_tokens": 179763
+  },
+  "tool_calls": [],
+  "final_answer": null,
+  "asked_clarification": false,
+  "termination_reason": "step_limit",
+  "infra_rerun_count": 0,
+  "notes": ""
+}

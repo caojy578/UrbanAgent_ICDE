@@ -1,0 +1,82 @@
+{
+  "query_id": "SD-09",
+  "type": "顺序依赖型查询",
+  "level": "L2",
+  "query": "我 7 月 12 到 14 号去杭州玩，帮我规划酒店路线，品质优先， 不过第一天酒店需要帮我换成便宜一点的。帮我查一下换后的酒店 7 月 12 到 13 号有什么房间。",
+  "checklist": [
+    {
+      "item_id": "SD-09.1",
+      "assertion": "返回了杭州市内至少3家酒店(第一天1家经济型,后两天各1家品质型),每家包含名称、坐标、地址等基本信息",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-09.2",
+      "assertion": "第一天(12月1日)推荐的酒店价格明显低于后两天推荐的酒店,体现了'便宜一点'与'品质优先'的差异化策略",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-09.3",
+      "assertion": "规划了从第一天酒店到第二天酒店、第二天酒店到第三天酒店的路线方案,每条路线包含出行方式、预估时长、距离等信息",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-09.4",
+      "assertion": "查询并返回了第一天酒店在12月1日至2日期间的可预订房型信息(房型名称、价格、库存状态等)",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-09.5",
+      "assertion": "路线规划的起点坐标与本次返回的对应酒店坐标一致(第一天酒店→第二天酒店的起点=第一天酒店坐标,第二天酒店→第三天酒店的起点=第二天酒店坐标)",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "SD-09.6",
+      "assertion": "后两天推荐的酒店评分较高或星级较高,符合'品质优先'要求",
+      "gt_source": "trace",
+      "necessary": false
+    },
+    {
+      "item_id": "SD-09.7",
+      "assertion": "所有推荐酒店位于杭州市行政区划范围内",
+      "gt_source": "computed",
+      "necessary": false
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "酒店搜索",
+      "酒店路线",
+      "酒店预订"
+    ],
+    "dependency_pairs": [
+      [
+        "酒店搜索",
+        "酒店路线"
+      ],
+      [
+        "酒店搜索",
+        "酒店预订"
+      ]
+    ],
+    "notes": "需先通过酒店搜索获取3家酒店(第一天经济型1家、后两天品质型各1家),再基于搜索结果的酒店坐标规划路线;同时需查询第一天酒店的房态。品质优先体现在后两天酒店的评分/星级筛选条件,经济型体现在第一天酒店的价格排序"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  },
+  "_date_sync": {
+    "from": "我 12 月 1 到 3 号去杭州玩，帮我规划酒店路线，品质优先， 不过第一天酒店需要帮我换成便宜一点的。帮我查一下换后的酒店 12 月 1 到 2 号有什么房间。",
+    "to": "我 7 月 12 到 14 号去杭州玩，帮我规划酒店路线，品质优先， 不过第一天酒店需要帮我换成便宜一点的。帮我查一下换后的酒店 7 月 12 到 13 号有什么房间。",
+    "synced": "2026-07-11 base"
+  }
+}

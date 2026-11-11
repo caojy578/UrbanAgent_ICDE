@@ -1,0 +1,110 @@
+{
+  "query_id": "CC-03",
+  "type": "条件与组合决策型",
+  "level": "L2",
+  "query": "我目前在深圳南山区科技园，想在 1.5 公里范围内 找一家 评分不低于 4.5 分 的咖啡店，帮我查看营业信息并规划 骑行路线",
+  "checklist": [
+    {
+      "item_id": "CC-03.1",
+      "assertion": "识别出用户当前位置为深圳南山区科技园,并获取该区域的坐标",
+      "gt_source": "static_ref",
+      "necessary": false,
+      "static_gt": {
+        "ref_value": {
+          "lng": 113.950109,
+          "lat": 22.544429
+        },
+        "datum": "GCJ-02",
+        "tolerance": "深圳市南山区科技园核心区域范围内,中心点坐标误差≤200m",
+        "collect_from": "天地图(map.tianditu.gov.cn)或百度地图,搜索'深圳南山科技园'取代表性中心坐标",
+        "collected_on": "2026-07-10",
+        "note": "科技园范围较大,取核心区域代表坐标(如科技园地铁站附近);采集时注意坐标系为GCJ-02 | MCP2026-07-09:天地图主源+高德校验 天地图(深圳南山区科技园):(113.94523,22.54744);高德校验325.5m | [坐标系修正 2026-07-10] 原天地图WGS84 lng=113.945230 lat=22.547440 → GCJ-02 lng=113.950109 lat=22.544429; 最终来源=wgs84转gcj02 GCJ-02 lng=113.950109 lat=22.544429"
+      },
+      "_demoted": "coord_static_ref→diagnostic_20260714"
+    },
+    {
+      "item_id": "CC-03.2",
+      "assertion": "搜索到的咖啡店位于用户位置1.5公里范围内",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-03.3",
+      "assertion": "搜索到的咖啡店评分不低于4.5分【判定口径:若该区域经充分检索确无满足此阈值的POI,系统如实报告'无符合项/最高仅X分'并说明已检索亦算通过;仅当系统未检索或把低于阈值的对象谎称满足才判错】",
+      "gt_source": "trace",
+      "necessary": true,
+      "_noresult_relax_20260718": "无解阈值:区域确无满足即可如实报无"
+    },
+    {
+      "item_id": "CC-03.4",
+      "assertion": "返回的咖啡店POI信息包含名称、地址和坐标(开放选择题:不与预选对象比对;验证所选对象满足查询全部筛选约束,且其名称/地址/坐标等事实值与本次工具原始返回一致、可溯源)",
+      "gt_source": "trace",
+      "necessary": true,
+      "static_gt_pinned_deprecated": {
+        "ref_value": {
+          "name": "JPG canteen(深圳科兴店)",
+          "address": "南山区科技园中区科苑路15号科兴科学园C栋G层07/08/09号商铺",
+          "lng": 113.944313,
+          "lat": 22.548409
+        },
+        "datum": "GCJ-02",
+        "tolerance": "POI名称需含官方名称或通用别名,地址精确到门牌号或楼层,坐标误差≤50m",
+        "collect_from": "大众点评人工选店+天地图坐标拾取(WGS84转GCJ-02)",
+        "collected_on": "2026-07-12",
+        "note": "[桶B复核 2026-07-12] 大众点评截图复核;eval↔天地图geocode 99m↔百度 87m(≤50m容差边界,点评地址为准);保留eval | 原note: [人工复核 2026-07-11] 大众点评:rank=4.8,tag=咖啡,人均47;距科技园742m(≤1.5km);作废:B&F咖啡店(天地图首条) | ..."
+      }
+    },
+    {
+      "item_id": "CC-03.5",
+      "assertion": "返回的营业信息反映评测时该咖啡店的实际营业状态",
+      "gt_source": "trace",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-03.6",
+      "assertion": "规划的骑行路线起点坐标与本次获取的用户位置坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-03.7",
+      "assertion": "规划的骑行路线终点坐标与本次返回的咖啡店坐标一致",
+      "gt_source": "computed",
+      "necessary": true
+    },
+    {
+      "item_id": "CC-03.8",
+      "assertion": "返回的路线为骑行模式而非其他出行方式",
+      "gt_source": "trace",
+      "necessary": true
+    }
+  ],
+  "process_spec": {
+    "necessary_tool_categories": [
+      "地理编码",
+      "POI搜索",
+      "商户评价",
+      "路线规划"
+    ],
+    "dependency_pairs": [
+      [
+        "地理编码",
+        "POI搜索"
+      ],
+      [
+        "POI搜索",
+        "路线规划"
+      ]
+    ],
+    "notes": "需先对'深圳南山区科技园'进行地理编码获取坐标,再以此为中心搜索1.5km范围内咖啡店;POI搜索需关联商户评价筛选≥4.5分;最后基于确定的咖啡店位置规划骑行路线"
+  },
+  "clarification_spec": {
+    "expect_clarification": false,
+    "required_missing_params": [],
+    "resolvable_by_tool": false
+  },
+  "frozen": true,
+  "gen_meta": {
+    "model": "claude-sonnet-4-5-20250929"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "query_id": "AI-46",
+  "query_type": "模糊与不完全查询",
+  "level": "L3",
+  "query": "帮我看看这两个地方离得远不远。",
+  "baseline": "native_tool",
+  "model": "gemini-2.5-flash",
+  "framework_version": "openai native function calling loop",
+  "temperature": 1.0,
+  "run_timestamp_start": "2026-07-11T21:14:15+08:00",
+  "run_timestamp_end": "2026-07-11T21:14:23+08:00",
+  "latency_seconds": 8.063,
+  "llm_calls": 1,
+  "usage": {
+    "prompt_tokens": 6881,
+    "completion_tokens": 21,
+    "total_tokens": 6902
+  },
+  "tool_calls": [],
+  "final_answer": "请提供您想要查询的两个地点的名称或地址，我将为您查询它们之间的距离。",
+  "asked_clarification": false,
+  "termination_reason": "normal",
+  "infra_rerun_count": 0,
+  "notes": ""
+}
